@@ -1,11 +1,10 @@
-
 <nav class="navbar" style="background-color: rgb(29, 61, 88);">
     <div class="container-fluid">
         <a class="navbar-brand" style="color: white;" href="/">Home</a>
         <a class="navbar-brand" style="color: white;" href="allemployee">All Employee</a>
         <a class="navbar-brand" style="color: white;" href="#">All Students</a>
         <a class="navbar-brand" style="color: white;" href="#">Add New Students</a>
-         <form class="d-flex" role="search">
+        <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
@@ -13,38 +12,84 @@
 </nav>
 
 
-<!-- <nav class="navbar" style="background-color: rgb(29, 61, 88);">
-    <div class="container-fluid">
-        <a class="navbar-brand" style="color: white;" href="/">Home</a>
-        <a class="navbar-brand" style="color: white;" href="allemployee">All Employee</a>
-        <a class="navbar-brand" style="color: white;">All Students</a>
-        <a class="navbar-brand" style="color: white;">Add New Students</a> -->
-        <!-- <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
-<br>
-<form>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label"><strong>Email address</strong></label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-            style="width: 250px; background-color: rgb(142, 187, 226);">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label"><strong>Password</strong></label>
-        <input type="password" class="form-control" id="exampleInputPassword1"
-            style="width: 250px; background-color: rgb(142, 187, 226);">
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form> -->
 
-<router-outlet ><router-outlet />
 
+<router-outlet><router-outlet />
     
+
+    <div class="border rounded-5">
+
+        <section class="p-4 text-center">
+            <section class="">
+                <!-- Footer -->
+                <footer class="text-center text-white" style="background-color: #0a4275;">
+                    <!-- Grid container -->
+                    <div class="container p-4 pb-0">
+                        <!-- Section: CTA -->
+                        <section class="">
+                            <p class="d-flex justify-content-center align-items-center">
+                                <span class="me-3">Register for free</span>
+                                <button data-mdb-ripple-init="" type="button" class="btn btn-outline-light btn-rounded">
+                                    Sign up!
+                                </button>
+                            </p>
+                        </section>
+                        <!-- Section: CTA -->
+                    </div>
+                    <!-- Grid container -->
+
+                    <!-- Copyright -->
+                    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                        © 2020 Copyright:
+                        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                    </div>
+                    <!-- Copyright -->
+                </footer>
+                <!-- Footer -->
+            </section>
+        </section>
+
+
+
+        <div class="p-4 text-center border-top mobile-hidden">
+            <a class="btn btn-link px-3 collapsed" data-mdb-collapse-init="" href="#example11" role="button"
+                aria-expanded="false" aria-controls="example11" data-ripple-color="hsl(0, 0%, 67%)">
+                <i class="fas fa-code me-md-2"></i>
+                <span class="d-none d-md-inline-block">
+                    Show code
+                </span>
+            </a>
+
+
+            <a class="btn btn-link px-3 " data-ripple-color="hsl(0, 0%, 67%)">
+                <i class="fas fa-file-code me-md-2 pe-none"></i>
+                <span class="d-none d-md-inline-block export-to-snippet pe-none">
+                    Edit in sandbox
+                </span>
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <!-- <title>Login | EMS</title>
+<div class="container my-3">
+    <div class="container border border-warning rounded px-3 py-5">
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control border border-warning" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" />
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control border border-warning" id="exampleInputPassword1" />
+            </div>
+            <button type="submit" class="btn btn-warning">Submit</button>
+        </form>
+    </div>
+</div>  -->

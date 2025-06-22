@@ -1,0 +1,21 @@
+{
+
+
+    "students":[
+        {
+            "id": 1,
+            "name": "Junayet",
+            "email": "junayet@gmail.com",
+            "fee": 15000
+            
+        }
+        {
+            "id": 2,
+            "name": "Junayet",
+            "email": "junayet@gmail.com",
+            "fee": 15000
+            
+        }
+    ]
+
+}
