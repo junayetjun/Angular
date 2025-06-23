@@ -6,13 +6,16 @@ import { App } from './app';
 import { Home } from './home/home';
 import { Allemployee } from './allemployee/allemployee';
 import { Allstudents } from './allstudents/allstudents';
+import { ViewAllStudent } from './view-all-student/view-all-student';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     App,
     Home,
     Allemployee,
-    Allstudents
+    Allstudents,
+    ViewAllStudent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,8 @@ import { Allstudents } from './allstudents/allstudents';
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [App]
 })
