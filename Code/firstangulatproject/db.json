@@ -1,21 +1,28 @@
 {
-
-
-    "students":[
-        {
-            "id": 1,
-            "name": "Junayet",
-            "email": "junayet@gmail.com",
-            "fee": 15000
-            
-        },
-        {
-            "id": 2,
-            "name": "Masud",
-            "email": "masud@gmail.com",
-            "fee": 18000
-            
-        }
-    ]
-
+  "students": [
+    {
+      "id": "1",
+      "name": "Junayet",
+      "email": "junayet@gmail.com",
+      "fee": 15000
+    },
+    {
+      "id": "2",
+      "name": "Masud",
+      "email": "masud@gmail.com",
+      "fee": 18000
+    },
+    {
+      "id": "3",
+      "name": "Imran",
+      "email": "imran@gmail.com",
+      "fee": 28000
+    },
+    {
+      "id": "bb1a",
+      "name": "Samim Junayet Istiaq",
+      "email": "junayet03@gmail.com",
+      "fee": "100000000"
+    }
+  ]
 }

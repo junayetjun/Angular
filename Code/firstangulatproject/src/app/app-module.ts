@@ -5,21 +5,24 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Home } from './home/home';
 import { Allemployee } from './allemployee/allemployee';
-import { Allstudents } from './allstudents/allstudents';
 import { ViewAllStudent } from './view-all-student/view-all-student';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { Addstudent } from './addstudent/addstudent';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     App,
     Home,
-    Allemployee,
-    Allstudents,
-    ViewAllStudent
+    Allemployee,    
+    ViewAllStudent,
+    Addstudent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

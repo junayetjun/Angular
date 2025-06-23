@@ -8,20 +8,25 @@ import { Student } from '../../model/students.mode';
   templateUrl: './view-all-student.html',
   styleUrl: './view-all-student.css'
 })
-export class ViewAllStudent implements OnInit{
+export class ViewAllStudent implements OnInit {
   students: any;
 
-  constructor(private studentsService: StudentService){
+  constructor(private studentsService: StudentService) {
+
+  }
+  ngOnInit(): void {
+    this.loadAllStudent();
+  }
+
+  // ngOnInit(): void {
+  //   this.loadAllStudent();
+  // }
+
+  loadAllStudent() {
+
+    this.students = this.studentsService.getAllStudent();
+    console.log(this.students);
 
   }
 
-ngOnInit(): void {
-  this.loadAllStudent();
-}
-
-loadAllStudent(){
-
-  this.students=this.studentsService.getAllStudent;
-}
-  
 }
