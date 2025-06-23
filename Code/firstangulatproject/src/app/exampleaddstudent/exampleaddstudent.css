@@ -1,0 +1,162 @@
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.5s ease;
+      
+    }
+
+    .light-mode {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    }
+
+    .dark-mode {
+      background: linear-gradient(135deg, #000000, #05262b);
+    }
+
+    .form-container {
+      background: rgba(46, 85, 129, 0.95);
+      padding: 40px 50px;
+      border-radius: 20px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    body.dark-mode .form-container {
+      background: rgba(0, 0, 0, 0.95);
+      color: #3a3838;
+    }
+
+    h2 {
+      color: #f7f3f2;
+      margin-bottom: 25px;
+      font-size: 26px;
+      transition: color 0.4s ease;
+    }
+
+    body.dark-mode h2 {
+      color: #ffd700;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #000000;
+      transition: color 0.4s ease;
+    }
+
+    body.dark-mode label {
+      color: #ffb3fe;
+    }
+
+    input {
+      padding: 10px 12px;
+      margin-top: 8px;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      background: rgb(248, 248, 248);
+      transition: all 0.4s ease;
+      font-size: 15px;
+    }
+
+    body.dark-mode input {
+      background: #020202;
+      color: #eee;
+      border: 1px solid #888;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(to right, #b6c8cc, #2a98ac);
+      cursor: pointer;
+      transition: background 0.4s ease, transform 0.2s;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #b6c8cc, #2a98ac);
+      transform: scale(1.03);
+    }
+
+    /* Toggle Switch */
+    .toggle-switch {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #333;
+      transition: color 0.4s ease;
+    }
+
+    body.dark-mode .toggle-switch {
+      color: #fff;
+    }
+
+    .toggle-switch input[type="checkbox"] {
+      width: 40px;
+      height: 20px;
+      appearance: none;
+      background: #ccc;
+      border-radius: 20px;
+      position: relative;
+      outline: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .toggle-switch input[type="checkbox"]:checked {
+      background: #4cd137;
+    }
+
+    .toggle-switch input[type="checkbox"]::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+
+    .toggle-switch input[type="checkbox"]:checked::before {
+      transform: translateX(20px);
+    }

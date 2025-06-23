@@ -1,0 +1,31 @@
+<script>
+    const toggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    toggle.addEventListener('change', () => {
+      body.classList.toggle('dark-mode');
+      body.classList.toggle('light-mode');
+    });
+  </script>
+
+<div class="form-container ">
+    <div class="toggle-switch">
+      🌞 <input type="checkbox" id="darkModeToggle" /> 🌙
+    </div>
+    <h2>🎨 Student Info Form</h2>
+    <form [formGroup]="formGroup">
+      
+
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" formControlName="name" placeholder="Full Name"/>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" formControlName="email" placeholder="example@gmail.com" />
+
+      <label for="fees">Fees</label>
+      <input type="number" id="fees" name="fees" formControlName="fee" placeholder="9999999" />
+
+      <button type="submit" (click)="addStudent()">Submit ✨</button>
+    </form>
+  </div>
+  
