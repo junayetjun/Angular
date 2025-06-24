@@ -17,11 +17,15 @@
                     <td>{{s.name}}</td>
                     <td>{{s.email}}</td>
                     <td>{{s.fee}}</td>
-                    <td></td>
+                    <td>
+                        <button class="btn btn-edit">Edit</button>
+                        <button class="btn btn-delete" (click)="deleteStudent(s.id)">Delete</button>
 
-                </tr>              
-                
-                
+                    </td>
+
+                </tr>
+
+
             </tbody>
         </table>
     </div>
