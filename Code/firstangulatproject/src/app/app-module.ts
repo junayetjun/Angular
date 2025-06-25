@@ -10,6 +10,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { Addstudent } from './addstudent/addstudent';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Exampleaddstudent } from './exampleaddstudent/exampleaddstudent';
+import { Updatestudent } from './updatestudent/updatestudent';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { Exampleaddstudent } from './exampleaddstudent/exampleaddstudent';
     Allemployee,    
     ViewAllStudent,
     Addstudent,
-    Exampleaddstudent
+    Exampleaddstudent,
+    Updatestudent
   ],
   imports: [
     BrowserModule,

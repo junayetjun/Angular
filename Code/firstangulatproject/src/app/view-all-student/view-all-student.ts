@@ -14,8 +14,8 @@ export class ViewAllStudent implements OnInit {
   students: any;
 
   constructor(private studentsService: StudentService,
-     private router: Router,
-    private cdr : ChangeDetectorRef) {
+    private router: Router,
+    private cdr: ChangeDetectorRef) {
 
   }
   ngOnInit(): void {
@@ -34,9 +34,9 @@ export class ViewAllStudent implements OnInit {
   }
 
 
-  deleteStudent(id : string) : void{
-    
-   this.studentsService.deleteStudent(id).subscribe({
+  deleteStudent(id: string): void {
+
+    this.studentsService.deleteStudent(id).subscribe({
 
       next: (res) => {
         console.log('Student deleted');
@@ -53,6 +53,26 @@ export class ViewAllStudent implements OnInit {
     });
 
   }
+
+
+  getStudentById(id: string): void {
+    this.studentsService.getStudentById(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        console.log("Data Get Successfully");
+        this.router.navigate(['/updatestudent', id]);
+
+      },
+      error: (err) => {
+        console.log(err);
+      }
+
+
+    });
+
+
+  }
+
 
 
 }
