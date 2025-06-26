@@ -59,7 +59,7 @@ form {
 
 input[type="submit"] {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #076e0c;
     border: none;
     color: white;
     font-weight: bold;
@@ -69,5 +69,5 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #0edd18;
 }

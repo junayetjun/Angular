@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Home } from './home/home';
 import { Alldetails } from './alldetails/alldetails';
+import { Fullhomepage } from './fullhomepage/fullhomepage';
 
 @NgModule({
   declarations: [
     App,
     Home,
-    Alldetails
+    Alldetails,
+    Fullhomepage
   ],
   imports: [
     BrowserModule,
