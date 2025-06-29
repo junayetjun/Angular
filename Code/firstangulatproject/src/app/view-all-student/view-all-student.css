@@ -11,8 +11,8 @@
     }
 
     .btn-edit {
-      background-color: #028317;
-      color: white;
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
     }
 
     .btn-edit:hover {
@@ -20,8 +20,8 @@
     }
 
     .btn-delete {
-      background-color: #880f02;
-      color: white;
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
     }
 
     .btn-delete:hover {

@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Student } from '../../model/students.mode';
+import { Student } from '../model/students.mode';
 import { StudentService } from '../service/student.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { StudentService } from '../service/student.service';
 import { Router } from '@angular/router';
-import { Student } from '../../model/students.mode';
+import { Student } from '../model/students.mode';
 import { error } from 'console';
 
 @Component({
