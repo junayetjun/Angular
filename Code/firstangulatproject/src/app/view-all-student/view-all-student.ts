@@ -1,6 +1,11 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { StudentService } from '../service/student.service';
 import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
+import { LocationService } from '../service/location.service';
+import { Student } from '../model/students.mode';
+import { Location } from '../model/location.model';
+
 
 
 
@@ -11,25 +16,38 @@ import { Router } from '@angular/router';
   styleUrl: './view-all-student.css'
 })
 export class ViewAllStudent implements OnInit {
-  students: any;
+  students: Student[] = [];
+  locations: Location[] =[];
 
-  constructor(private studentsService: StudentService,
+
+  constructor(
+    private studentsService: StudentService,
     private router: Router,
-    private cdr: ChangeDetectorRef) {
+    private cdr: ChangeDetectorRef,
+    private locationService: LocationService
+  ) {  }
 
-  }
   ngOnInit(): void {
     this.loadAllStudent();
   }
 
-  // ngOnInit(): void {
-  //   this.loadAllStudent();
-  // }
+ 
 
-  loadAllStudent() {
+  loadAllStudent(): void { 
+    forkJoin({
+      locations : this.locationService.getAllLocation(),
+      students : this.studentsService.getAllStudent()}).subscribe({
+        next: ({locations, students}) => {
+          this.locations = locations;
+          this.students = students;
+          this.cdr.markForCheck();
+        },
+        error: (err) => {
+          console.log(err)
+        }
+      });
 
-    this.students = this.studentsService.getAllStudent();
-    console.log(this.students);
+    
 
   }
 
