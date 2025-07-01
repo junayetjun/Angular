@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { LocationService } from '../../service/location.service';
 import { Router } from '@angular/router';
-import e from 'express';
+
 
 @Component({
   selector: 'app-view-all-location',
@@ -21,7 +21,7 @@ export class ViewAllLocation implements OnInit {
   ){}
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.loadLocation();
   }
 
 

@@ -3,7 +3,7 @@
         <h1 class="jumborton">Add Student</h1>
     </div>
     <!--    start form-->
-    <form [formGroup]="formGroup"  >
+    <form [formGroup]="formGroup">
         <div class="row">
             <div class="col-md-6">
                 <label for="exampleInputEmail1" class="form-label">Name</label>
@@ -12,10 +12,11 @@
 
             <div class="col-md-6">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="text" class="form-control" id="email" formControlName="email" placeholder="example@gmail.com">
-            </div>        
+                <input type="text" class="form-control" id="email" formControlName="email"
+                    placeholder="example@gmail.com">
+            </div>
         </div>
-        
+
 
         <div class="row">
             <div class="col-md-6">
@@ -23,16 +24,25 @@
                 <input type="text" class="form-control" id="contactNo" formControlName="fee" placeholder="0000000">
             </div>
 
+            <div class="col-md-6 " formGroupName="location">
+                <div class="invalid-feedback">Please select a location.</div>
+                <label for="location" class="form-label">Location:</label>
+                <select id="location" formControlName="name" class="form-select" required>
+                    <option *ngFor="let loc of locations" [ngValue]="loc.name">{{loc.name}}</option>
+                </select>
+
+            </div>
+
         </div>
 
         <div class="row mt-3 text-center">
             <div class="col-md-6">
-                <button type="submit" class="btn btn-success text-center"  (click)="addStudent()">Save</button>
+                <button type="submit" class="btn btn-success text-center" (click)="addStudent()">Save</button>
 
             </div>
 
             <div class="col-md-6">
-                <button type="reset" class="btn btn-danger text-center" >Reset</button>
+                <button type="reset" class="btn btn-danger text-center">Reset</button>
 
             </div>
         </div>

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { StudentService } from '../service/student.service';
 import { Router } from '@angular/router';
 import { Student } from '../model/students.mode';
 import { error } from 'console';
+import { LocationService } from '../service/location.service';
+import { Location } from '../model/location.model';
 
 @Component({
   selector: 'app-addstudent',
@@ -13,12 +15,16 @@ import { error } from 'console';
 })
 export class Addstudent implements OnInit {
 
+  locations: Location[] = [];
+
   formGroup !: FormGroup;
 
   constructor(
     private studentService : StudentService,
     private fromBuilder : FormBuilder,
-    private router : Router
+    private router : Router,
+    private locationService: LocationService,
+    private cdr: ChangeDetectorRef
 
   ){ }
 
@@ -29,11 +35,44 @@ export class Addstudent implements OnInit {
 
       name : [''],
       email : [''],
-      fee : ['']
+      fee : [''],
+      location: this.fromBuilder.group({
 
+        name: [''],
+        photo: ['']
+      })
+
+    });
+
+    this.loadLocation();
+
+    this.formGroup.get('location')?.valueChanges.subscribe(name => {
+      const selectedLocation = this.locations.find(loc => loc.name === name);
+      if(selectedLocation){
+        this.formGroup.patchValue({location: selectedLocation});
+
+      }
     });
     
   }
+
+  loadLocation(): void {
+    this.locationService.getAllLocation().subscribe({
+      next: (loc) => {
+
+        this.locations =loc;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+      
+
+    });
+
+
+  }
+
+
 
   addStudent(): void{
 

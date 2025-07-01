@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { Location } from '../../model/location.model';
 import { LocationService } from '../../service/location.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { error } from 'console';
+
 
 
 @Component({
@@ -25,7 +25,7 @@ export class UpdateLocation {
   ){ }
 
   ngOnInit(): void {
-
+    this.loadLocationById();
   }
 
 
