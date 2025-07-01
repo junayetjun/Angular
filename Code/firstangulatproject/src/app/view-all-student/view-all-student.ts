@@ -17,7 +17,7 @@ import { Location } from '../model/location.model';
 })
 export class ViewAllStudent implements OnInit {
   students: Student[] = [];
-  locations: Location[] =[];
+  locations: Location[] = [];
 
 
   constructor(
@@ -25,29 +25,30 @@ export class ViewAllStudent implements OnInit {
     private router: Router,
     private cdr: ChangeDetectorRef,
     private locationService: LocationService
-  ) {  }
+  ) { }
 
   ngOnInit(): void {
     this.loadAllStudent();
   }
 
- 
 
-  loadAllStudent(): void { 
+
+  loadAllStudent(): void {
     forkJoin({
-      locations : this.locationService.getAllLocation(),
-      students : this.studentsService.getAllStudent()}).subscribe({
-        next: ({locations, students}) => {
-          this.locations = locations;
-          this.students = students;
-          this.cdr.markForCheck();
-        },
-        error: (err) => {
-          console.log(err)
-        }
-      });
+      locations: this.locationService.getAllLocation(),
+      students: this.studentsService.getAllStudent()
+    }).subscribe({
+      next: ({ locations, students }) => {
+        this.locations = locations;
+        this.students = students;
+        this.cdr.markForCheck();
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    });
 
-    
+
 
   }
 
