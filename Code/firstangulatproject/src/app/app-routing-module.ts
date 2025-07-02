@@ -9,6 +9,7 @@ import { Updatestudent } from './updatestudent/updatestudent';
 import { UpdateLocation } from './location/update-location/update-location';
 import { ViewAllLocation } from './location/view-all-location/view-all-location';
 import { Addlocation } from './location/addlocation/addlocation';
+import { Registration } from './auth/registration/registration';
 
 const routes: Routes = [
   {path:'', component:Home },
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'updatestudent/:id',component:Updatestudent},
   {path:'updatelocation/:id', component: UpdateLocation},
   {path:'allloc', component: ViewAllLocation},
-  {path:'addloc', component: Addlocation}
+  {path:'addloc', component: Addlocation},
+  {path:'reg', component: Registration}
 ];
 
 @NgModule({
