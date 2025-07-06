@@ -47,7 +47,7 @@ export class Login {
         console.log('User role:',role);
 
         if(role === 'admin'){
-          this.router.navigate(['/userprofile']);
+          this.router.navigate(['/adminprofile']);
         }
         else if(role === 'user'){
           this.router.navigate(['/userprofile']);

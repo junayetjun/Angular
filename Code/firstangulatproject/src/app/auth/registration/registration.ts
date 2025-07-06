@@ -41,7 +41,7 @@ export class Registration {
         next: (res) => {
           console.log('User Registration successfully: ', res);
           this.authService.storeToken(res.token);
-          this.router.navigate(['/allloc']);
+          this.router.navigate(['/login']);
         },
         error: (err) => {
           console.error('Error registrating user ', err);

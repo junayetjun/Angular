@@ -12,20 +12,28 @@ import { Addlocation } from './location/addlocation/addlocation';
 import { Registration } from './auth/registration/registration';
 import { Login } from './auth/login/login';
 import { Userprofile } from './auth/userprofile/userprofile';
+import { adminGuard } from './guards/admin-guard';
+import { authGuard } from './guards/auth-guard';
+import { userGuard } from './guards/user-guard';
+import { Admin } from './auth/admin/admin';
+import { Logout } from './auth/logout/logout';
 
 const routes: Routes = [
-  {path:'', component:Home },
-  {path:'allemployee', component: Allemployee},
-  {path:'allstu', component: ViewAllStudent},
-  {path:'addstu', component: Addstudent},
-  {path:'exaddstu', component: Exampleaddstudent},
-  {path:'updatestudent/:id',component:Updatestudent},
-  {path:'updatelocation/:id', component: UpdateLocation},
-  {path:'allloc', component: ViewAllLocation},
-  {path:'addloc', component: Addlocation},
-  {path:'reg', component: Registration},
-  {path:'login', component: Login},
-  {path:'userprofile', component: Userprofile}
+  { path: '', component: Home },
+  { path: 'allemployee', component: Allemployee },
+  { path: 'allstu', component: ViewAllStudent},
+  { path: 'addstu', component: Addstudent, },
+  { path: 'exaddstu', component: Exampleaddstudent },
+  { path: 'updatestudent/:id', component: Updatestudent },
+  { path: 'updatelocation/:id', component: UpdateLocation },
+  { path: 'allloc', component: ViewAllLocation, },
+  { path: 'addloc', component: Addlocation,  },
+  { path: 'reg', component: Registration },
+  { path: 'login', component: Login },
+  { path: 'logout', component: Logout },
+  { path: 'userprofile', component: Userprofile },
+  { path: 'adminprofile', component: Admin, },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

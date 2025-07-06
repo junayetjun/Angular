@@ -129,7 +129,7 @@ getToken(): string | null {
 }
 
 isAuthenticated(): boolean{
-  return !!this.getToken();
+  return !! this.getToken();
 }
 
 storeUserProfile(user: User): void{
@@ -147,7 +147,14 @@ getUserProfileFromStorage(): User | null{
   return null;
 }
 
+isAdmin(): boolean{
+  return this.getUserRole() === 'admin'; 
+}
 
+isUser(): boolean{
+  const role =this.getUserRole();
+  return role === 'user';
+}
 
 
 }
