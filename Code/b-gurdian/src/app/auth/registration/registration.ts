@@ -20,6 +20,7 @@ export class Registration {
     private formBuilder: FormBuilder
   ) {
     this.regForm = this.formBuilder.group({
+      
       name: ['', Validators.required],
       email: ['', Validators.required],
       contactNumber: ['', Validators.required],
@@ -37,6 +38,7 @@ export class Registration {
 
   onSubmit(): void {
     if (this.regForm.valid) {
+      
       const user: UsermodelModule = {
         ...this.regForm.value,
         role: 'user'

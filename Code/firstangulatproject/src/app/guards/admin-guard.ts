@@ -1,7 +1,15 @@
 import { ActivatedRouteSnapshot, CanActivate,  GuardResult,  MaybeAsync,  Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { AuthService } from '../service/auth-service';
-import { Inject,  PLATFORM_ID } from '@angular/core';
+import { Inject,  Injectable,  PLATFORM_ID } from '@angular/core';
 import { Observable } from 'rxjs';
+
+
+@Injectable(
+  {
+    providedIn: "root"
+
+  }
+)
 
 export class adminGuard implements CanActivate {
  
