@@ -21,18 +21,18 @@ import { Logout } from './auth/logout/logout';
 const routes: Routes = [
   { path: '', component: Home },
   { path: 'allemployee', component: Allemployee },
-  { path: 'allstu', component: ViewAllStudent},
-  { path: 'addstu', component: Addstudent, },
+  { path: 'allstu', component: ViewAllStudent , canActivate: [adminGuard]},
+  { path: 'addstu', component: Addstudent, canActivate: [authGuard] },
   { path: 'exaddstu', component: Exampleaddstudent },
   { path: 'updatestudent/:id', component: Updatestudent },
   { path: 'updatelocation/:id', component: UpdateLocation },
-  { path: 'allloc', component: ViewAllLocation, },
-  { path: 'addloc', component: Addlocation,  },
+  { path: 'allloc', component: ViewAllLocation, canActivate: [adminGuard] },
+  { path: 'addloc', component: Addlocation, canActivate: [adminGuard] },
   { path: 'reg', component: Registration },
   { path: 'login', component: Login },
   { path: 'logout', component: Logout },
-  { path: 'userprofile', component: Userprofile },
-  { path: 'adminprofile', component: Admin, },
+  { path: 'userprofile', component: Userprofile , canActivate: [userGuard]},
+  { path: 'adminprofile', component: Admin, canActivate: [adminGuard] },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

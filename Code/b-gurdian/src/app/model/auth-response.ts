@@ -1,4 +1,4 @@
-import { UsermodelModule } from "./usermodel/usermodel-module";
+import { UsermodelModule } from "./usermodel-module";
 
 export interface AuthResponse {
     token: string;

@@ -18,55 +18,59 @@
     <div class="container">
         <div class="registration-container">
             <h2 class="form-title">Complete Your Registration</h2>
-            <form>
+            <form  >
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Full Name</label>
-                        <input type="text" id="name" placeholder="Enter your full name" required>
+                        <input type="text" id="name" formControlName="name" placeholder="Enter your full name" required="required">
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="Enter your email address" required>
+                        <input type="email" id="email" formControlName="email" placeholder="Enter your email address" required="required">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
                         <label for="contact">Contact Number</label>
-                        <input type="tel" id="contact" placeholder="Enter your contact number" required>
+                        <input type="tel" id="contact" formControlName="contactNumber" placeholder="Enter your contact number" required="required">
                     </div>
                     <div class="form-group">
                         <label for="business">Business Name</label>
-                        <input type="text" id="business" placeholder="Enter your business name" required>
+                        <input type="text" id="business" formControlName="businessName" placeholder="Enter your business name" required="required">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <input type="password" id="password" formControlName="password" placeholder="Enter your password" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="photo">Photo</label>
+                        <input type="text" id="photo" formControlName="photo" placeholder="Enter your photo" required="required">
                     </div>
                     
                 </div>
 
                 <div class="form-group">
                     <label for="address">Business Address</label>
-                    <textarea id="address" placeholder="Enter your business address" required></textarea>
+                    <textarea id="address" formControlName="businessAddress" placeholder="Enter your business address" required="required"></textarea>
                 </div>
 
-                <div class="photo-upload">
+                <!-- <div class="photo-upload">
                     <div class="photo-preview">
                         <i class="fas fa-user"></i>
                         <img id="preview-image" src="#" alt="Profile photo preview">
                     </div>
-                    <input type="file" id="photo" accept="image/*">
+                    <input type="file" id="photo" formControlName="photo" accept="image/*">
                     <span class="upload-btn">Upload Photo</span>
-                </div>
+                </div> -->
 
                 <div class="form-footer">
                     <div class="terms">
                         By registering, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
                     </div>
-                    <button type="submit" class="submit-btn">Register Now</button>
+                    <button type="submit" class="submit-btn" (click)="onSubmit()">Register Now</button>
                 </div>
             </form>
         </div>

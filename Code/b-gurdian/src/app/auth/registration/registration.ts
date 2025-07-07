@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth-service';
 import { Router } from '@angular/router';
-import { UsermodelModule } from '../../model/usermodel/usermodel-module';
+import { UsermodelModule } from '../../model/usermodel-module';
 
 @Component({
   selector: 'app-registration',
@@ -18,15 +18,16 @@ export class Registration {
     private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder
-  ){
+  ) {
     this.regForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
       contactNumber: ['', Validators.required],
       businessName: ['', Validators.required],
-      password: ['',Validators.required],
-      businessAddress: ['',Validators.required],
-      photo: ['',Validators.required]
+      password: ['', Validators.required],
+      photo: ['', Validators.required],
+      businessAddress: ['', Validators.required],
+      
 
 
     })
@@ -34,11 +35,12 @@ export class Registration {
 
 
 
-   onSubmit(): void{
-    if(this.regForm.valid){
+  onSubmit(): void {
+    if (this.regForm.valid) {
       const user: UsermodelModule = {
         ...this.regForm.value,
         role: 'user'
+       
       };
 
       this.authService.registration(user).subscribe({
@@ -52,9 +54,9 @@ export class Registration {
         }
       });
     }
-      else{
-        alert('Complete Mendatory field');
-      }
+    else {
+      alert('Complete Mendatory field');
+    }
 
 
   }

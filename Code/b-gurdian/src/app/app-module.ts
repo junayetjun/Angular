@@ -7,6 +7,7 @@ import { Home } from './home/home';
 import { Login } from './auth/login/login';
 import { Registration } from './auth/registration/registration';
 import { About } from './about/about';
+import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,10 @@ import { About } from './about/about';
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(
+      withFetch()
+    )
   ],
   bootstrap: [App]
 })

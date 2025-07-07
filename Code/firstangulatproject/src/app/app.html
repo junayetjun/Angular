@@ -19,8 +19,16 @@
                         Student Information
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/allstu">View All Students</a></li>
-                        <li><a class="dropdown-item" href="/addstu">Add New Students</a></li>
+                        <ng-container *ngIf="userRole === 'admin' ">
+                            <li><a class="dropdown-item" href="/allstu">View All Students</a></li>
+
+
+                        </ng-container>
+
+                        <ng-container *ngIf="userRole === 'admin' || userRole === 'user'">
+                            <li><a class="dropdown-item" href="/addstu">Add New Students</a></li>
+                        </ng-container>
+
                         <li><a class="dropdown-item" href="/exaddstu">Example New Add Students</a></li>
 
                     </ul>
@@ -30,11 +38,19 @@
                         aria-expanded="false">
                         Location Information
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/allloc">All Location</a></li>
-                        <li><a class="dropdown-item" href="/addloc">Add Location</a></li>
 
-                    </ul>
+                    <ng-container *ngIf="userRole === 'admin'">
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/allloc">All Location</a></li>
+                            <li><a class="dropdown-item" href="/addloc">Add Location</a></li>
+
+                        </ul>
+
+
+
+                    </ng-container>
+
                 </li>
             </ul>
             <form class="d-flex" role="search">
