@@ -7,7 +7,7 @@
                     <a class="nav-link " aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/reg">New Registration</a>
+                    <a class="nav-link" href="/reg">Registration</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
@@ -50,6 +50,25 @@
 
 
                     </ng-container>
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Dependence
+                    </a>
+
+                    <!-- <ng-container *ngIf="userRole === 'admin'"> -->
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/addpol">Add Police Station</a></li>
+                            <li><a class="dropdown-item" href="/adddis">Add District</a></li>
+
+                        </ul>
+
+
+
+                    <!-- </ng-container> -->
 
                 </li>
             </ul>

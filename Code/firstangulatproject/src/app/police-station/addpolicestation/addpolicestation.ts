@@ -31,7 +31,7 @@ export class Addpolicestation implements OnInit {
 
 
   ngOnInit(): void {
-    this.loadPoliceStation()
+    this.loadPoliceStation();
   }
 
 

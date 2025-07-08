@@ -164,6 +164,24 @@
     {
       "id": "67f1",
       "name": "Dhanmondi"
+    },
+    {
+      "id": "cf4e",
+      "name": "Mohammadpur"
+    },
+    {
+      "id": "cabe",
+      "name": "Dhaka"
+    }
+  ],
+  "districts": [
+    {
+      "id": "5f6d",
+      "name": "dhaka",
+      "policeStations": [
+        "67f1",
+        "cf4e"
+      ]
     }
   ]
 }

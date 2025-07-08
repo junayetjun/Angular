@@ -20,6 +20,8 @@ import { Userprofile } from './auth/userprofile/userprofile';
 import { Logout } from './auth/logout/logout';
 import { Admin } from './auth/admin/admin';
 import { Addpolicestation } from './police-station/addpolicestation/addpolicestation';
+import { AddDistrict } from './district/add-district/add-district';
+import { ViewAllDistrict } from './district/view-all-district/view-all-district';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { Addpolicestation } from './police-station/addpolicestation/addpolicesta
     Userprofile,
     Logout,
     Admin,
-    Addpolicestation
+    Addpolicestation,
+    AddDistrict,
+    ViewAllDistrict
   ],
   imports: [
     BrowserModule,

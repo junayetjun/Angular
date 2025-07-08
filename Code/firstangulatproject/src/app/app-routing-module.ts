@@ -18,6 +18,7 @@ import { userGuard } from './guards/user-guard';
 import { Admin } from './auth/admin/admin';
 import { Logout } from './auth/logout/logout';
 import { Addpolicestation } from './police-station/addpolicestation/addpolicestation';
+import { AddDistrict } from './district/add-district/add-district';
 
 const routes: Routes = [
   { path: '', component: Home },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'userprofile', component: Userprofile , canActivate: [userGuard]},
   { path: 'adminprofile', component: Admin, canActivate: [adminGuard] },
   { path: 'addpol', component: Addpolicestation,},
+  { path: 'adddis', component: AddDistrict,},
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
