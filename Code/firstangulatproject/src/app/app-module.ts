@@ -19,6 +19,7 @@ import { Registration } from './auth/registration/registration';
 import { Userprofile } from './auth/userprofile/userprofile';
 import { Logout } from './auth/logout/logout';
 import { Admin } from './auth/admin/admin';
+import { Addpolicestation } from './police-station/addpolicestation/addpolicestation';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { Admin } from './auth/admin/admin';
     Registration,
     Userprofile,
     Logout,
-    Admin
+    Admin,
+    Addpolicestation
   ],
   imports: [
     BrowserModule,

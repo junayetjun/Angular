@@ -17,6 +17,7 @@ import { authGuard } from './guards/auth-guard';
 import { userGuard } from './guards/user-guard';
 import { Admin } from './auth/admin/admin';
 import { Logout } from './auth/logout/logout';
+import { Addpolicestation } from './police-station/addpolicestation/addpolicestation';
 
 const routes: Routes = [
   { path: '', component: Home },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'logout', component: Logout },
   { path: 'userprofile', component: Userprofile , canActivate: [userGuard]},
   { path: 'adminprofile', component: Admin, canActivate: [adminGuard] },
+  { path: 'addpol', component: Addpolicestation,},
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
