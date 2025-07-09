@@ -1,0 +1,29 @@
+<body>
+    <div class="container">
+        <h1 class="form-title">Source</h1>
+
+        <form [formGroup]="sourseForm" (ngSubmit)="addSource()">
+            <div class="form-group">
+                <label for="sourceName">Name</label>
+                <input type="text" id="name" class="form-control" formControlName="sourceName"
+                    placeholder="Enter your name" required>
+                <i class="fas fa-user input-icon"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="imageLink">Image Link</label>
+                <input type="url" id="imageLink" class="form-control" formControlName="photo"
+                    placeholder="https://example.com/image.jpg">
+                <i class="fas fa-image input-icon"></i>
+            </div>
+
+            <button type="submit" class="btn">
+                <i class="fas fa-paper-plane"></i> Submit
+            </button>
+        </form>
+
+        <div class="form-footer">
+            <p>By submitting this form, you agree to our <a href="#">Terms of Service</a></p>
+        </div>
+    </div>
+</body>

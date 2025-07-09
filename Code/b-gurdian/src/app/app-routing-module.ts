@@ -7,6 +7,7 @@ import { About } from './about/about';
 import { Userprofile } from './auth/userprofile/userprofile';
 import { Adminprofile } from './auth/adminprofile/adminprofile';
 import { Logout } from './auth/logout/logout';
+import { Addsource } from './source/addsource/addsource';
 
 const routes: Routes = [
   {path:'', component:Home},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'userprofile', component:Userprofile},
   {path:'adminprofile', component:Adminprofile},
   {path:'logout', component:Logout},
+  {path:'addsou', component:Addsource},
 ];
 
 @NgModule({

@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Userprofile } from './auth/userprofile/userprofile';
 import { Adminprofile } from './auth/adminprofile/adminprofile';
 import { Logout } from './auth/logout/logout';
+import { Addsource } from './source/addsource/addsource';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { Logout } from './auth/logout/logout';
     About,
     Userprofile,
     Adminprofile,
-    Logout
+    Logout,
+    Addsource
   ],
   imports: [
     BrowserModule,
