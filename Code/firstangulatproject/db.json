@@ -162,45 +162,80 @@
   ],
   "policeStation": [
     {
-      "id": "67f1",
+      "id": "fb4e",
       "name": "Dhanmondi"
     },
     {
-      "id": "cf4e",
-      "name": "Mohammadpur"
+      "id": "f640",
+      "name": "Polton"
     },
     {
-      "id": "cabe",
-      "name": "Dhaka"
+      "id": "1301",
+      "name": "New Market"
+    },
+    {
+      "id": "6316",
+      "name": "Kushtia"
+    },
+    {
+      "id": "bcea",
+      "name": "Mirpur"
+    },
+    {
+      "id": "37b5",
+      "name": "Amla"
     }
   ],
   "districts": [
     {
-      "id": "5f6d",
-      "name": "dhaka",
-      "policeStations": [
-        "67f1",
-        "cf4e"
-      ]
-    },
-    {
-      "id": "1ca4",
+      "id": "002b",
       "name": "Dhaka",
       "policeStations": [
-        "67f1",
-        "cf4e"
+        "fb4e",
+        "f640",
+        "1301"
       ]
     },
     {
-      "id": "c42c",
-      "name": "Khulna",
+      "id": "99a4",
+      "name": "Kushtia",
       "policeStations": [
-        "cf4e",
-        "cabe"
+        "6316",
+        "bcea"
       ]
     }
   ],
-  "divisions":[
-    
-  ]
+  "divisions": [
+    {
+      "id": "6368",
+      "name": "Dhaka",
+      "districts": [
+        "002b"
+      ]
+    },
+    {
+      "id": "9a61",
+      "name": "Khulna",
+      "districts": [
+        "99a4"
+      ]
+    }
+  ],
+  "country": [
+    {
+      "id": "7711",
+      "name": "Bangladesh",
+      "divisions": [
+        "6368"
+      ]
+    },
+    {
+      "id": "ba2f",
+      "name": "Junayet",
+      "divisions": [
+        "9a61"
+      ]
+    }
+  ],
+  "employee": []
 }

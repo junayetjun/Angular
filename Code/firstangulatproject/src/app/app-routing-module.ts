@@ -20,6 +20,10 @@ import { Logout } from './auth/logout/logout';
 import { Addpolicestation } from './police-station/addpolicestation/addpolicestation';
 import { AddDistrict } from './district/add-district/add-district';
 import { ViewAllDistrict } from './district/view-all-district/view-all-district';
+import { SidebarComponent } from './sidebar/sidebar-component/sidebar-component';
+import { AddDivision } from './division/add-division/add-division';
+import { AddCountry } from './country/add-country/add-country';
+import { Addemployee } from './employee/addemployee/addemployee';
 
 const routes: Routes = [
   { path: '', component: Home },
@@ -39,6 +43,10 @@ const routes: Routes = [
   { path: 'addpol', component: Addpolicestation,},
   { path: 'adddis', component: AddDistrict,},
   { path: 'viewalldis', component: ViewAllDistrict,},
+  { path: 'adddiv', component: AddDivision,},
+  { path: 'addcou', component: AddCountry,},
+  { path: 'addemp', component: Addemployee,},
+  { path: 'sidebar', component: SidebarComponent,},
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
