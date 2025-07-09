@@ -22,6 +22,7 @@ import { Admin } from './auth/admin/admin';
 import { Addpolicestation } from './police-station/addpolicestation/addpolicestation';
 import { AddDistrict } from './district/add-district/add-district';
 import { ViewAllDistrict } from './district/view-all-district/view-all-district';
+import { AddDivision } from './division/add-division/add-division';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ViewAllDistrict } from './district/view-all-district/view-all-district'
     Admin,
     Addpolicestation,
     AddDistrict,
-    ViewAllDistrict
+    ViewAllDistrict,
+    AddDivision
   ],
   imports: [
     BrowserModule,

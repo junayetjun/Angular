@@ -19,6 +19,7 @@ import { Admin } from './auth/admin/admin';
 import { Logout } from './auth/logout/logout';
 import { Addpolicestation } from './police-station/addpolicestation/addpolicestation';
 import { AddDistrict } from './district/add-district/add-district';
+import { ViewAllDistrict } from './district/view-all-district/view-all-district';
 
 const routes: Routes = [
   { path: '', component: Home },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'adminprofile', component: Admin, canActivate: [adminGuard] },
   { path: 'addpol', component: Addpolicestation,},
   { path: 'adddis', component: AddDistrict,},
+  { path: 'viewalldis', component: ViewAllDistrict,},
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

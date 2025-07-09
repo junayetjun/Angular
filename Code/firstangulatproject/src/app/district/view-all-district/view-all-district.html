@@ -1,1 +1,28 @@
-<p>view-all-district works!</p>
+<div class="container mt-5">
+    <h2 class="mb-4">All Districts</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Police Stations</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let district of districts">
+                <td>{{ district.id }}</td>
+                <td>{{ district.name }}</td>
+                <td>{{ getPoliceStationNames(district.policeStation) }}</td>
+                <td>
+                    <!-- Add your Edit link/button if you have edit logic -->
+                    <!-- <button class="btn btn-sm btn-warning me-2">Edit</button> -->
+                    <button class="btn btn-sm btn-danger" (click)="deleteDistricts(district.id!)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
