@@ -9,6 +9,7 @@ import { Adminprofile } from './auth/adminprofile/adminprofile';
 import { Logout } from './auth/logout/logout';
 import { Addsource } from './source/addsource/addsource';
 import { Viewallsource } from './source/viewallsource/viewallsource';
+import { Addproduct } from './inventory/addproduct/addproduct';
 
 const routes: Routes = [
   {path:'', component:Home},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'logout', component:Logout},
   {path:'addsou', component:Addsource},
   {path:'viewallsource', component:Viewallsource},
+  {path:'addpro', component:Addproduct},
 ];
 
 @NgModule({
