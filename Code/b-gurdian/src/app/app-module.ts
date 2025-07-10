@@ -13,6 +13,7 @@ import { Userprofile } from './auth/userprofile/userprofile';
 import { Adminprofile } from './auth/adminprofile/adminprofile';
 import { Logout } from './auth/logout/logout';
 import { Addsource } from './source/addsource/addsource';
+import { Viewallsource } from './source/viewallsource/viewallsource';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { Addsource } from './source/addsource/addsource';
     Userprofile,
     Adminprofile,
     Logout,
-    Addsource
+    Addsource,
+    Viewallsource
   ],
   imports: [
     BrowserModule,

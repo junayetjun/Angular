@@ -40,9 +40,9 @@ addSource(): void{
 
   this.sourceService.saveSource(sourceModel).subscribe({
     next: (res) =>{
-      console.log('Souce saved successfully',res);
+      console.log('Source saved successfully',res);
       this.sourseForm.reset();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/viewallsource']);
     }, 
     error: (err) => {
       console.log(err);

@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h2 class="mb-4" >All Sources</h2>
+
+  <div class="row">
+    <div class="col-md-3 mb-4"  *ngFor="let source of sourceModel | async">
+      <div class="card shadow h-100">
+        <div class="card-body">
+          <h5 class="card-title">Name: {{ source.sourceName }}</h5>
+          
+
+          <p class="card-text mb-1">
+            <img src="{{source.photo}}" height="100" width="100" />
+          </p>
+                   
+          
+          
+        </div>
+        <div class="card-footer text-end">
+          <a [routerLink]="['/updatesource', source.id]" class="btn btn-sm btn-warning me-2">
+            Edit
+          </a>
+          <button class="btn btn-sm btn-danger me-2" (click)="deleteSource(source.id)">
+            Delete
+          </button>
+          <button class="btn btn-sm btn-info" (click)="getSourceById(source.id)">
+            View
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
