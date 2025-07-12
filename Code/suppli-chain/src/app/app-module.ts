@@ -20,9 +20,10 @@ import { SupplierCreate } from './inventory/suppliers/supplier-create/supplier-c
 import { SupplierList } from './inventory/suppliers/supplier-list/supplier-list';
 import { Invoice } from './invoice/invoice/invoice';
 import { PdfGenerator } from './invoice/pdf-generator/pdf-generator';
-import { Product } from './product/product/product';
+
 import { RetailerList } from './product/retailer/retailer-list/retailer-list';
 import { RetailerCreateDialog } from './product/retailer/retailer-create-dialog/retailer-create-dialog';
+import { ProductComponent } from './product/product/product.component/product.component';
 
 @NgModule({
   declarations: [
@@ -41,9 +42,9 @@ import { RetailerCreateDialog } from './product/retailer/retailer-create-dialog/
     SupplierList,
     Invoice,
     PdfGenerator,
-    Product,
+    
     RetailerList,    
-    RetailerCreateDialog
+    RetailerCreateDialog, ProductComponent
   ],
   imports: [
     BrowserModule,
