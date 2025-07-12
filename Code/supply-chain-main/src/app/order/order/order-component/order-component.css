@@ -1,0 +1,19 @@
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 2.2rem;
+    position: relative;
+}
+
+.dropdown-menu {
+    text-align: justify;
+    color: #333;
+    margin-top: 50px;
+    margin-left: 150px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    
+    position: relative;
+}

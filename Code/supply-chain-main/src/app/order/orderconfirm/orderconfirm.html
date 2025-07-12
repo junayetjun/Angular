@@ -1,0 +1,42 @@
+<div class="container mt-4">
+  <h2 class="mb-4" >Order Confirmation!</h2>
+
+  <div class="row">
+    <div class="col-md-12 mb-4"  *ngFor="let order of orderModel | async">
+      <div class="card shadow h-100">
+        <div class="card-body">
+          <h5 class="card-title">Name: {{ order.productName }}</h5>
+          
+          <p class="card-text mb-1">
+            <strong>Shoulder Type:</strong> {{ order.shoulder  }}
+          </p>
+          <p class="card-text mb-1">
+            <strong>Size:</strong> {{ order.size  }}
+          </p>
+          <p class="card-text mb-1">
+            <strong>Quantity:</strong> {{ order.quantity  }}
+          </p>
+          <p class="card-text mb-1">
+            <strong>Color:</strong> {{ order.color  }}
+          </p>
+
+          
+                   
+          
+          
+        </div>
+        <div class="card-footer text-end">
+          <a [routerLink]="['/updatesource', order.id]" class="btn btn-sm btn-warning me-2">
+            Edit
+          </a>
+          <button class="btn btn-sm btn-danger me-2" (click)="deleteOrder(order.id)">
+            Delete
+          </button>
+          <button class="btn btn-sm btn-info" (click)="getOrderById(order.id)">
+            View
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
