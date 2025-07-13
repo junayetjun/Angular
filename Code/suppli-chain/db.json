@@ -1,5 +1,10 @@
 {
-     "product":[
-        
-    ]
+  "product": [
+    {
+      "id": "a37e",
+      "name": "Daraz",
+      "description": "HAHA",
+      "photo": ""
+    }
+  ]
 }

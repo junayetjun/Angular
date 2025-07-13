@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiResponse } from '../service/apiresponse';
+
 import { Product } from './model/product.model';
 
 @Injectable({
@@ -47,44 +47,56 @@ export class ProductService {
 
 
 
-  getAllProducts(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.apiUrl}`);
+  getAllProducts(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}`);
+  }
+
+
+  saveProduct(product: Product): Observable<any>{
+    return this.http.post(this.apiUrl, product)
+
+  }
+
+
+  // for springboot!!!
+  // saveProduct(product: Product, imageFile?: File): Observable<any> {
+  //   const formData = new FormData();
+  //   formData.append('product', new Blob([JSON.stringify(product)], { type: 'application/json' }));
+
+  //   if (imageFile) {
+  //     formData.append('imageFile', imageFile);
+  //   }
+  //   return this.http.post<any>(`${this.apiUrl}`, formData);
+  // }
+
+
+  updateProduct(id: string, product: Product): Observable<any>{
+
+    return this.http.put(this.apiUrl+'/'+id, product);
   }
 
 
 
-  saveProduct(product: Product, imageFile?: File): Observable<ApiResponse> {
-    const formData = new FormData();
-    formData.append('product', new Blob([JSON.stringify(product)], { type: 'application/json' }));
+  // updateProduct(product: Product, imageFile?: File): Observable<any> {
+  //   const formData = new FormData();
+  //   formData.append('product', new Blob([JSON.stringify(product)], { type: 'application/json' }));
 
-    if (imageFile) {
-      formData.append('imageFile', imageFile);
-    }
-    return this.http.post<ApiResponse>(`${this.apiUrl}`, formData);
+  //   if (imageFile) {
+  //     formData.append('imageFile', imageFile);
+  //   }
+  //   return this.http.put<any>(`${this.apiUrl}`, formData);
+  // }
+
+
+
+  deleteProductById(id: string): Observable<any> {
+    return this.http.delete(this.apiUrl+ '/'+ id);
   }
 
 
 
-  updateProduct(product: Product, imageFile?: File): Observable<ApiResponse> {
-    const formData = new FormData();
-    formData.append('product', new Blob([JSON.stringify(product)], { type: 'application/json' }));
-
-    if (imageFile) {
-      formData.append('imageFile', imageFile);
-    }
-    return this.http.put<ApiResponse>(`${this.apiUrl}/update`, formData);
-  }
-
-
-
-  deleteProductById(id: number): Observable<ApiResponse> {
-    return this.http.delete<ApiResponse>(`${this.apiUrl}/delete/${id}`);
-  }
-
-
-
-  getProductById(id: number): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.apiUrl}/${id}`);
+  getProductById(id: string): Observable<any> {
+    return this.http.get(this.apiUrl+'/'+ id);
   }
 
 
