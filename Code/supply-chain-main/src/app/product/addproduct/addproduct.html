@@ -1,0 +1,75 @@
+<div class="container my-4">
+
+    <!-- Product Type Dropdown -->
+    <div class="mb-3">
+        <label class="form-label">Product Type:</label>
+        <div class="dropdown d-inline">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Select Product
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Shirt</a></li>
+                <li><a class="dropdown-item" href="#">Pant</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Shoulder Type Checkboxes -->
+    <div class="mb-3">
+        <label class="form-label d-block">Shoulder Type:</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="shoulder" value="half" id="halfShoulder">
+            <label class="form-check-label" for="halfShoulder">Half Shoulder</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="shoulder" value="full" id="fullShoulder">
+            <label class="form-check-label" for="fullShoulder">Full Shoulder</label>
+        </div>
+    </div>
+
+    <!-- Size with Quantity Inputs -->
+    <div class="mb-3">
+        <label class="form-label d-block">Size:</label>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="size" value="M" id="sizeM">
+            <label class="form-check-label me-2" for="sizeM">M</label>
+            <input type="text" class="form-control d-inline-block w-auto" placeholder="Quantity">
+        </div>
+
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" name="size" value="L" id="sizeL">
+            <label class="form-check-label me-2" for="sizeL">L</label>
+            <input type="text" class="form-control d-inline-block w-auto" placeholder="Quantity">
+        </div>
+
+        <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" name="size" value="XL" id="sizeXL">
+            <label class="form-check-label me-2" for="sizeXL">XL</label>
+            <input type="text" class="form-control d-inline-block w-auto" placeholder="Quantity">
+        </div>
+    </div>
+
+
+     <!-- Shoulder Type Checkboxes -->
+    <div class="mb-3">
+        <label class="form-label d-block">Color Type:</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="shoulder" value="half" id="halfShoulder">
+            <label class="form-check-label" for="halfShoulder">Red</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="shoulder" value="full" id="fullShoulder">
+            <label class="form-check-label" for="fullShoulder">Green</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="shoulder" value="full" id="fullShoulder">
+            <label class="form-check-label" for="fullShoulder">Black</label>
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</div>

@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { Orderconfirm } from './order/orderconfirm/orderconfirm';
 import { Oneuserorder } from './order/oneuserorder/oneuserorder';
+import { Addproduct } from './product/addproduct/addproduct';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { Oneuserorder } from './order/oneuserorder/oneuserorder';
     OrderComponent,
     Addorder,
     Orderconfirm,
-    Oneuserorder
+    Oneuserorder,
+    Addproduct
   ],
   imports: [
     BrowserModule,

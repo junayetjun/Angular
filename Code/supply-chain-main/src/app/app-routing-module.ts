@@ -5,12 +5,14 @@ import { OrderComponent } from './order/order/order-component/order-component';
 import { Addorder } from './order/addorder/addorder';
 import { Orderconfirm } from './order/orderconfirm/orderconfirm';
 import { Oneuserorder } from './order/oneuserorder/oneuserorder';
+import { Addproduct } from './product/addproduct/addproduct';
 
 const routes: Routes = [
   {path: '', component: Home},
   {path: 'addord', component: Addorder},
   {path: 'orderconfirm', component: Orderconfirm},
   {path: 'userorder', component: Oneuserorder},
+  {path: 'addpro', component: Addproduct},
   {path: 'ordercom', component: OrderComponent},
 ];
 
