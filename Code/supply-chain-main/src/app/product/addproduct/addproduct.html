@@ -1,75 +1,70 @@
 <div class="container my-4">
+  <form  (ngSubmit)="addProduct()">
 
     <!-- Product Type Dropdown -->
     <div class="mb-3">
-        <label class="form-label">Product Type:</label>
-        <div class="dropdown d-inline">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Select Product
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Shirt</a></li>
-                <li><a class="dropdown-item" href="#">Pant</a></li>
-            </ul>
-        </div>
+      <label for="productType" class="form-label">Product Type:</label>
+      <select class="form-select" id="productType" formControlName="productType">
+        <option value="Shirt">Shirt</option>
+        <option value="T-Shirt">T-Shirt</option>
+      </select>
     </div>
 
     <!-- Shoulder Type Checkboxes -->
     <div class="mb-3">
-        <label class="form-label d-block">Shoulder Type:</label>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="shoulder" value="half" id="halfShoulder">
-            <label class="form-check-label" for="halfShoulder">Half Shoulder</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="shoulder" value="full" id="fullShoulder">
-            <label class="form-check-label" for="fullShoulder">Full Shoulder</label>
-        </div>
+      <label class="form-label d-block">Shoulder Type:</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="shoulderHalf" (change)="onCheckboxChange($event, 'shoulder')" value="half">
+        <label class="form-check-label" for="shoulderHalf">Half Shoulder</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="shoulderFull" (change)="onCheckboxChange($event, 'shoulder')" value="full">
+        <label class="form-check-label" for="shoulderFull">Full Shoulder</label>
+      </div>
     </div>
 
-    <!-- Size with Quantity Inputs -->
+    <!-- Quantity -->
     <div class="mb-3">
-        <label class="form-label d-block">Size:</label>
-
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="size" value="M" id="sizeM">
-            <label class="form-check-label me-2" for="sizeM">M</label>
-            <input type="text" class="form-control d-inline-block w-auto" placeholder="Quantity">
-        </div>
-
-        <div class="form-check mt-2">
-            <input class="form-check-input" type="checkbox" name="size" value="L" id="sizeL">
-            <label class="form-check-label me-2" for="sizeL">L</label>
-            <input type="text" class="form-control d-inline-block w-auto" placeholder="Quantity">
-        </div>
-
-        <div class="form-check mt-2">
-            <input class="form-check-input" type="checkbox" name="size" value="XL" id="sizeXL">
-            <label class="form-check-label me-2" for="sizeXL">XL</label>
-            <input type="text" class="form-control d-inline-block w-auto" placeholder="Quantity">
-        </div>
+      <label for="quantity" class="form-label">Quantity:</label>
+      <input type="number" class="form-control" id="quantity" formControlName="quantity">
     </div>
 
-
-     <!-- Shoulder Type Checkboxes -->
+    <!-- Size Checkboxes -->
     <div class="mb-3">
-        <label class="form-label d-block">Color Type:</label>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="shoulder" value="half" id="halfShoulder">
-            <label class="form-check-label" for="halfShoulder">Red</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="shoulder" value="full" id="fullShoulder">
-            <label class="form-check-label" for="fullShoulder">Green</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="shoulder" value="full" id="fullShoulder">
-            <label class="form-check-label" for="fullShoulder">Black</label>
-        </div>
+      <label class="form-label d-block">Size:</label>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="sizeM" (change)="onCheckboxChange($event, 'size')" value="M">
+        <label class="form-check-label" for="sizeM">M</label>
+      </div>
+      <div class="form-check mt-2">
+        <input type="checkbox" class="form-check-input" id="sizeL" (change)="onCheckboxChange($event, 'size')" value="L">
+        <label class="form-check-label" for="sizeL">L</label>
+      </div>
+      <div class="form-check mt-2">
+        <input type="checkbox" class="form-check-input" id="sizeXL" (change)="onCheckboxChange($event, 'size')" value="XL">
+        <label class="form-check-label" for="sizeXL">XL</label>
+      </div>
+    </div>
+
+    <!-- Color Type Checkboxes -->
+    <div class="mb-3">
+      <label class="form-label d-block">Color Type:</label>
+      <div class="form-check form-check-inline">
+        <input type="checkbox" class="form-check-input" id="colorRed" (change)="onCheckboxChange($event, 'color')" value="red">
+        <label class="form-check-label" for="colorRed">Red</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input type="checkbox" class="form-check-input" id="colorGreen" (change)="onCheckboxChange($event, 'color')" value="green">
+        <label class="form-check-label" for="colorGreen">Green</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input type="checkbox" class="form-check-input" id="colorBlack" (change)="onCheckboxChange($event, 'color')" value="black">
+        <label class="form-check-label" for="colorBlack">Black</label>
+      </div>
     </div>
 
     <!-- Submit Button -->
     <button type="submit" class="btn btn-primary">Submit</button>
 
+  </form>
 </div>

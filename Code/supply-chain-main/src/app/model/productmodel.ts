@@ -1,13 +1,7 @@
-
-
-export class ProductModel {
-    id?: string;
-    productType!: string;
-    shoulder!: [];
-    size!: [];
-    quantity!: [];
-    color!: [];
-
-
-
+export interface ProductModel {
+  productType: string;
+  shoulder: string[];
+  size: string[];
+  quantity: string[]; // Or number[] if you handle casting
+  color: string[];
 }

@@ -9,7 +9,14 @@
       "color": "01758946895"
     }
   ],
-  "product":[
-    
+  "product": [
+    {
+      "id": "ae92",
+      "productType": "",
+      "shoulder": [],
+      "size": [],
+      "quantity": [],
+      "color": []
+    }
   ]
 }
