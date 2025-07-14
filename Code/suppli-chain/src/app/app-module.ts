@@ -24,6 +24,7 @@ import { PdfGenerator } from './invoice/pdf-generator/pdf-generator';
 import { RetailerList } from './product/retailer/retailer-list/retailer-list';
 import { RetailerCreateDialog } from './product/retailer/retailer-create-dialog/retailer-create-dialog';
 import { ProductComponent } from './product/product/product.component/product.component';
+import { RetailerComponent } from './product/retailer/retailer-component/retailer-component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { ProductComponent } from './product/product/product.component/product.co
     PdfGenerator,
     
     RetailerList,    
-    RetailerCreateDialog, ProductComponent
+    RetailerCreateDialog, ProductComponent, RetailerComponent
   ],
   imports: [
     BrowserModule,
