@@ -1,0 +1,30 @@
+<!-- order-list.component.html -->
+<div class="container mt-4">
+    <h2>Purchase Orders</h2>
+    <button class="btn btn-primary mb-3" (click)="add()">New Order</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Supplier</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let o of orders">
+                <td>{{o.orderNumber}}</td>
+                <td>{{o.supplier}}</td>
+                <td>{{o.date | date:'shortDate'}}</td>
+                <td>{{o.status}}</td>
+                <td>
+                    <button class="btn btn-sm btn-info me-1" (click)="edit(o.id!)">Edit</button>
+                    <button class="btn btn-sm btn-danger" (click)="delete(o.id!)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="loading">Loading…</div>
+    <div *ngIf="!loading && orders.length===0">No orders found.</div>
+</div>

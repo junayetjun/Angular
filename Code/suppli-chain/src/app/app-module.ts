@@ -20,11 +20,17 @@ import { SupplierCreate } from './inventory/suppliers/supplier-create/supplier-c
 import { SupplierList } from './inventory/suppliers/supplier-list/supplier-list';
 import { Invoice } from './invoice/invoice/invoice';
 import { PdfGenerator } from './invoice/pdf-generator/pdf-generator';
-
 import { RetailerList } from './product/retailer/retailer-list/retailer-list';
-import { RetailerCreateDialog } from './product/retailer/retailer-create-dialog/retailer-create-dialog';
 import { ProductComponent } from './product/product/product.component/product.component';
 import { RetailerComponent } from './product/retailer/retailer-component/retailer-component';
+import { RetailerCreateDialog } from './product/retailer/retailer-create-dialog/retailer-create-dialog';
+import { Viewallproduct } from './product/product/viewallproduct/viewallproduct';
+import { ItemListComponent } from './warehouse/item-list.component/item-list.component';
+import { ItemFormComponent } from './warehouse/item-form.component/item-form.component';
+import { OrderListComponent } from './purchase-orders/order-list.component/order-list.component';
+import { OrderFormComponent } from './purchase-orders/order-form.component/order-form.component';
+import { OrderDetailsComponent } from './purchase-orders/order-details.component/order-details.component';
+
 
 @NgModule({
   declarations: [
@@ -42,16 +48,15 @@ import { RetailerComponent } from './product/retailer/retailer-component/retaile
     SupplierCreate,
     SupplierList,
     Invoice,
-    PdfGenerator,
-    
+    PdfGenerator,    
     RetailerList,    
-    RetailerCreateDialog, ProductComponent, RetailerComponent
+     ProductComponent, RetailerComponent, RetailerCreateDialog, Viewallproduct, ItemListComponent, ItemFormComponent, OrderListComponent, OrderFormComponent, OrderDetailsComponent, 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

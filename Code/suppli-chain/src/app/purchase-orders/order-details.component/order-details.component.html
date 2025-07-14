@@ -1,0 +1,19 @@
+<!-- order-detail.component.html -->
+<div *ngIf="order" class="container mt-4">
+  <h2>Order #{{order.orderNumber}}</h2>
+  <p><strong>Supplier:</strong> {{order.supplier}} <strong>Status:</strong> {{order.status}}</p>
+  <p><strong>Date:</strong> {{order.date | date}}</p>
+  <table class="table">
+    <thead><tr><th>ID</th><th>Name</th><th>Qty</th><th>Unit Price</th><th>Subtotal</th></tr></thead>
+    <tbody>
+      <tr *ngFor="let it of order.items">
+        <td>{{it.productId}}</td>
+        <td>{{it.productName}}</td>
+        <td>{{it.quantity}}</td>
+        <td>{{it.unitPrice | currency}}</td>
+        <td>{{it.quantity * it.unitPrice | currency}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- <h4>Total: {{ order.items.reduce((s, i) => s + i.quantity * i.unitPrice, 0) | currency }}</h4> -->
+</div>

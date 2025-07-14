@@ -17,26 +17,26 @@ export class RetailerService {
 
   
   getAllRetailers(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}`);
+    return this.http.get(this.apiUrl);
   }
 
 
   saveRetailer(retailer: Retailer): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, retailer);
+    return this.http.post(this.apiUrl,  retailer);
   }
 
   deleteRetailerById(id: string): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+    return this.http.delete(this.apiUrl+'/'+ id);
   }
 
 
   getRetailerById(id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+    return this.http.get(this.apiUrl+'/'+id);
   }
 
 
-  updateRetailer(retailer: Retailer): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}`, retailer);
+  updateRetailer(id: string, retailer: Retailer): Observable<any> {
+    return this.http.put(this.apiUrl+'/'+id, retailer);
   }
 
 

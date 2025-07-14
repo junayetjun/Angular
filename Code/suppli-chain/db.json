@@ -1,13 +1,54 @@
 {
   "product": [
     {
-      "id": "a37e",
-      "name": "Daraz",
-      "description": "HAHA",
+      "id": "7a41",
+      "name": "Imran",
+      "description": "aaaa",
       "photo": ""
     }
   ],
-  "retailer":[
-    
+  "retailer": [],
+  "items": [
+    {
+      "id": "c415",
+      "name": "Potatoes",
+      "sku": "100",
+      "quantity": 1000,
+      "location": "Mohammadpur"
+    }
+  ],
+  "orders": [
+    {
+      "id": null,
+      "orderNumber": "100",
+      "supplier": "Shopno",
+      "date": "2025-07-08",
+      "status": "Draft",
+      "items": []
+    },
+    {
+      "id": null,
+      "orderNumber": "100",
+      "supplier": "Shopno",
+      "date": "2025-07-08",
+      "status": "Draft",
+      "items": []
+    },
+    {
+      "id": null,
+      "orderNumber": "100",
+      "supplier": "Shopno",
+      "date": "2025-07-08",
+      "status": "Draft",
+      "items": []
+    },
+    {
+      "id": null,
+      "orderNumber": "150",
+      "supplier": "Shopno",
+      "date": "2025-07-08",
+      "status": "Draft",
+      "items": []
+    }
   ]
 }

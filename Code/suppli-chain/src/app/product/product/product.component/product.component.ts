@@ -18,6 +18,9 @@ export class ProductComponent implements OnInit {
 
   productGroup !: FormGroup;
 
+  id: string='';
+  product: Product = new Product();
+
   constructor(
     private productService : ProductService,
     private fromBuilder : FormBuilder,
@@ -54,6 +57,25 @@ export class ProductComponent implements OnInit {
 
       error: (error) => {
         console.log(error);
+      }
+
+
+    });
+
+  }
+
+
+  updateProduct(): void {
+
+    this.productService.updateProduct(this.id, this.product)
+    .subscribe({
+
+      next: () => {
+
+        this.router.navigate(['allstu']);
+      },
+      error: (err) => {
+        console.error('Updated failed', err);
       }
 
 
