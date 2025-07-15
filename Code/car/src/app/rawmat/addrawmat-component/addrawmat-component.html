@@ -1,0 +1,41 @@
+<div class="container">
+    <h2 style="text-align: center;">Add Raw Material</h2>
+    <form (ngSubmit)="addRawmat()" #rawmatForm="ngForm">
+        <div class="form-group">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="productName" [(ngModel)]="rawmat.productName" required>
+        </div>
+        <div class="form-group">
+            <label for="companyName">Company Name:</label>
+            <input type="text" id="companyName" name="companyName" [(ngModel)]="rawmat.companyName" required>
+        </div>
+        <div class="form-group">
+            <label for="contactPerson">Contact Person:</label>
+            <input type="text" id="contactPerson" name="contactPerson" [(ngModel)]="rawmat.contactPerson" required>
+        </div>
+        <div class="form-group">
+            <label for="contactNumber">Contact Number:</label>
+            <input type="text" id="contactNumber" name="contactNumber" [(ngModel)]="rawmat.contactNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" [(ngModel)]="rawmat.quantity"
+                (ngModelChange)="calculateTotalPrice()" required>
+        </div>
+        <div class="form-group">
+            <label for="unitPrice">Unit Price:</label>
+            <input type="number" id="unitPrice" name="unitPrice" [(ngModel)]="rawmat.unitPrice"
+                (ngModelChange)="calculateTotalPrice()" required>
+        </div>
+        <div class="form-group">
+            <label for="totalPrice">Total Price:</label>
+            <input type="number" id="totalPrice" name="totalPrice" [(ngModel)]="rawmat.totalPrice" readonly>
+        </div>
+        <div class="form-group">
+            <label for="dateL">Date:</label>
+            <input type="date" id="dateL" name="dateL" [(ngModel)]="rawmat.dateL" required>
+        </div>
+        <button type="submit" [disabled]="!rawmatForm.valid">Add Raw Material</button>
+        <button type="reset" style="margin-left: 70px;">Reset</button>
+    </form>
+</div>

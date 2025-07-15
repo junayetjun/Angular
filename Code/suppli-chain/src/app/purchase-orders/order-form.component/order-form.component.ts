@@ -46,7 +46,7 @@ export class OrderFormComponent implements OnInit {
 
   addItem() {
     this.items.push(this.fb.group({
-      // productId: [null, Validators.required],
+       productId: ['', Validators.required],
       productName: ['', Validators.required],
       quantity: [1, [Validators.required, Validators.min(1)]],
       unitPrice: [0, [Validators.required, Validators.min(0)]]
@@ -67,7 +67,7 @@ export class OrderFormComponent implements OnInit {
   get total(): number {
     return this.items.controls.reduce((sum, ctrl) => {
       const v = ctrl.value;
-      return sum + (v.quantity * v.unitPrice);
+      return sum = (v.quantity * v.unitPrice);
     }, 0);
   }
 }

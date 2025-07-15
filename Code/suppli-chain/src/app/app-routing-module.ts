@@ -10,11 +10,12 @@ import { OrderFormComponent } from './purchase-orders/order-form.component/order
 const routes: Routes = [
   { path: '', component: ItemListComponent },
   { path: 'additem', component: ItemFormComponent },
-  { path: 'item/:id', component: ItemFormComponent },
+  { path: 'viewitem', component: ItemListComponent },
   {path: 'addprocom', component: ProductComponent},
   {path: 'viewallpro', component: Viewallproduct},
   { path: 'order', component: OrderListComponent },
   { path: 'addorder', component: OrderFormComponent },
+ 
 ];
 
 @NgModule({

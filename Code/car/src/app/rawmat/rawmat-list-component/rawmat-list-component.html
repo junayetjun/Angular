@@ -1,0 +1,32 @@
+<div class="container">
+  <h2 style="text-align: center; margin-bottom: 15px;">Raw Materials List</h2>
+  <table class="rawmat-table">
+    <thead>
+      <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Company Name</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Total Price</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rawmat of rawmats">
+        <td>{{ rawmat.id }}</td>
+        <td>{{ rawmat.productName }}</td>
+        <td>{{ rawmat.companyName }}</td>
+        <td>{{ rawmat.quantity }}</td>
+        <td>{{ rawmat.unitPrice }}</td>
+        <td>{{ rawmat.totalPrice }}</td>
+        <td>{{ rawmat.dateL }}</td>
+        <td>
+          <button class="edit-btn" (click)="editRawmat(rawmat.id!)">Edit</button>
+          <button class="delete-btn" (click)="deleteRawmat(rawmat.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -40,6 +40,6 @@ export class ItemListComponent implements OnInit {
   }
 
   addItem() {
-    this.router.navigate(['/add']);
+    this.router.navigate(['/additem']);
   }
 }

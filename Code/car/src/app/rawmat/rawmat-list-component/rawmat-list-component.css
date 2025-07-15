@@ -1,0 +1,29 @@
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.rawmat-table {
+  width: 130%;
+  border-collapse: collapse;
+}
+
+.rawmat-table th, .rawmat-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.rawmat-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.rawmat-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.rawmat-table tr:hover {
+  background-color: #ddd;
+}

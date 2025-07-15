@@ -1,0 +1,48 @@
+{
+  "rawmats": [
+    {
+      "productName": "Engine 1",
+      "companyName": " Toyota Motor Corporation",
+      "contactPerson": "Masud",
+      "contactNumber": "01515203269",
+      "quantity": 2,
+      "unitPrice": 25000,
+      "totalPrice": 50000,
+      "dateL": "2025-07-14",
+      "id": "7d1c"
+    },
+    {
+      "id": "d73e",
+      "productName": "Engine 2",
+      "companyName": "Volkswagen AG",
+      "contactPerson": "Sadiar",
+      "contactNumber": "0321654789",
+      "quantity": 3,
+      "unitPrice": 175000,
+      "totalPrice": 525000,
+      "dateL": "2025-07-14"
+    },
+    {
+      "id": "8de3",
+      "productName": "Engine 3",
+      "companyName": "General Motors",
+      "contactPerson": "Eiasin",
+      "contactNumber": "012578654",
+      "quantity": 2,
+      "unitPrice": 150000,
+      "totalPrice": 300000,
+      "dateL": "2025-07-15"
+    },
+    {
+      "id": "16b8",
+      "productName": "Engine 4",
+      "companyName": "Ford Motor Company",
+      "contactPerson": "Rakib",
+      "contactNumber": "015423699",
+      "quantity": 1,
+      "unitPrice": 200000,
+      "totalPrice": 200000,
+      "dateL": "2025-07-16"
+    }
+  ]
+}
