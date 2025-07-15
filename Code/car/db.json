@@ -44,5 +44,78 @@
       "totalPrice": 200000,
       "dateL": "2025-07-16"
     }
+  ],
+  "parts": [
+    {
+      "id": "7c91",
+      "companyName": "Honda",
+      "partsName": "Tier",
+      "price": "3500"
+    },
+    {
+      "id": "1b7a",
+      "companyName": "Honda",
+      "partsName": "Head Lights",
+      "price": "750"
+    },
+    {
+      "id": "5ee0",
+      "companyName": "Yamaha",
+      "partsName": "Break Shoe",
+      "price": "1200"
+    },
+    {
+      "id": "8e74",
+      "companyName": "Honda ",
+      "partsName": "Break Shoe",
+      "price": "900"
+    },
+    {
+      "id": "ea95",
+      "companyName": "Yamaha",
+      "partsName": "Head Lights",
+      "price": "600"
+    }
+  ],
+  "vehicle": [
+    {
+      "id": "f6fd",
+      "vehicleName": "Car",
+      "addParts": [
+        "1b7a",
+        "ea95"
+      ]
+    },
+    {
+      "id": "8dd9",
+      "vehicleName": "Bike",
+      "addParts": [
+        "5ee0",
+        "8e74"
+      ]
+    },
+    {
+      "id": "f0d5",
+      "vehicleName": "Truck",
+      "addParts": [
+        "7c91"
+      ]
+    }
+  ],
+  "order": [
+    {
+      "id": "ce26",
+      "name": "asd",
+      "contactNumber": "015",
+      "vehicle": "f6fd",
+      "addParts": "1b7a"
+    },
+    {
+      "id": "3500",
+      "name": "addd",
+      "contactNumber": "456",
+      "vehicle": "f6fd",
+      "addParts": "1b7a"
+    }
   ]
 }

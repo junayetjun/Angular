@@ -1,0 +1,52 @@
+
+<div class="container mt-5">
+  <h2 class="mb-4" style="text-align: center;">Add Parts</h2>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="row g-3">
+    <div class="col-md-6">
+      <label for="name" class="form-label">Company Name:</label>
+      <input id="name" formControlName="companyName" class="form-control" placeholder="Company Name" />
+    </div>
+    <div class="col-md-6">
+      <label for="name" class="form-label">Parts Name:</label>
+      <input id="name" formControlName="partsName" class="form-control" placeholder="Parts Name" />
+    </div>
+    <div class="col-md-6">
+      <label for="name" class="form-label">Price:</label>
+      <input id="name" formControlName="price" class="form-control" placeholder="Price" />
+    </div>
+
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-primary me-2" [disabled]="formGroup.invalid">
+        {{ editing ? 'Update' : 'Add' }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEdit()" *ngIf="editing">Cancel</button>
+    </div>
+  </form>
+
+  <hr class="my-4" />
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Company Name</th>
+        <th>Parts Name</th>
+        <th>Price</th>
+        <th style="width: 150px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ps of addParts">
+        <td>{{ ps.id }}</td>
+        <td>{{ ps.companyName }}</td>
+        <td>{{ ps.partsName }}</td>
+        <td>{{ ps.price }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="editParts(ps)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteParts(ps.id!)" >Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -21,7 +21,7 @@ export class Addpolicestation implements OnInit {
   constructor(
     private fb: FormBuilder,
     private psService: PolicestationService
-  ){
+  ) {
     this.psForm = this.fb.group({
       id: [''],
       name: ['', Validators.required]
@@ -35,41 +35,40 @@ export class Addpolicestation implements OnInit {
   }
 
 
-  loadPoliceStation(){
-    this.psService.getAll().subscribe(data =>{
-      this.policeStations =data;
+  loadPoliceStation() {
+    this.psService.getAll().subscribe(data => {
+      this.policeStations = data;
     });
   }
 
 
 
-  onSubmit(){ 
-    if(this.psForm.invalid)return;
+  onSubmit() {
+    if (this.psForm.invalid) return;
 
-    if(this.editing){
-      this.psService.update(this.psForm.value).subscribe({
-        next: (rep) => {
-          alert('Updated Successfully');
-          this.loadPoliceStation();
-          this.cancelEdit();
-          
-        }
+    if (this.editing) {
+      this.psService.update(this.psForm.value).subscribe(() => {
+        alert('Updated Successfully');
+        this.loadPoliceStation();
+        this.cancelEdit();
+
+
       });
-    } else{
-      const { name } =this.psForm.value;
+    } else {
+      const { name } = this.psForm.value;
       this.psService.add({ name }).subscribe(() => {
         alert('Added Successfully');
         this.loadPoliceStation();
         this.psForm.reset();
-        this.editing =false;
+        this.editing = false;
       });
     }
-    
+
   }
 
 
-  editPoliceStation(ps: PoliceStation){
-    this.editing =true;
+  editPoliceStation(ps: PoliceStation) {
+    this.editing = true;
     this.psForm.patchValue({
       id: ps.id,
       name: ps.name
@@ -77,9 +76,9 @@ export class Addpolicestation implements OnInit {
   }
 
 
-  deletePoliceStation(id: string){
-    if(confirm('Are you sure')){
-      this.psService.delete(id).subscribe(()=> {
+  deletePoliceStation(id: string) {
+    if (confirm('Are you sure')) {
+      this.psService.delete(id).subscribe(() => {
         alert('Deleted');
         this.loadPoliceStation();
       });
@@ -87,7 +86,7 @@ export class Addpolicestation implements OnInit {
   }
 
 
-  cancelEdit(){
+  cancelEdit() {
     this.editing = false;
     this.psForm.reset();
   }

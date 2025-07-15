@@ -9,6 +9,11 @@ import { AddrawmatComponent } from './rawmat/addrawmat-component/addrawmat-compo
 
 import { RawmatListComponent } from './rawmat/rawmat-list-component/rawmat-list-component';
 import { EditRawmatComponent } from './rawmat/edit-rawmat.component/edit-rawmat.component';
+import { AddpartsComponent } from './addparts.component/addparts.component';
+import { AddvehicleComponent } from './vehicle/addvehicle.component/addvehicle.component';
+import { ViewallvehicleComponent } from './vehicle/viewallvehicle.component/viewallvehicle.component';
+
+import { AddorderComponent } from './order/addorder.component/addorder.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import { EditRawmatComponent } from './rawmat/edit-rawmat.component/edit-rawmat.
     AddrawmatComponent,
     
     RawmatListComponent,
-          EditRawmatComponent
+          EditRawmatComponent,
+          AddpartsComponent,
+          AddvehicleComponent,
+          ViewallvehicleComponent,
+         
+          AddorderComponent
   ],
   imports: [
     BrowserModule,
