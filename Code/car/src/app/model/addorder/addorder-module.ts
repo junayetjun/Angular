@@ -8,4 +8,8 @@ export class AddorderModule {
   vehicle!: string;
   addParts!: string
   partPrice!: string;
+  problem!: string;
+  serviceCost!: number;
+  totalBill!: number;
+
 }
