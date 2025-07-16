@@ -75,6 +75,18 @@
       "companyName": "Yamaha",
       "partsName": "Head Lights",
       "price": "600"
+    },
+    {
+      "id": "72a0",
+      "companyName": "Honda",
+      "partsName": "Plug",
+      "price": "120"
+    },
+    {
+      "id": "654e",
+      "companyName": "Honda",
+      "partsName": "Mobel Filter",
+      "price": "90"
     }
   ],
   "vehicle": [
@@ -99,6 +111,14 @@
       "vehicleName": "Truck",
       "addParts": [
         "7c91"
+      ]
+    },
+    {
+      "id": "8023",
+      "vehicleName": "BIke",
+      "addParts": [
+        "72a0",
+        "654e"
       ]
     }
   ],
@@ -134,6 +154,14 @@
       "vehicle": "8dd9",
       "addParts": "8e74",
       "partPrice": "900"
+    },
+    {
+      "id": "ea34",
+      "name": "a",
+      "contactNumber": "123",
+      "vehicle": "8023",
+      "addParts": "654e",
+      "partPrice": "90"
     }
   ]
 }
