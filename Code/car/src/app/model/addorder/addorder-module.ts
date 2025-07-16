@@ -7,4 +7,5 @@ export class AddorderModule {
   contactNumber!: string;
   vehicle!: string;
   addParts!: string
+  partPrice!: string;
 }

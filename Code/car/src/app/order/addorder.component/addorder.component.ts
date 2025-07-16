@@ -28,8 +28,7 @@ export class AddorderComponent {
 
   allvehicles: VehicleModule[] = [];
   allParts: AddpartsModule[] = [];
-  filteredVehicle: VehicleModule[] = []; // Rename and keep if needed
-  filteredAddParts: AddpartsModule[] = []; // Rename
+  filteredAddParts: AddpartsModule[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -43,51 +42,63 @@ export class AddorderComponent {
       name: ['', Validators.required],
       contactNumber: ['', Validators.required],
       vehicle: ['', Validators.required],
-      addParts: ['', Validators.required]
+      addParts: ['', Validators.required],
+      partPrice: [{ value: '', disabled: true }]
     });
   }
 
   ngOnInit() {
-  this.vehicleService.getAll().subscribe({
-    next: data => {
-      console.log('Vehicles:', data);
-      this.allvehicles = data;
-    },
-    error: err => console.error('Failed to load vehicles:', err)
-  });
-  this.partService.getAll().subscribe({
-    next: data => {
-      console.log('Parts:', data);
-      this.allParts = data;
-    },
-    error: err => console.error('Failed to load parts:', err)
-  });
+    this.vehicleService.getAll().subscribe({
+      next: data => {
+        console.log('Vehicles:', data);
+        this.allvehicles = data;
+      },
+      error: err => console.error('Failed to load vehicles:', err)
+    });
+    this.partService.getAll().subscribe({
+      next: data => {
+        console.log('Parts:', data);
+        this.allParts = data;
+      },
+      error: err => console.error('Failed to load parts:', err)
+    });
 
-  this.route.paramMap.subscribe(params => {
-    const id = params.get('id');
-    if (id) {
-      this.editing = true;
-      this.orderId = id;
-      this.loadOrder(this.orderId);
-    }
-  });
-}
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        this.editing = true;
+        this.orderId = id;
+        this.loadOrder(this.orderId);
+      }
+    });
+  }
 
   onVehicleChange() {
-    const selectedVehicleId = this.formGroup.value.vehicle;
+    const selectedVehicleId = this.formGroup.get('vehicle')?.value;
     const selectedVehicle = this.allvehicles.find(v => v.id === selectedVehicleId);
     if (selectedVehicle) {
       this.filteredAddParts = this.allParts.filter(ps => ps.id && selectedVehicle.addParts.includes(ps.id));
-      this.formGroup.patchValue({ addParts: '' });
+      this.formGroup.patchValue({ addParts: '', partPrice: '' });
     } else {
       this.filteredAddParts = [];
+      this.formGroup.patchValue({ addParts: '', partPrice: '' });
     }
+  }
+
+  onPartChange() {
+    const selectedPartId = this.formGroup.get('addParts')?.value;
+    const selectedPart = this.filteredAddParts.find(part => part.id === selectedPartId);
+    const price = selectedPart ? selectedPart.price : '';
+    this.formGroup.get('partPrice')?.setValue(price);
   }
 
   onSubmit() {
     if (this.formGroup.invalid) return;
 
-    const order: any = { ...this.formGroup.value };
+    const order: any = {
+      ...this.formGroup.getRawValue(),
+      partPrice: this.formGroup.get('partPrice')?.value
+    };
 
     if (this.editing) {
       order.id = this.orderId;
@@ -113,12 +124,13 @@ export class AddorderComponent {
   }
 
   loadOrder(id: string) {
-  this.orderService.getById(id).subscribe({
-    next: order => {
-      this.formGroup.patchValue(order);
-      this.onVehicleChange();
-    },
-    error: err => console.error('Failed to load order:', err)
-  });
-}
+    this.orderService.getById(id).subscribe({
+      next: order => {
+        this.formGroup.patchValue(order);
+        this.onVehicleChange();
+        this.onPartChange();
+      },
+      error: err => console.error('Failed to load order:', err)
+    });
+  }
 }
