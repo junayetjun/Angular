@@ -10,6 +10,7 @@ import { Logout } from './auth/logout/logout';
 import { Addsource } from './source/addsource/addsource';
 import { Viewallsource } from './source/viewallsource/viewallsource';
 import { Addproduct } from './inventory/addproduct/addproduct';
+import { DepositCalculator } from './deposit-calculator/deposit-calculator';
 
 const routes: Routes = [
   {path:'', component:Home},
@@ -22,6 +23,8 @@ const routes: Routes = [
   {path:'addsou', component:Addsource},
   {path:'viewallsource', component:Viewallsource},
   {path:'addpro', component:Addproduct},
+  {path:'deposit', component:DepositCalculator},
+  
 ];
 
 @NgModule({

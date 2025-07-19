@@ -15,6 +15,7 @@ import { Logout } from './auth/logout/logout';
 import { Addsource } from './source/addsource/addsource';
 import { Viewallsource } from './source/viewallsource/viewallsource';
 import { Addproduct } from './inventory/addproduct/addproduct';
+import { DepositCalculator } from './deposit-calculator/deposit-calculator';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { Addproduct } from './inventory/addproduct/addproduct';
     Logout,
     Addsource,
     Viewallsource,
-    Addproduct
+    Addproduct,
+    DepositCalculator
   ],
   imports: [
     BrowserModule,
