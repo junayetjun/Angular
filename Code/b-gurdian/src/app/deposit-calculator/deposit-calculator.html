@@ -1,6 +1,6 @@
 <div class="calculator-container">
   <div class="calculator-card">
-    <h2>Deposit Calculator</h2>
+    <h2>Check your Amount</h2>
 
     <form [formGroup]="formGroup" (ngSubmit)="calculate()">
       <div class="form-row">
@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <button type="submit" class="calculate-btn" [disabled]="formGroup.invalid">Calculate & Save</button>
+      <button type="submit" class="calculate-btn" [disabled]="formGroup.invalid">Submit</button>
     </form>
 
     <hr>

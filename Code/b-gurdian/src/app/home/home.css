@@ -29,7 +29,6 @@
 h1 {
   font-weight: 600;
   font-size: 8.2rem;
-  background: linear-gradient(-45deg, #94d8b6, #3c8581, #2e558f, #34cad4);
-  background-size: 400% 400%;
+  
   animation: gradientAnimation 15s ease infinite;
 }

@@ -16,6 +16,7 @@ import { Addsource } from './source/addsource/addsource';
 import { Viewallsource } from './source/viewallsource/viewallsource';
 import { Addproduct } from './inventory/addproduct/addproduct';
 import { DepositCalculator } from './deposit-calculator/deposit-calculator';
+import { StockPriceEstimateComponent } from './stock-price-estimate.component/stock-price-estimate.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DepositCalculator } from './deposit-calculator/deposit-calculator';
     Addsource,
     Viewallsource,
     Addproduct,
-    DepositCalculator
+    DepositCalculator,
+    StockPriceEstimateComponent
   ],
   imports: [
     BrowserModule,

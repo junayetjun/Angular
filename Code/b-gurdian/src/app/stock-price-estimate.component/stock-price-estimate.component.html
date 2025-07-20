@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>📈 Stock Price Estimation</h2>
+
+  <form (ngSubmit)="calculateGrowth()" class="form">
+    <label>
+      Current Dividend:
+      <input type="number" [(ngModel)]="model.currentDividend" name="currentDividend" required />
+    </label>
+
+    <label>
+      First Dividend:
+      <input type="number" [(ngModel)]="model.firstDividend" name="firstDividend" required />
+    </label>
+
+    <label>
+      Discount Rate (e.g. 0.1 for 10%):
+      <input type="number" step="0.01" [(ngModel)]="model.discountRate" name="discountRate" required />
+    </label>
+
+    <label>
+      Time (years):
+      <input type="number" [(ngModel)]="model.time" name="time" required />
+    </label>
+
+    <button type="submit">📊 Calculate Growth</button>
+  </form>
+
+  <div class="results" *ngIf="shortTermGrowthRate !== undefined">
+    <h3>📋 Results</h3>
+    <p><strong>Short Term Growth Rate:</strong> {{ shortTermGrowthRate | number:'1.2-2' }}%</p>
+
+    <h4>📅 Yearly Dividends</h4>
+    <ul>
+      <li *ngFor="let div of yearlyDividends; let i = index">
+        Year {{ i + 1 }}: {{ div | number:'1.2-4' }}
+      </li>
+    </ul>
+
+    <h4>🏁 Terminal Value</h4>
+    <p *ngIf="isValidTerminalValue(terminalValue)">
+      {{ terminalValue | number:'1.2-4' }}
+    </p>
+    <p class="warning" *ngIf="!isValidTerminalValue(terminalValue)">
+      ⚠️ Terminal value cannot be calculated. Make sure discount rate is greater than 0.06.
+    </p>
+  </div>
+</div>

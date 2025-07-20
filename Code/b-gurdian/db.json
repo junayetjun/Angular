@@ -121,6 +121,90 @@
       "interest": 1011.3571874999993,
       "tax": 151.7035781249999,
       "finalAmount": 1859.6536093749994
+    },
+    {
+      "id": "ed5a",
+      "amount": 1000,
+      "years": 0.25,
+      "rate": 15,
+      "interest": 35.558076341622154,
+      "tax": 5.333711451243323,
+      "finalAmount": 1030.2243648903789
+    },
+    {
+      "id": "7a7a",
+      "amount": 1000,
+      "years": 0.25,
+      "rate": 15,
+      "interest": 35.558076341622154,
+      "tax": 5.333711451243323,
+      "finalAmount": 1030.2243648903789
+    },
+    {
+      "id": "9b4e",
+      "amount": 10000000,
+      "years": 0.25,
+      "rate": 9.5,
+      "interest": 229479.34561098553,
+      "tax": 34421.90184164783,
+      "finalAmount": 10195057.443769338
+    },
+    {
+      "id": "a334",
+      "amount": 10000000,
+      "years": 0.25,
+      "rate": 9.5,
+      "interest": 229479.34561098553,
+      "tax": 34421.90184164783,
+      "finalAmount": 10195057.443769338
+    },
+    {
+      "id": "7a6d",
+      "amount": 10000000,
+      "years": 1,
+      "rate": 9.5,
+      "interest": 950000,
+      "tax": 142500,
+      "finalAmount": 10807500
+    },
+    {
+      "id": "8a63",
+      "amount": 10000000,
+      "years": 1,
+      "rate": 9.5,
+      "interest": 950000,
+      "tax": 142500,
+      "finalAmount": 10807500
+    }
+  ],
+  "stockEstimations": [
+    {
+      "id": "3347",
+      "currentDividend": 35,
+      "firstDividend": 10,
+      "discountRate": 10,
+      "time": 2
+    },
+    {
+      "id": "183b",
+      "currentDividend": 38,
+      "firstDividend": 10,
+      "discountRate": 0,
+      "time": 2
+    },
+    {
+      "id": "b69c",
+      "currentDividend": 0,
+      "firstDividend": 0,
+      "discountRate": 0,
+      "time": 0
+    },
+    {
+      "id": "80c6",
+      "currentDividend": 0,
+      "firstDividend": 0,
+      "discountRate": 0,
+      "time": 0
     }
   ]
 }
