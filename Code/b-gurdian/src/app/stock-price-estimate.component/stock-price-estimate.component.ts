@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { StockPriceEstimation } from '../model/stock-price-estimation';
 import { StockPriceEstimationService } from '../service/stock-price-estimation.service';
+import { CompanygrowthService } from '../service/companygrowth.service';
+import { CompanyGrowth } from '../model/companygrowth.model';
 
 @Component({
   selector: 'app-stock-price-estimate',
@@ -9,6 +11,10 @@ import { StockPriceEstimationService } from '../service/stock-price-estimation.s
   styleUrls: ['./stock-price-estimate.component.css']
 })
 export class StockPriceEstimateComponent implements OnInit {
+
+  selectedItemId!: string;
+  companygrowths!: any;
+  oneData: CompanyGrowth = new CompanyGrowth();
 
   model: StockPriceEstimation = {
     currentDividend: 0,
@@ -22,10 +28,16 @@ export class StockPriceEstimateComponent implements OnInit {
   yearlyDividends: number[] = [];
   terminalValue?: number;
 
-  constructor(private estimationService: StockPriceEstimationService) { }
+  constructor(
+    private estimationService: StockPriceEstimationService,
+    private companyGrowthService: CompanygrowthService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
-    this.loadAllEstimations();
+    this.loadAllEstimations(),
+      this.loadAllData(),
+      this.onSelectChange()
   }
 
   loadAllEstimations(): void {
@@ -36,6 +48,10 @@ export class StockPriceEstimateComponent implements OnInit {
   }
 
   calculateGrowth(): void {
+    this.model.currentDividend = this.oneData.currentDividend;
+    this.model.firstDividend = this.oneData.firstDividend;
+    this.model.discountRate = this.oneData.discountRate;
+
     const result = this.estimationService.getGrowthDetailsUsingRate(this.model);
     this.shortTermGrowthRate = result.shortTermGrowthRate;
     this.yearlyDividends = result.yearlyDividends;
@@ -102,4 +118,26 @@ export class StockPriceEstimateComponent implements OnInit {
   isValidTerminalValue(value: number | undefined): boolean {
     return value !== undefined && !isNaN(value);
   }
+
+
+  loadAllData(): void {
+    this.companygrowths = this.companyGrowthService.getAllData();
+    this.cdr.markForCheck();
+  }
+
+  getById(id: string): void {
+    this.companyGrowthService.getById(id).subscribe(data => {
+      this.oneData = data;
+      this.cdr.markForCheck();
+    })
+
+  }
+
+  onSelectChange() {
+    console.log('Selected ID:', this.selectedItemId);
+    this.getById(this.selectedItemId);
+    this.cdr.markForCheck();
+  }
+
+
 }

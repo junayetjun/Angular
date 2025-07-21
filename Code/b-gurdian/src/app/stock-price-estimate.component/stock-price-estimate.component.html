@@ -1,20 +1,26 @@
 <div class="container">
   <h2>📈 Stock Price Estimation</h2>
 
+  <select [(ngModel)]="selectedItemId" (change)="onSelectChange()">
+    <option *ngFor="let cg of companygrowths | async" [value]="cg.id">
+      {{ cg.name }}
+    </option>
+  </select>
+
   <form (ngSubmit)="calculateGrowth()" class="form">
     <label>
       Current Dividend:
-      <input type="number" [(ngModel)]="model.currentDividend" name="currentDividend" required />
+      <input type="number" [(ngModel)]="model.currentDividend" [value]="oneData.currentDividend" name="currentDividend" required />
     </label>
 
     <label>
       First Dividend:
-      <input type="number" [(ngModel)]="model.firstDividend" name="firstDividend" required />
+      <input type="number" [(ngModel)]="model.firstDividend" [value]="oneData.firstDividend" name="firstDividend" required />
     </label>
 
     <label>
       Discount Rate (e.g. 0.1 for 10%):
-      <input type="number" step="0.01" [(ngModel)]="model.discountRate" name="discountRate" required />
+      <input type="number" step="0.01" [(ngModel)]="model.discountRate" [value]="oneData.discountRate" name="discountRate" required />
     </label>
 
     <label>

@@ -175,6 +175,123 @@
       "interest": 950000,
       "tax": 142500,
       "finalAmount": 10807500
+    },
+    {
+      "id": "ddb5",
+      "amount": 1000,
+      "years": 10,
+      "rate": 15,
+      "interest": 3045.557735707907,
+      "tax": 456.83366035618604,
+      "finalAmount": 3588.724075351721
+    },
+    {
+      "id": "b1cf",
+      "amount": 1000,
+      "years": 10,
+      "rate": 15,
+      "interest": 3045.557735707907,
+      "tax": 456.83366035618604,
+      "finalAmount": 3588.724075351721
+    },
+    {
+      "id": "9547",
+      "amount": 1000,
+      "years": 1,
+      "rate": 15,
+      "interest": 150,
+      "tax": 22.5,
+      "finalAmount": 1127.5
+    },
+    {
+      "id": "42c6",
+      "amount": 1000,
+      "years": 1,
+      "rate": 15,
+      "interest": 150,
+      "tax": 22.5,
+      "finalAmount": 1127.5
+    },
+    {
+      "id": "936a",
+      "amount": 1000,
+      "years": 1,
+      "rate": 15,
+      "interest": 150,
+      "tax": 22.5,
+      "finalAmount": 1127.5
+    },
+    {
+      "id": "31f1",
+      "amount": 1000,
+      "years": 1,
+      "rate": 15,
+      "interest": 150,
+      "tax": 22.5,
+      "finalAmount": 1127.5
+    },
+    {
+      "id": "8cc2",
+      "amount": 1000,
+      "years": 1,
+      "rate": 15,
+      "interest": 150,
+      "tax": 22.5,
+      "finalAmount": 1127.5
+    },
+    {
+      "id": "c2e3",
+      "amount": 1000,
+      "years": 1,
+      "rate": 15,
+      "interest": 150,
+      "tax": 22.5,
+      "finalAmount": 1127.5
+    },
+    {
+      "id": "35e9",
+      "amount": 1000,
+      "years": 2,
+      "rate": 15,
+      "interest": 322.4999999999998,
+      "tax": 48.374999999999964,
+      "finalAmount": 1274.1249999999998
+    },
+    {
+      "id": "9a16",
+      "amount": 1000,
+      "years": 2,
+      "rate": 15,
+      "interest": 322.4999999999998,
+      "tax": 48.374999999999964,
+      "finalAmount": 1274.1249999999998
+    },
+    {
+      "id": "d84b",
+      "amount": 1000,
+      "years": 2,
+      "rate": 15,
+      "interest": 322.4999999999998,
+      "tax": 48.374999999999964,
+      "finalAmount": 1274.1249999999998
+    },
+    {
+      "id": "1efc",
+      "amount": 100,
+      "years": 5,
+      "rate": 1,
+      "interest": 5.101005010000009,
+      "tax": 0.7651507515000012,
+      "finalAmount": 104.3358542585
+    },
+    {
+      "id": "1577",
+      "amount": 100,
+      "years": 5,
+      "rate": 1,
+      "interest": 5.101005010000009,
+      "tax": 0.7651507515000012,
+      "finalAmount": 104.3358542585
     }
   ],
   "stockEstimations": [
@@ -205,6 +322,29 @@
       "firstDividend": 0,
       "discountRate": 0,
       "time": 0
+    }
+  ],
+  "companygrowth": [
+    {
+      "id": "09e9",
+      "name": "Akij Company Ltd.",
+      "currentDividend": 38,
+      "firstDividend": 10,
+      "discountRate": 10
+    },
+    {
+      "id": "09f9",
+      "name": "Babul Group Ltd.",
+      "currentDividend": 40,
+      "firstDividend": 15,
+      "discountRate": 5
+    },
+    {
+      "id": "09z9",
+      "name": "Habul Group Ltd.",
+      "currentDividend": 69,
+      "firstDividend": 96,
+      "discountRate": 15
     }
   ]
 }

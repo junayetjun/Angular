@@ -10,6 +10,7 @@ import { StockPriceEstimation } from '../model/stock-price-estimation';
   providedIn: 'root'
 })
 export class StockPriceEstimationService {
+  private calculationValue: number[] = [];
   private apiUrl = 'http://localhost:3000/stockEstimations';
 
   constructor(private http: HttpClient) { }
@@ -63,6 +64,7 @@ export class StockPriceEstimationService {
       const thisYearDividend = previousDividend * Math.pow((1 + shortTermGrowthRate / 100), year);
       yearlyDividends.push(Number(thisYearDividend.toFixed(4)));
       previousDividend = thisYearDividend;
+      this.calculationValue.push(previousDividend);
     }
 
     return {
@@ -88,7 +90,7 @@ export class StockPriceEstimationService {
     const growthRateDecimal = shortTermGrowthRate / 100;
 
     // Step 1: Calculate Dividend at year `t`
-    let dt = model.currentDividend;
+    let dt = this.calculationValue[this.calculationValue.length-1];
     for (let i = 1; i <= model.time; i++) {
       dt *= (1 + growthRateDecimal);
     }
