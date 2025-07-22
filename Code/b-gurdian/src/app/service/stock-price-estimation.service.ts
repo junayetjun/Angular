@@ -11,6 +11,8 @@ import { StockPriceEstimation } from '../model/stock-price-estimation';
 })
 export class StockPriceEstimationService {
   private calculationValue: number[] = [];
+  private totalStockPrice : number = 0;
+
   totalCalculation!: number;
   private apiUrl = 'http://localhost:3000/stockEstimations';
 
@@ -66,24 +68,25 @@ export class StockPriceEstimationService {
       yearlyDividends.push(Number(thisYearDividend.toFixed(4)));
       previousDividend = thisYearDividend;
       this.calculationValue.push(previousDividend);
+      this.totalStockPrice += previousDividend; 
     }
-    
+
 
     return {
       shortTermGrowthRate: Number(shortTermGrowthRate.toFixed(4)),
       yearlyDividends
     };
-    
+
 
 
   }
 
-  
+  // Terminal Value
 
   calculateTerminalValue(model: StockPriceEstimation, shortTermGrowthRate: number): number {
     const longTermGrowthRate = 0.06;
     const discountRateDecimal = model.discountRate / 100;
-     // convert from percent to decimal
+    // convert from percent to decimal
 
     // Validate inputs
     if (
@@ -105,20 +108,21 @@ export class StockPriceEstimationService {
       dt *= (1 + growthRateDecimal);
     }
 
-    
+
 
     // Step 2: Calculate Dividend at year `t+1`
     const tPlusOneDividend = dt * Math.pow(1 + growthRateDecimal, 1);
 
     // Step 3: Calculate Terminal Value
     const terminalValue = tPlusOneDividend / (discountRateDecimal - longTermGrowthRate);
+    this.totalStockPrice += terminalValue 
 
     return Number(terminalValue.toFixed(4));
   }
 
 
-    
-  
+
+
 
 
 

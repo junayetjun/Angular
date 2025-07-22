@@ -16,6 +16,8 @@ export class StockPriceEstimateComponent implements OnInit {
   companygrowths!: any;
   oneData: CompanyGrowth = new CompanyGrowth();
 
+  private totalStockPrice : number = 0;
+
   model: StockPriceEstimation = {
     currentDividend: 0,
     firstDividend: 0,
@@ -47,22 +49,42 @@ export class StockPriceEstimateComponent implements OnInit {
     });
   }
 
+  // calculateGrowth(): void {
+  //   this.model.currentDividend = this.oneData.currentDividend;
+  //   this.model.firstDividend = this.oneData.firstDividend;
+  //   this.model.discountRate = this.oneData.discountRate;
+
+  //   const result = this.estimationService.getGrowthDetailsUsingRate(this.model);
+  //   this.shortTermGrowthRate = result.shortTermGrowthRate;
+  //   this.yearlyDividends = result.yearlyDividends;
+
+  //   if (this.shortTermGrowthRate !== undefined) {
+  //     this.terminalValue = this.estimationService.calculateTerminalValue(
+  //       this.model,
+  //       this.shortTermGrowthRate
+  //     );
+  //   }
+  // }
+
+
   calculateGrowth(): void {
-    this.model.currentDividend = this.oneData.currentDividend;
-    this.model.firstDividend = this.oneData.firstDividend;
-    this.model.discountRate = this.oneData.discountRate;
+  this.model.currentDividend = this.oneData.currentDividend;
+  this.model.firstDividend = this.oneData.firstDividend;
+  this.model.discountRate = this.oneData.discountRate;
 
-    const result = this.estimationService.getGrowthDetailsUsingRate(this.model);
-    this.shortTermGrowthRate = result.shortTermGrowthRate;
-    this.yearlyDividends = result.yearlyDividends;
 
-    if (this.shortTermGrowthRate !== undefined) {
-      this.terminalValue = this.estimationService.calculateTerminalValue(
-        this.model,
-        this.shortTermGrowthRate
-      );
-    }
+  const result = this.estimationService.getGrowthDetailsUsingRate(this.model);
+  this.shortTermGrowthRate = result.shortTermGrowthRate;
+  this.yearlyDividends = result.yearlyDividends;
+
+  if (this.shortTermGrowthRate !== undefined) {
+    this.terminalValue = this.estimationService.calculateTerminalValue(
+      this.model,
+      this.shortTermGrowthRate
+    );
   }
+}
+
 
   saveEstimation(): void {
     if (this.model.id) {

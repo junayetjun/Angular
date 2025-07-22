@@ -1,45 +1,18 @@
+<div class="container">
+  <h2>User Profile</h2>
+  <div *ngIf="user">
+    <p><img src="{{user.photo}}" alt="Profile Pic" class="rounded" width="150" height="150" /></p>
+    <p><strong>Name:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Contact Number:</strong> {{ user.contactNumber }}</p>
+    <p><strong>Business Name:</strong> {{ user.businessName }}</p>
+    <p><strong>Business Address:</strong> {{ user.businessAddress }}</p>
+    <p><strong>Role:</strong> {{ user.role }}</p>
 
-
-<div class="userprofile">
-
-    <div class="container">
-    <div class="profile-section" *ngIf="user">
-        <div class="profile-header">
-             <p><img src="#" alt="Profile Pic" class=" profile-photo rounded" width="150" height="150" /></p>
-            <img src="https://via.placeholder.com/120" alt="Profile Photo" class="profile-photo">
-            <div class="user-info">
-               <p><strong>Name:</strong> {{ user.name }}</p>                
-                <p>Software Developer</p>
-            </div>
-        </div>
-
-        <div class="profile-details">
-            <div class="detail-item">
-                <h3>Email</h3>
-                <p>{{ user.email }}</p>
-            </div>
-
-            <div class="detail-item">
-                <h3>Contact Number</h3>
-                <p> <strong>Name:</strong> {{ user.name }}</p>
-            </div>
-
-            <div class="detail-item">
-                <h3>Business Name</h3>
-                <p> {{ user.businessName }}.</p>
-            </div>
-
-            <div class="detail-item">
-                <h3>Business Address</h3>
-                <p> {{ user.businessAddress }}</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="logout-section">
-        <div class="logout-text">Need to log out?</div>
-        <button class="logout-btn">LOGOUT</button>
-    </div>
+    <!-- Add more fields as needed -->
+  </div>
+  <div *ngIf="!user">
+    <p>Loading user profile...</p>
+  </div>
+  
 </div>
-</div>
-

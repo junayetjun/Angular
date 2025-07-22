@@ -46,6 +46,7 @@
     <p *ngIf="isValidTerminalValue(terminalValue)">
       {{ terminalValue | number:'1.2-4' }}
     </p>
+  
     <p class="warning" *ngIf="!isValidTerminalValue(terminalValue)">
       ⚠️ Terminal value cannot be calculated. Make sure discount rate is greater than 0.06.
     </p>

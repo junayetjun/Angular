@@ -18,6 +18,10 @@ import { Addproduct } from './inventory/addproduct/addproduct';
 import { DepositCalculator } from './deposit-calculator/deposit-calculator';
 import { StockPriceEstimateComponent } from './stock-price-estimate.component/stock-price-estimate.component';
 
+import { AddcompanygrowthComponent } from './companygrowth/addcompanygrowth.component/addcompanygrowth.component';
+import { ViewallcompanygrowthComponent } from './companygrowth/viewallcompanygrowth.component/viewallcompanygrowth.component';
+import { UpdatecompanygrowthComponent } from './companygrowth/updatecompanygrowth.component/updatecompanygrowth.component';
+
 @NgModule({
   declarations: [
     App,
@@ -32,7 +36,11 @@ import { StockPriceEstimateComponent } from './stock-price-estimate.component/st
     Viewallsource,
     Addproduct,
     DepositCalculator,
-    StockPriceEstimateComponent
+    StockPriceEstimateComponent,
+    
+    AddcompanygrowthComponent,
+          ViewallcompanygrowthComponent,
+          UpdatecompanygrowthComponent
   ],
   imports: [
     BrowserModule,
