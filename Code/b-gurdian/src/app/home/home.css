@@ -1,7 +1,7 @@
 .background {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #dac8c2, #833653, #658794, #0b4437);
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
   display: flex;
@@ -28,7 +28,16 @@
 
 h1 {
   font-weight: 600;
-  font-size: 8.2rem;
+  font-size: 6.2rem;
   
   animation: gradientAnimation 15s ease infinite;
+}
+.card-body a {
+  text-decoration: none;  /* Removes underline */
+  color: black;           /* Sets text color to black */
+}
+
+.card-body a:hover {
+  color: #ffffff;         /* Optional: Hover color */
+  text-decoration: none;  /* Keep underline off on hover */
 }

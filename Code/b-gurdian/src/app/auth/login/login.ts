@@ -54,6 +54,9 @@ export class Login {
         else if (role === 'user') {
           this.router.navigate(['/userprofile']);
         }
+        else if (role === 'viewer') {
+          this.router.navigate(['/userprofile']);
+        }
         else {
           this.errorMessage = 'Unknown user role.';
         }

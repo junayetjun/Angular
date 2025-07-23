@@ -154,14 +154,21 @@ export class AuthService {
     return null;
   }
 
-  isAdmin(): boolean{
+  isAdmin(): boolean {
     return this.getUserRole() === 'admin';
   }
-  
-  isUser(): boolean{
+
+  isUser(): boolean {
     const role = this.getUserRole();
     return role === 'user';
   }
+  
+  isViewer(): boolean {
+    const role = this.getUserRole();
+    return role === 'viewer';
+  }
+
+
 
 
 

@@ -21,6 +21,7 @@ import { StockPriceEstimateComponent } from './stock-price-estimate.component/st
 import { AddcompanygrowthComponent } from './companygrowth/addcompanygrowth.component/addcompanygrowth.component';
 import { ViewallcompanygrowthComponent } from './companygrowth/viewallcompanygrowth.component/viewallcompanygrowth.component';
 import { UpdatecompanygrowthComponent } from './companygrowth/updatecompanygrowth.component/updatecompanygrowth.component';
+import { FooterComponent } from './footer/footer.component/footer.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { UpdatecompanygrowthComponent } from './companygrowth/updatecompanygrowt
     
     AddcompanygrowthComponent,
           ViewallcompanygrowthComponent,
-          UpdatecompanygrowthComponent
+          UpdatecompanygrowthComponent,
+          FooterComponent
   ],
   imports: [
     BrowserModule,
