@@ -1,0 +1,87 @@
+<div class="fullbody">
+
+    <ul class="background">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <div class="container">
+        <div class="slides-container">
+            <div class="slide">
+                <h1>Welcome to Our Platform</h1>
+                <p>Discover a new way to experience digital services with our innovative platform. We're dedicated to
+                    providing you with the best user experience.</p>
+                <a href="#" class="btn">Get Started</a>
+            </div>
+            <!-- <div class="slide">
+                <h1>Why Choose Us?</h1>
+                <p>Our platform offers cutting-edge features, secure connections, and a user-friendly interface designed to meet all your needs.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+            <div class="slide">
+                <h1>Join Our Community</h1>
+                <p>Be part of a growing community of users who trust our services. Sign up today and experience the difference.</p>
+                <a href="#" class="btn">Join Now</a>
+            </div> -->
+            <div class="slide-indicators">
+                <!-- <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div> -->
+            </div>
+        </div>
+
+        <div class="login-container">
+            <div class="login-form">
+                <h2>Login</h2>
+                <form [formGroup]="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" formControlName="email" placeholder="Enter your email" required>
+                        <!-- Inline validation -->
+                        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+                            class="text-danger mt-1">
+                            <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
+                            <small *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email.</small>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" formControlName="password"
+                            placeholder="Enter your password" required>
+
+                        <!-- Inline validation -->
+                        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                            class="text-danger mt-1">
+                            <small>Password is required.</small>
+                        </div>
+
+                    </div>
+                    <div class="remember-forgot">
+                        <label>
+                            <input type="checkbox">
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <!-- Error message -->
+                    <div *ngIf="errorMessage" class="alert alert-danger">
+                        {{ errorMessage }}
+                    </div>
+                    <button type="submit" class="login-btn" (click)="onSubmit()">Login</button>
+                    <div class="signup-link">
+                        Don't have an account? <a href="/reg">Sign up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

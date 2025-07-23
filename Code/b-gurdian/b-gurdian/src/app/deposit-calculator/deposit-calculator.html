@@ -1,0 +1,47 @@
+<div class="calculator-container">
+  <div class="calculator-card">
+    <h2>Check your Amount</h2>
+
+    <form [formGroup]="formGroup" (ngSubmit)="calculate()">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" formControlName="amount" required min="0" step="0.01"
+            placeholder="Enter amount" />
+        </div>
+
+        <div class="form-group">
+          <label for="years">Years:</label>
+          <input type="number" id="years" formControlName="years" required min="0.1" step="0.1"
+            placeholder="Enter years" />
+        </div>
+
+        <div class="form-group">
+          <label for="rate">Interest Rate (%):</label>
+          <input type="number" id="rate" formControlName="rate" required min="0.1" step="0.1"
+            placeholder="Enter interest rate" />
+        </div>
+      </div>
+
+      <button type="submit" class="calculate-btn" [disabled]="formGroup.invalid">Submit</button>
+    </form>
+
+    <hr>
+
+    <div *ngIf="result" class="result-section">
+      <h3>Results</h3>
+      <div class="result-item">
+        <span class="result-label">Interest:</span>
+        <span class="result-value">{{ result.interest | number: '1.2-2' }}</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Tax (15%):</span>
+        <span class="result-value">{{ result.tax | number: '1.2-2' }}</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Final Amount:</span>
+        <span class="result-value">{{ result.finalAmount | number: '1.2-2' }}</span>
+      </div>
+    </div>
+  </div>
+</div>
