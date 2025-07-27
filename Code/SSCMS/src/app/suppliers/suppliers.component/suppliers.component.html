@@ -1,0 +1,61 @@
+<div class="container">
+    <h2>📦 Supplier Management</h2>
+
+    <form [formGroup]="supplierForm" (ngSubmit)="submitForm()">
+        <div>
+            <label>Name:</label>
+            <input formControlName="name" />
+        </div>
+
+        <div>
+            <label>Contact Name:</label>
+            <input formControlName="contactName" />
+        </div>
+
+        <div>
+            <label>Email:</label>
+            <input formControlName="email" type="email" />
+        </div>
+
+        <div>
+            <label>Phone:</label>
+            <input formControlName="phone" />
+        </div>
+
+        <div>
+            <label>Address:</label>
+            <textarea formControlName="address"></textarea>
+        </div>
+
+        <button type="submit">{{ isEditMode ? 'Update' : 'Add' }}</button>
+        <button type="button" (click)="cancelEdit()" *ngIf="isEditMode">Cancel</button>
+    </form>
+
+    <hr />
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let supplier of suppliers">
+                <td>{{ supplier.name }}</td>
+                <td>{{ supplier.contactName }}</td>
+                <td>{{ supplier.email }}</td>
+                <td>{{ supplier.phone }}</td>
+                <td>{{ supplier.address }}</td>
+                <td>
+                    <button (click)="editSupplier(supplier)">✏️</button>
+                    <button (click)="deleteSupplier(supplier.id!)">🗑️</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

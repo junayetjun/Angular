@@ -1,0 +1,26 @@
+<h2>Finished Product Stock</h2>
+
+<table border="1" cellpadding="6">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Stored At (Warehouse)</th>
+            <th>Source Warehouses (Raw Material)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let stock of finishedStocks">
+            <td>{{ getProductName(stock.productId) }}</td>
+            <td>{{ stock.quantity }}</td>
+            <td>{{ getWarehouseName(stock.warehouseId) }}</td>
+            <td>
+                <ul>
+                    <li *ngFor="let source of getSourceWarehouses(stock.productId)">
+                        {{ source }}
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,34 @@
+<h2>Define New Smartphone Product</h2>
+<form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+    <input formControlName="name" placeholder="Product Name" required>
+    <input formControlName="description" placeholder="Description">
+
+    <h3>Components</h3>
+    <div formArrayName="components">
+        <div *ngFor="let comp of components.controls; let i = index" [formGroupName]="i">
+            <select formControlName="materialId">
+                <option value="">-- Select Material --</option>
+                <option *ngFor="let mat of rawMaterials" [value]="mat.id">{{ mat.name }}</option>
+            </select>
+            <input type="number" formControlName="quantity" placeholder="Quantity">
+            <button type="button" (click)="removeComponent(i)">Remove</button>
+        </div>
+    </div>
+
+    <button type="button" (click)="addComponent()">+ Add Material</button>
+    <button type="submit">Save Product</button>
+</form>
+
+<hr>
+
+<h2>Defined Products</h2>
+<ul>
+    <li *ngFor="let p of products">
+        <strong>{{ p.name }}</strong> ({{ p.description }})
+        <ul>
+            <li *ngFor="let c of p.components">
+                {{ getMaterialName(c.materialId) }} - {{ c.quantity }}
+            </li>
+        </ul>
+    </li>
+</ul>

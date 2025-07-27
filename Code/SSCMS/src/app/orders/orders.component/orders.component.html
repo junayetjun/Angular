@@ -1,0 +1,48 @@
+<h2>Production Orders</h2>
+
+<form [formGroup]="orderForm" (ngSubmit)="submitForm()">
+  <label>Product:</label>
+  <select formControlName="productId">
+    <option *ngFor="let p of products" [value]="p.id">{{ p.name }}</option>
+  </select>
+
+  <label>Quantity:</label>
+  <input type="number" formControlName="quantity" />
+
+  <button type="submit">{{ isEditMode ? 'Update Order' : 'Create Order' }}</button>
+  <button type="button" (click)="resetForm()" *ngIf="isEditMode">Cancel</button>
+</form>
+
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Product</th>
+      <th>Qty</th>
+      <th>Status</th>
+      <th>Created</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders">
+      <td>{{ order.id }}</td>
+      <td>{{ getProductName(order.productId) }}</td>
+      <td>{{ order.quantity }}</td>
+      <td>
+        {{ order.status }}
+        <div *ngIf="order.status !== 'Completed'">
+          <button (click)="updateStatus(order, 'In Production')">Start</button>
+          <button (click)="updateStatus(order, 'Completed')">Complete</button>
+        </div>
+      </td>
+      <td>{{ order.createdAt | date:'short' }}</td>
+      <td>
+        <button (click)="editOrder(order)">Edit</button>
+        <button (click)="deleteOrder(order.id!)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

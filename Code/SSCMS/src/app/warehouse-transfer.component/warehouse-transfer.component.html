@@ -1,0 +1,55 @@
+<h2>📦 Warehouse Stock Transfer</h2>
+
+<form [formGroup]="transferForm" (ngSubmit)="submitTransfer()">
+  <div>
+    <label>Material:</label>
+    <select formControlName="materialId">
+      <option *ngFor="let mat of materials" [value]="mat.id">{{ mat.name }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>From Warehouse:</label>
+    <select formControlName="fromWarehouseId">
+      <option *ngFor="let wh of warehouses" [value]="wh.id">{{ wh.name }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>To Warehouse:</label>
+    <select formControlName="toWarehouseId">
+      <option *ngFor="let wh of warehouses" [value]="wh.id">{{ wh.name }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Quantity:</label>
+    <input type="number" formControlName="quantity" />
+  </div>
+
+  <button type="submit" [disabled]="transferForm.invalid">Transfer</button>
+</form>
+
+<hr>
+
+<h3>📚 Transfer History</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Material</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of transferHistory">
+      <td>{{ t.date | date: 'short' }}</td>
+      <td>{{ getMaterialName(t.materialId) }}</td>
+      <td>{{ getWarehouseName(t.fromWarehouseId) }}</td>
+      <td>{{ getWarehouseName(t.toWarehouseId) }}</td>
+      <td>{{ t.quantity }}</td>
+    </tr>
+  </tbody>
+</table>

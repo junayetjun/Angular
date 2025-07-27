@@ -1,0 +1,564 @@
+{
+  "raw-materials": [
+    {
+      "name": "Touch Screen",
+      "description": "LED",
+      "quantity": 100,
+      "unit": "5000",
+      "threshold": 10,
+      "id": "666a"
+    },
+    {
+      "name": "Battery",
+      "description": "5000 mh",
+      "quantity": 100,
+      "unit": "5000",
+      "threshold": 10,
+      "id": "3912"
+    },
+    {
+      "id": "67a4",
+      "name": "Battery ",
+      "description": "4500 mh",
+      "quantity": 100,
+      "unit": "4500",
+      "threshold": 10
+    },
+    {
+      "name": "Proccesor Chip",
+      "description": "For Mobile",
+      "quantity": 10,
+      "unit": "3500",
+      "threshold": 10,
+      "id": "de6c"
+    },
+    {
+      "name": "Front Camera",
+      "description": "Front 12m.p.",
+      "quantity": 50,
+      "unit": "4000",
+      "threshold": 10,
+      "id": "7d3c"
+    },
+    {
+      "name": "Back Camera ",
+      "description": "Back 64m.p.",
+      "quantity": 50,
+      "unit": "7500",
+      "threshold": 10,
+      "id": "ccfc"
+    },
+    {
+      "id": "f041",
+      "name": "Speaker",
+      "description": "For listening",
+      "quantity": 100,
+      "unit": "2500",
+      "threshold": 10
+    }
+  ],
+  "suppliers": [],
+  "products": [
+    {
+      "name": "Mobile",
+      "description": "Android",
+      "components": [
+        {
+          "materialId": "666a",
+          "quantity": 1
+        },
+        {
+          "materialId": "3912",
+          "quantity": 1
+        },
+        {
+          "materialId": "de6c",
+          "quantity": 1
+        },
+        {
+          "materialId": "7d3c",
+          "quantity": 1
+        },
+        {
+          "materialId": "ccfc",
+          "quantity": 1
+        }
+      ],
+      "id": "4a22"
+    },
+    {
+      "id": "oq3t",
+      "name": "Android Mobile",
+      "description": "Using Advance technology",
+      "components": [
+        {
+          "materialId": "666a",
+          "quantity": 1
+        },
+        {
+          "materialId": "3912",
+          "quantity": 1
+        },
+        {
+          "materialId": "7d3c",
+          "quantity": 1
+        },
+        {
+          "materialId": "ccfc",
+          "quantity": 1
+        },
+        {
+          "materialId": "f041",
+          "quantity": 2
+        },
+        {
+          "materialId": "de6c",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "2830",
+      "name": "a",
+      "description": "a",
+      "components": [
+        {
+          "materialId": "666a",
+          "quantity": 1
+        },
+        {
+          "materialId": "67a4",
+          "quantity": 1
+        },
+        {
+          "materialId": "de6c",
+          "quantity": 1
+        },
+        {
+          "materialId": "ccfc",
+          "quantity": 1
+        },
+        {
+          "materialId": "7d3c",
+          "quantity": 1
+        },
+        {
+          "materialId": "f041",
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "orders": [],
+  "warehouseStocks": [
+    {
+      "id": "dafd",
+      "warehouseId": "58f4",
+      "materialId": "de6c",
+      "quantity": 8
+    },
+    {
+      "id": "fb43",
+      "warehouseId": "58f4",
+      "materialId": "3912",
+      "quantity": 9
+    },
+    {
+      "id": "b207",
+      "warehouseId": "5d32",
+      "materialId": "f041",
+      "quantity": 288
+    },
+    {
+      "id": "020d",
+      "warehouseId": "58f4",
+      "materialId": "f041",
+      "quantity": 10
+    },
+    {
+      "id": "3b46",
+      "warehouseId": "4c66",
+      "materialId": "3912",
+      "quantity": 10
+    },
+    {
+      "id": "3d9a",
+      "warehouseId": "4c66",
+      "materialId": "f041",
+      "quantity": 228
+    },
+    {
+      "id": "f510",
+      "warehouseId": "4c66",
+      "materialId": "666a",
+      "quantity": 48
+    },
+    {
+      "id": "ttfm",
+      "warehouseId": "4c66",
+      "materialId": "de6c",
+      "quantity": 8
+    },
+    {
+      "id": "ioc6",
+      "warehouseId": "1d78",
+      "materialId": "666a",
+      "quantity": 146
+    },
+    {
+      "id": "tbxh",
+      "warehouseId": "1d78",
+      "materialId": "f041",
+      "quantity": 50
+    },
+    {
+      "id": "8cd8",
+      "warehouseId": "ed24",
+      "materialId": "666a",
+      "quantity": 10
+    },
+    {
+      "id": "b72f",
+      "warehouseId": "ed24",
+      "materialId": "3912",
+      "quantity": 10
+    },
+    {
+      "id": "1962",
+      "warehouseId": "ed24",
+      "materialId": "67a4",
+      "quantity": 10
+    },
+    {
+      "id": "2e7f",
+      "warehouseId": "ed24",
+      "materialId": "de6c",
+      "quantity": 8
+    },
+    {
+      "id": "bd6b",
+      "warehouseId": "ed24",
+      "materialId": "7d3c",
+      "quantity": 6
+    },
+    {
+      "id": "d95b",
+      "warehouseId": "ed24",
+      "materialId": "ccfc",
+      "quantity": 4
+    },
+    {
+      "id": "5735",
+      "warehouseId": "ed24",
+      "materialId": "f041",
+      "quantity": 10
+    },
+    {
+      "id": "iqh9",
+      "warehouseId": "afbc",
+      "materialId": "7d3c",
+      "quantity": 8
+    }
+  ],
+  "stockTransfers": [
+    {
+      "id": "883b",
+      "materialId": "666a",
+      "fromWarehouseId": "58f4",
+      "toWarehouseId": "49b4",
+      "quantity": 10,
+      "date": "2025-07-26T20:30:31.079Z"
+    },
+    {
+      "id": "35fa",
+      "materialId": "de6c",
+      "fromWarehouseId": "49b4",
+      "toWarehouseId": "58f4",
+      "quantity": 10,
+      "date": "2025-07-26T20:39:26.648Z"
+    },
+    {
+      "id": "ecea",
+      "materialId": "f041",
+      "fromWarehouseId": "5d32",
+      "toWarehouseId": "58f4",
+      "quantity": 10,
+      "date": "2025-07-26T20:57:13.797Z"
+    },
+    {
+      "id": "5d05",
+      "materialId": "f041",
+      "fromWarehouseId": "5d32",
+      "toWarehouseId": "4c66",
+      "quantity": 10,
+      "date": "2025-07-26T21:18:23.814Z"
+    },
+    {
+      "id": "437f",
+      "materialId": "f041",
+      "fromWarehouseId": "4c66",
+      "toWarehouseId": "5d32",
+      "quantity": 102,
+      "date": "2025-07-26T21:28:50.639Z"
+    },
+    {
+      "id": "061a",
+      "materialId": "f041",
+      "fromWarehouseId": "4c66",
+      "toWarehouseId": "5d32",
+      "quantity": 2,
+      "date": "2025-07-26T21:41:25.405Z"
+    },
+    {
+      "id": "f210",
+      "materialId": "f041",
+      "fromWarehouseId": "4c66",
+      "toWarehouseId": "5d32",
+      "quantity": 2,
+      "date": "2025-07-26T21:47:38.612Z"
+    },
+    {
+      "id": "aaa3",
+      "materialId": "de6c",
+      "fromWarehouseId": "1d78",
+      "toWarehouseId": "4c66",
+      "quantity": 10,
+      "date": "2025-07-26T21:50:18.653Z"
+    },
+    {
+      "id": "21da",
+      "materialId": "666a",
+      "fromWarehouseId": "4c66",
+      "toWarehouseId": "1d78",
+      "quantity": 150,
+      "date": "2025-07-26T21:53:21.106Z"
+    },
+    {
+      "id": "ee4c",
+      "materialId": "f041",
+      "fromWarehouseId": "5d32",
+      "toWarehouseId": "4c66",
+      "quantity": 16,
+      "date": "2025-07-26T21:55:09.346Z"
+    },
+    {
+      "id": "f458",
+      "materialId": "f041",
+      "fromWarehouseId": "5d32",
+      "toWarehouseId": "1d78",
+      "quantity": 50,
+      "date": "2025-07-26T21:55:50.802Z"
+    },
+    {
+      "id": "8783",
+      "materialId": "7d3c",
+      "fromWarehouseId": "ed24",
+      "toWarehouseId": "afbc",
+      "quantity": 10,
+      "date": "2025-07-26T22:45:46.167Z"
+    }
+  ],
+  "warehouses": [
+    {
+      "name": "C",
+      "location": "MohammadPur",
+      "capacity": 100000,
+      "id": "4c66"
+    },
+    {
+      "name": "D",
+      "location": "Dhanmondi",
+      "capacity": 100000,
+      "id": "5d32"
+    },
+    {
+      "name": "E",
+      "location": "Mirpur",
+      "capacity": 100000,
+      "id": "1d78"
+    },
+    {
+      "id": "ed24",
+      "name": "A",
+      "location": "Dhaka",
+      "capacity": 100000
+    },
+    {
+      "id": "afbc",
+      "name": "B",
+      "location": "Khilgaon",
+      "capacity": 100000
+    }
+  ],
+  "warehouse-transfer": [],
+  "productionOrders": [
+    {
+      "id": "c692",
+      "productId": "oq3t",
+      "quantity": 1,
+      "status": "Pending",
+      "createdAt": "2025-07-26T22:29:01.202Z"
+    },
+    {
+      "id": "e1b8",
+      "productId": "oq3t",
+      "quantity": 5,
+      "status": "Pending",
+      "createdAt": "2025-07-26T22:29:24.400Z"
+    },
+    {
+      "id": "2ad6",
+      "productId": "oq3t",
+      "quantity": 100,
+      "status": "Pending",
+      "createdAt": "2025-07-26T22:37:03.577Z"
+    },
+    {
+      "id": "058a",
+      "productId": "oq3t",
+      "quantity": 1,
+      "status": "Pending",
+      "createdAt": "2025-07-26T22:46:11.488Z"
+    },
+    {
+      "id": "f7b8",
+      "productId": "oq3t",
+      "quantity": 1,
+      "status": "Pending",
+      "createdAt": "2025-07-26T22:46:53.223Z"
+    },
+    {
+      "id": "cf97",
+      "productId": "oq3t",
+      "quantity": 2,
+      "status": "Pending",
+      "createdAt": "2025-07-26T22:58:30.719Z",
+      "warehouseAllocations": [
+        {
+          "warehouseId": "1d78",
+          "materialId": "666a",
+          "quantity": 2
+        },
+        {
+          "warehouseId": "58f4",
+          "materialId": "3912",
+          "quantity": 2
+        },
+        {
+          "warehouseId": "afbc",
+          "materialId": "7d3c",
+          "quantity": 2
+        },
+        {
+          "warehouseId": "ed24",
+          "materialId": "ccfc",
+          "quantity": 2
+        },
+        {
+          "warehouseId": "5d32",
+          "materialId": "f041",
+          "quantity": 4
+        },
+        {
+          "warehouseId": "4c66",
+          "materialId": "de6c",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "072b",
+      "productId": "oq3t",
+      "quantity": 2,
+      "status": "Pending",
+      "createdAt": "2025-07-26T23:37:01.762Z",
+      "warehouseAllocations": [
+        {
+          "warehouseId": "1d78",
+          "materialId": "666a",
+          "quantity": 2
+        },
+        {
+          "warehouseId": "4c66",
+          "materialId": "3912",
+          "quantity": 2
+        },
+        {
+          "warehouseId": "afbc",
+          "materialId": "7d3c",
+          "quantity": 2
+        },
+        {
+          "warehouseId": "ed24",
+          "materialId": "ccfc",
+          "quantity": 2
+        },
+        {
+          "warehouseId": "5d32",
+          "materialId": "f041",
+          "quantity": 4
+        },
+        {
+          "warehouseId": "58f4",
+          "materialId": "de6c",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "15f5",
+      "productId": "4a22",
+      "quantity": 1,
+      "status": "Pending",
+      "createdAt": "2025-07-26T23:40:23.414Z",
+      "warehouseAllocations": [
+        {
+          "warehouseId": "1d78",
+          "materialId": "666a",
+          "quantity": 1
+        },
+        {
+          "warehouseId": "4c66",
+          "materialId": "3912",
+          "quantity": 1
+        },
+        {
+          "warehouseId": "58f4",
+          "materialId": "de6c",
+          "quantity": 1
+        },
+        {
+          "warehouseId": "afbc",
+          "materialId": "7d3c",
+          "quantity": 1
+        },
+        {
+          "warehouseId": "ed24",
+          "materialId": "ccfc",
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "finishedProductStocks": [
+    {
+      "id": "4868",
+      "warehouseId": "finished-products-warehouse",
+      "productId": "oq3t",
+      "quantity": 335
+    },
+    {
+      "id": "f4eb",
+      "warehouseId": "finished-products-warehouse",
+      "productId": "4a22",
+      "quantity": 2,
+      "sourceWarehouses": [
+        "1d78",
+        "4c66",
+        "58f4",
+        "afbc",
+        "ed24"
+      ]
+    }
+  ]
+}

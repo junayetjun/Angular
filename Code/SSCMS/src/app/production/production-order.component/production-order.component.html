@@ -1,0 +1,55 @@
+<h2>{{ selectedOrder ? 'Update Production Order' : 'Create Production Order' }}</h2>
+
+<form [formGroup]="orderForm" (ngSubmit)="submitOrder()">
+  <label>Product</label>
+  <select formControlName="productId">
+    <option *ngFor="let p of products" [value]="p.id">{{ p.name }}</option>
+  </select>
+
+  <label>Quantity</label>
+  <input type="number" formControlName="quantity" />
+
+  <button type="submit">
+    {{ selectedOrder ? 'Update Order' : 'Submit Order' }}
+  </button>
+  <button type="button" (click)="resetForm()" *ngIf="selectedOrder">Cancel</button>
+</form>
+
+<hr />
+
+<h3>Existing Production Orders</h3>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Status</th>
+      <th>Date</th>
+      <th>Allocations</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let o of orders">
+      <td>{{ getProductName(o.productId) }}</td>
+      <td>{{ o.quantity }}</td>
+      <td>{{ o.status }}</td>
+      <td>{{ o.createdAt | date: 'short' }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let alloc of o.warehouseAllocations">
+            {{ getMaterialName(alloc.materialId) }} -
+            {{ getWarehouseName(alloc.warehouseId) }}:
+            {{ alloc.quantity }}
+          </li>
+        </ul>
+      </td>
+      <td>
+        <button *ngIf="o.status === 'Pending'" (click)="editOrder(o)">Edit</button>
+        <button *ngIf="o.status === 'Pending'" (click)="deleteOrder(o.id!)">Delete</button>
+        <button *ngIf="o.status === 'Pending'" (click)="markAsCompleted(o)">Mark as Completed</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

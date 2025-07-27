@@ -1,0 +1,26 @@
+<h2>Add Stock</h2>
+
+<form [formGroup]="stockForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label>Warehouse:</label>
+        <select formControlName="warehouseId">
+            <option value="" disabled>Select warehouse</option>
+            <option *ngFor="let w of warehouses" [value]="w.id">{{ w.name }}</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Material:</label>
+        <select formControlName="materialId">
+            <option value="" disabled>Select material</option>
+            <option *ngFor="let m of materials" [value]="m.id">{{ m.name }}</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Quantity:</label>
+        <input type="number" formControlName="quantity">
+    </div>
+
+    <button type="submit" [disabled]="stockForm.invalid">Save Stock</button>
+</form>

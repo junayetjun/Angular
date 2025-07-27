@@ -1,0 +1,45 @@
+<div class="container">
+    <h2>Raw Materials</h2>
+
+    <form [formGroup]="materialForm" (ngSubmit)="submitForm()">
+        <input type="text" placeholder="Name" formControlName="name" />
+        <input type="text" placeholder="Description" formControlName="description" />
+        <input type="number" placeholder="Quantity" formControlName="quantity" />
+        <input type="text" placeholder="Unit" formControlName="unit" />
+        <input type="number" placeholder="Threshold" formControlName="threshold" />
+
+        <button type="submit">{{ isEditMode ? 'Update' : 'Add' }}</button>
+        <button type="button" *ngIf="isEditMode" (click)="cancelEdit()">Cancel</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Qty</th>
+                <th>Unit</th>
+                <th>Threshold</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let material of materials" [class.low-stock]="isLowStock(material)">
+                <td>{{ material.name }}</td>
+                <td>{{ material.description }}</td>
+                <td>{{ material.quantity }}</td>
+                <td>{{ material.unit }}</td>
+                <td>{{ material.threshold }}</td>
+                <td>
+                    <span *ngIf="isLowStock(material)" class="alert">Low Stock</span>
+                    <span *ngIf="!isLowStock(material)">OK</span>
+                </td>
+                <td>
+                    <button (click)="editMaterial(material)">Edit</button>
+                    <button (click)="deleteMaterial(material.id!)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
