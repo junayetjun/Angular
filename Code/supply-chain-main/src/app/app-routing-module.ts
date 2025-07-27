@@ -6,6 +6,7 @@ import { Addorder } from './order/addorder/addorder';
 import { Orderconfirm } from './order/orderconfirm/orderconfirm';
 import { Oneuserorder } from './order/oneuserorder/oneuserorder';
 import { Addproduct } from './product/addproduct/addproduct';
+import { AlluserComponent } from './user/alluser.component/alluser.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'userorder', component: Oneuserorder},
   {path: 'addpro', component: Addproduct},  
   {path: 'ordercom', component: OrderComponent},
+  {path: 'alluser', component: AlluserComponent},
 ];
 
 @NgModule({

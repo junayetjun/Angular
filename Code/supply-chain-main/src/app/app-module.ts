@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { Orderconfirm } from './order/orderconfirm/orderconfirm';
 import { Oneuserorder } from './order/oneuserorder/oneuserorder';
+import { AlluserComponent } from './user/alluser.component/alluser.component';
+
 
 
 
@@ -21,6 +23,8 @@ import { Oneuserorder } from './order/oneuserorder/oneuserorder';
     Addorder,
     Orderconfirm,
     Oneuserorder,
+    AlluserComponent,
+    
     
  
   ],
