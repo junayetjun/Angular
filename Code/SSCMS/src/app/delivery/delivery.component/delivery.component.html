@@ -1,0 +1,52 @@
+<h2>Create Delivery</h2>
+
+<form [formGroup]="deliveryForm" (ngSubmit)="submitDelivery()">
+    <div>
+        <label>Product:</label>
+        <select formControlName="productId">
+            <option value="" disabled>Select product</option>
+            <option *ngFor="let p of products" [value]="p.id">{{ p.name }}</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Warehouse:</label>
+        <select formControlName="warehouseId">
+            <option value="" disabled>Select warehouse</option>
+            <option *ngFor="let w of warehouses" [value]="w.id">{{ w.name }}</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Quantity:</label>
+        <input type="number" formControlName="quantity" min="1" />
+        <div *ngIf="deliveryForm.get('quantity')?.touched && deliveryForm.get('quantity')?.invalid" style="color: red;">
+            <div *ngIf="deliveryForm.get('quantity')?.errors?.['required']">Quantity is required.</div>
+            <div *ngIf="deliveryForm.get('quantity')?.errors?.['min']">Minimum is 1.</div>
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="deliveryForm.invalid">Deliver</button>
+</form>
+
+<hr />
+
+<h3>Delivery History</h3>
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Warehouse</th>
+            <th>Quantity</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of deliveries">
+            <td>{{ getProductName(d.productId) }}</td>
+            <td>{{ getWarehouseName(d.warehouseId) }}</td>
+            <td>{{ d.quantity }}</td>
+            <td>{{ d.date | date: 'short' }}</td>
+        </tr>
+    </tbody>
+</table>

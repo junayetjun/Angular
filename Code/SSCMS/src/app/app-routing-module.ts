@@ -10,6 +10,7 @@ import { WarehousesComponent } from './warehouse-stock/warehouses.component/ware
 import { AddStockComponent } from './add-stock.component/add-stock.component';
 import { ProductionOrderComponent } from './production/production-order.component/production-order.component';
 import { FinishedProductStockComponent } from './products/finished-product-stock.component/finished-product-stock.component';
+import { DeliveryComponent } from './delivery/delivery.component/delivery.component';
 
 const routes: Routes = [
   {path:'addraw', component: RawMaterialsComponent},
@@ -21,7 +22,10 @@ const routes: Routes = [
   {path:'addstock', component: AddStockComponent},
   {path:'transferwarehouse', component: WarehouseTransferComponent},
   {path:'productionorder', component: ProductionOrderComponent},
-  {path:'', component: FinishedProductStockComponent},
+  // {path:'', component: FinishedProductStockComponent},
+  {path:'finishproduct', component: FinishedProductStockComponent},
+  {path:'', component: DeliveryComponent},
+  {path:'delivery', component: DeliveryComponent},
 ];
 
 @NgModule({

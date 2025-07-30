@@ -16,6 +16,7 @@ import { AddStockComponent } from './add-stock.component/add-stock.component';
 import { ProductionOrderComponent } from './production/production-order.component/production-order.component';
 import { FinishedProductStockComponent } from './products/finished-product-stock.component/finished-product-stock.component';
 import { HeaderComponenet } from './header/header.componenet/header.componenet';
+import { DeliveryComponent } from './delivery/delivery.component/delivery.component';
 
 
 
@@ -32,7 +33,8 @@ import { HeaderComponenet } from './header/header.componenet/header.componenet';
     AddStockComponent,
     ProductionOrderComponent,
     FinishedProductStockComponent,
-    HeaderComponenet
+    HeaderComponenet,
+    DeliveryComponent
     
    
   ],

@@ -96,37 +96,47 @@ export class ProductionOrderComponent implements OnInit {
   }
 
   allocateMaterials(components: ProductComponent[], quantity: number): WarehouseAllocation[] | null {
-    const allocations: WarehouseAllocation[] = [];
+    const warehouseMap: { [warehouseId: string]: { [materialId: string]: number } } = {};
 
-    for (const component of components) {
-      const totalNeeded = component.quantity * quantity;
-      let remaining = totalNeeded;
+    // Step 1: Organize stock data by warehouse
+    for (const stock of this.warehouseStocks) {
+      if (!warehouseMap[stock.warehouseId]) {
+        warehouseMap[stock.warehouseId] = {};
+      }
+      warehouseMap[stock.warehouseId][stock.materialId] = stock.quantity;
+    }
 
-      const availableStocks = this.warehouseStocks
-        .filter(ws => ws.materialId === component.materialId && ws.quantity > 0)
-        .sort((a, b) => b.quantity - a.quantity);
+    // Step 2: Check each warehouse for full availability of all required materials
+    for (const warehouseId in warehouseMap) {
+      const materials = warehouseMap[warehouseId];
+      let canFulfill = true;
 
-      for (const stock of availableStocks) {
-        if (remaining <= 0) break;
+      for (const component of components) {
+        const totalNeeded = component.quantity * quantity;
+        const available = materials[component.materialId] || 0;
 
-        const allocQty = Math.min(stock.quantity, remaining);
-        allocations.push({
-          warehouseId: stock.warehouseId,
-          materialId: stock.materialId,
-          quantity: allocQty
-        });
-
-        remaining -= allocQty;
+        if (available < totalNeeded) {
+          canFulfill = false;
+          break;
+        }
       }
 
-      if (remaining > 0) {
-        console.error(`Insufficient stock for material ${component.materialId}`);
-        return null;
+      // Step 3: If all materials are available in this warehouse, allocate from it
+      if (canFulfill) {
+        const allocations: WarehouseAllocation[] = components.map(component => ({
+          warehouseId,
+          materialId: component.materialId,
+          quantity: component.quantity * quantity
+        }));
+        return allocations;
       }
     }
 
-    return allocations;
+    // If no warehouse can fulfill all materials
+    console.error('No single warehouse has all materials in sufficient quantity.');
+    return null;
   }
+
 
   editOrder(order: ProductionOrder): void {
     this.selectedOrder = order;
@@ -143,33 +153,33 @@ export class ProductionOrderComponent implements OnInit {
   }
 
   markAsCompleted(order: ProductionOrder): void {
-  const warehouseId = this.finishedProductWarehouseId;
+    const warehouseId = this.finishedProductWarehouseId;
 
-  const sourceWarehouses = Array.from(
-    new Set(order.warehouseAllocations.map(a => a.warehouseId))
-  );
+    const sourceWarehouses = Array.from(
+      new Set(order.warehouseAllocations.map(a => a.warehouseId))
+    );
 
-  this.finishedProductStockService.getByWarehouseAndProduct(warehouseId, order.productId).subscribe(existing => {
-    if (existing) {
-      const updated = {
-        ...existing,
-        quantity: existing.quantity + order.quantity,
-        sourceWarehouses: Array.from(new Set([...(existing.sourceWarehouses || []), ...sourceWarehouses]))
-      };
-      this.finishedProductStockService.update(updated).subscribe();
-    } else {
-      const newStock = {
-        warehouseId,
-        productId: order.productId,
-        quantity: order.quantity,
-        sourceWarehouses: sourceWarehouses
-      };
-      this.finishedProductStockService.create(newStock).subscribe();
-    }
+    this.finishedProductStockService.getByWarehouseAndProduct(warehouseId, order.productId).subscribe(existing => {
+      if (existing) {
+        const updated = {
+          ...existing,
+          quantity: existing.quantity + order.quantity,
+          sourceWarehouses: Array.from(new Set([...(existing.sourceWarehouses || []), ...sourceWarehouses]))
+        };
+        this.finishedProductStockService.update(updated).subscribe();
+      } else {
+        const newStock = {
+          warehouseId,
+          productId: order.productId,
+          quantity: order.quantity,
+          sourceWarehouses: sourceWarehouses
+        };
+        this.finishedProductStockService.create(newStock).subscribe();
+      }
 
-   const updatedOrder = { ...order, status: 'Completed' };
-  });
-}
+      const updatedOrder = { ...order, status: 'Completed' };
+    });
+  }
 
 
   // const updatedOrder = { ...order, status: 'Completed' };
@@ -187,10 +197,10 @@ export class ProductionOrderComponent implements OnInit {
     return this.materials.find(m => m.id === id)?.name || id;
   }
 
- 
+
   getWarehouseName(id: string): string {
-  return this.warehouses.find(w => w.id === id)?.name || id;
-}
+    return this.warehouses.find(w => w.id === id)?.name || id;
+  }
 
 
 }
