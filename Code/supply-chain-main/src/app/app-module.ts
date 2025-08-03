@@ -11,6 +11,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { Orderconfirm } from './order/orderconfirm/orderconfirm';
 import { Oneuserorder } from './order/oneuserorder/oneuserorder';
 import { AlluserComponent } from './user/alluser.component/alluser.component';
+import { AddjobseekerComponent } from './jobseeker/addjobseeker.component/addjobseeker.component';
 
 
 
@@ -23,7 +24,8 @@ import { AlluserComponent } from './user/alluser.component/alluser.component';
     Addorder,
     Orderconfirm,
     Oneuserorder,
-    AlluserComponent,
+    AlluserComponent,    
+    AddjobseekerComponent,
     
     
  

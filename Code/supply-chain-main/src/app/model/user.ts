@@ -1,4 +1,6 @@
 
+
+// For Spring-boot
 export interface User{
     id: number;
     name: string;
