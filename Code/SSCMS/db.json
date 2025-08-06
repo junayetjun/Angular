@@ -201,6 +201,13 @@
       "quantity": 1,
       "status": "In Production",
       "createdAt": "2025-07-30T21:19:10.909Z"
+    },
+    {
+      "id": "17a4",
+      "productId": "oq3t",
+      "quantity": 1,
+      "status": "In Production",
+      "createdAt": "2025-08-06T05:01:26.908Z"
     }
   ],
   "warehouseStocks": [
