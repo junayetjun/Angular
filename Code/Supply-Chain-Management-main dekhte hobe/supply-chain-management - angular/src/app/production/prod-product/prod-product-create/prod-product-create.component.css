@@ -1,0 +1,87 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.header-Prod{
+  color: #ffffff;
+  background-color: #117a8b;
+  margin-bottom: 20px;
+}
+
+.production-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  flex: 1;
+  margin-right: 10px;
+}
+
+h2, h3 {
+  text-align: center;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button i {
+  margin-right: 5px;
+}
+
+.material-row {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+button[type="button"] {
+  background-color: #b03d49;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+.text-center {
+  margin-top: 20px;
+}
+
+.btn-save {
+  background-color: #027e70;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+
+.btn-save:hover {
+  background-color: #21650f;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+
+.btn-save:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgb(66, 220, 202);
+}
