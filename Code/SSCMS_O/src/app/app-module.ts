@@ -6,11 +6,21 @@ import { App } from './app';
 import { AddcaregiverComponent } from './caregiver/addcaregiver.component/addcaregiver.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { Navbar } from './layout/navbar/navbar';
+import { Sidebar } from './layout/sidebar/sidebar';
+import { Footer } from './layout/footer/footer';
+import { Header } from './layout/header/header';
+import { CategoryComponent } from './category/category.component/category.component';
 
 @NgModule({
   declarations: [
     App,
-    AddcaregiverComponent
+    AddcaregiverComponent,
+    Navbar,
+    Sidebar,
+    Footer,
+    Header,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

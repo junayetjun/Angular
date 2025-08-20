@@ -40,7 +40,7 @@ export class CaregiverService {
       }
     }
 
-    return this.http.get<Caregiver>(`${environment.apiBaseUrl}/jobseeker/profile`, { headers });
+    return this.http.get<Caregiver>(`${environment.apiBaseUrl}/caregiver/profile`, { headers });
   }
   
 }
