@@ -11,6 +11,7 @@ import { Sidebar } from './layout/sidebar/sidebar';
 import { Footer } from './layout/footer/footer';
 import { Header } from './layout/header/header';
 import { CategoryComponent } from './category/category.component/category.component';
+import { ParentRegistration } from './parent/parent-registration/parent-registration';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CategoryComponent } from './category/category.component/category.compon
     Sidebar,
     Footer,
     Header,
-    CategoryComponent
+    CategoryComponent,
+    ParentRegistration
   ],
   imports: [
     BrowserModule,
