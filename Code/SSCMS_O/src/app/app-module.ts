@@ -12,6 +12,7 @@ import { Footer } from './layout/footer/footer';
 import { Header } from './layout/header/header';
 import { CategoryComponent } from './category/category.component/category.component';
 import { ParentRegistration } from './parent/parent-registration/parent-registration';
+import { Caregiverprofile } from './caregiver/caregiverprofile/caregiverprofile';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ParentRegistration } from './parent/parent-registration/parent-registra
     Footer,
     Header,
     CategoryComponent,
-    ParentRegistration
+    ParentRegistration,
+    Caregiverprofile
   ],
   imports: [
     BrowserModule,

@@ -1,57 +1,82 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ParentService } from '../../service/parent.service';
 
 @Component({
   selector: 'app-parent-registration',
-  standalone: false,
+   standalone: false,
   templateUrl: './parent-registration.html',
   styleUrl: './parent-registration.css'
 })
 export class ParentRegistration {
-
-  // ✅ User fields
-  user: any = {
-    name: '',
-    email: '',
-    phone: '',
-    password: '',    
-    role: 'PARENT'
-  };
-
-  // ✅ Parent fields
-  parent: any = {    
-    contactPerson: '',    
-    photo: ''
-  };
-
-  // ✅ Profile file
-  photoFile: File | null = null;
-
+  userForm: FormGroup;
+  parentForm: FormGroup;
+  photoFile!: File;
+  message: string = '';
 
   constructor(
+    private fb: FormBuilder,
     private parentService: ParentService
-  ) { }
+  ) {
+    // User fields
+    this.userForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required],
+      password: ['', Validators.required]
+    });
 
-  onFileSelected(event: any) {
-    this.photoFile = event.target.files[0];
+    // Parent-specific fields
+    this.parentForm = this.fb.group({
+      childName: ['', Validators.required]
+    });
   }
 
-  registerParent() {
+  onFileSelected(event: any): void {
+    if (event.target.files.length > 0) {
+      this.photoFile = event.target.files[0];
+      console.log('Selected file:', this.photoFile);
+    }
+  }
+
+  registerParent(): void {
     if (!this.photoFile) {
-      alert("Please select a photo before submitting");
+      this.message = 'Please upload a photo.';
       return;
     }
 
-    this.parentService.registerParent(this.user, this.parent, this.photoFile)
-      .subscribe({
-        next: (res) => {
-          alert("Parent registered successfully ✅");
-          console.log(res);
-        },
-        error: (err) => {
-          alert("Registration failed ❌");
-          console.error(err);
-        }
-      });
+    if (this.userForm.invalid || this.parentForm.invalid) {
+      this.message = 'Please fill out all required fields.';
+      return;
+    }
+
+    const user = {
+      name: this.userForm.value.name,
+      email: this.userForm.value.email,
+      phone: this.userForm.value.phone,
+      password: this.userForm.value.password,
+      role: 'PARENT'
+    };
+
+    const parent = {
+      name: this.userForm.value.name,
+      email: this.userForm.value.email,
+      phone: this.userForm.value.phone,
+      childName: this.parentForm.value.childName
+    };
+
+    this.parentService.registerParent(user, parent, this.photoFile).subscribe({
+      next: (res) => {
+        this.message = res.Message || 'Parent registered successfully ✅';
+        console.log(res);
+        this.userForm.reset();
+        this.parentForm.reset();
+        this.photoFile = undefined!;
+      },
+      error: (err) => {
+        this.message = 'Registration failed ❌ ' + (err.error?.Message || err.message);
+        console.error(err);
+      }
+    });
   }
 }
