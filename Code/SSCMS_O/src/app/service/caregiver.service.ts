@@ -15,10 +15,9 @@ export class CaregiverService {
 
   constructor(
     private http: HttpClient,
-     private authService: AuthService,
+    private authService: AuthService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }
-
 
   registerCaregiver(user: any, caregiver: any, photo: File): Observable<any> {
     const formData = new FormData();
@@ -36,11 +35,20 @@ export class CaregiverService {
       const token = localStorage.getItem('authToken');
       if (token) {
         headers = headers.set('Authorization', 'Bearer ' + token);
-        console.log(headers);
       }
     }
 
-    return this.http.get<Caregiver>(`${environment.apiBaseUrl}/caregiver/profile`, { headers });
+    return this.http.get<Caregiver>(`${this.baseUrl}profile`, { headers });
+  }
+
+  // ✅ NEW: Get caregivers by category
+  getCaregiversByCategory(category: string): Observable<Caregiver[]> {
+    return this.http.get<Caregiver[]>(`${this.baseUrl}category/${category}`);
+  }
+
+  // ✅ NEW: Get all caregivers
+  getAllCaregivers(): Observable<Caregiver[]> {
+    return this.http.get<Caregiver[]>(`${this.baseUrl}all`);
   }
   
 }

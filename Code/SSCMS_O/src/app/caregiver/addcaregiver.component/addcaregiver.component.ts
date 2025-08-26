@@ -15,9 +15,11 @@ export class AddcaregiverComponent {
   photoFile!: File;
   message: string = '';
 
-
+  // ✅ Category options
+  categories: string[] = ['Cat', 'Baby', 'Adult'];
 
   constructor(private fb: FormBuilder, private caregiverService: CaregiverService) {
+    // User form
     this.userForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -25,13 +27,14 @@ export class AddcaregiverComponent {
       password: ['', Validators.required]
     });
 
+    // Caregiver form (updated with category)
     this.caregiverForm = this.fb.group({
       gender: ['', Validators.required],
       address: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
       skill: ['', Validators.required],
-      experience: ['', Validators.required]
-
+      experience: ['', Validators.required],
+      category: ['', Validators.required] // ✅ added category
     });
   }
 
@@ -57,7 +60,7 @@ export class AddcaregiverComponent {
       email: this.userForm.value.email,
       phone: this.userForm.value.phone,
       password: this.userForm.value.password,
-      role: 'SERVICE_PROVIDER' // adjust if necessary
+      role: 'SERVICE_PROVIDER'
     };
 
     const caregiver = {
@@ -68,7 +71,8 @@ export class AddcaregiverComponent {
       address: this.caregiverForm.value.address,
       dateOfBirth: this.caregiverForm.value.dateOfBirth,
       skill: this.caregiverForm.value.skill,
-      experience: this.caregiverForm.value.experience
+      experience: this.caregiverForm.value.experience,
+      category: this.caregiverForm.value.category // ✅ include category
     };
 
     this.caregiverService.registerCaregiver(user, caregiver, this.photoFile).subscribe({
