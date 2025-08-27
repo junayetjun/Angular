@@ -19,6 +19,7 @@ export class CaregiverService {
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
+  // Register caregiver with user, caregiver JSON, and photo file
   registerCaregiver(user: any, caregiver: any, photo: File): Observable<any> {
     const formData = new FormData();
     formData.append('user', JSON.stringify(user));
@@ -28,6 +29,7 @@ export class CaregiverService {
     return this.http.post(this.baseUrl, formData);
   }
 
+  // Get logged-in caregiver profile with auth token header
   getProfile(): Observable<Caregiver> {
     let headers = new HttpHeaders();
 
@@ -41,12 +43,12 @@ export class CaregiverService {
     return this.http.get<Caregiver>(`${this.baseUrl}profile`, { headers });
   }
 
-  // ✅ NEW: Get caregivers by category
+  // Get caregivers filtered by category
   getCaregiversByCategory(category: string): Observable<Caregiver[]> {
     return this.http.get<Caregiver[]>(`${this.baseUrl}category/${category}`);
   }
 
-  // ✅ NEW: Get all caregivers
+  // Get all caregivers
   getAllCaregivers(): Observable<Caregiver[]> {
     return this.http.get<Caregiver[]>(`${this.baseUrl}all`);
   }

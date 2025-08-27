@@ -9,17 +9,15 @@ import { CaregiverService } from '../../service/caregiver.service';
   styleUrl: './addcaregiver.component.css'
 })
 export class AddcaregiverComponent {
-
-  userForm: FormGroup;
+userForm: FormGroup;
   caregiverForm: FormGroup;
   photoFile!: File;
   message: string = '';
 
-  // ✅ Category options
+  // Multi-select category options
   categories: string[] = ['Cat', 'Baby', 'Adult'];
 
   constructor(private fb: FormBuilder, private caregiverService: CaregiverService) {
-    // User form
     this.userForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -27,14 +25,13 @@ export class AddcaregiverComponent {
       password: ['', Validators.required]
     });
 
-    // Caregiver form (updated with category)
     this.caregiverForm = this.fb.group({
       gender: ['', Validators.required],
       address: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
       skill: ['', Validators.required],
       experience: ['', Validators.required],
-      category: ['', Validators.required] // ✅ added category
+      categories: [[], Validators.required]  // Now an array of strings for multi-select
     });
   }
 
@@ -50,11 +47,13 @@ export class AddcaregiverComponent {
       this.message = 'Please upload a photo.';
       return;
     }
+
     if (this.userForm.invalid || this.caregiverForm.invalid) {
       this.message = 'Please fill out all required fields.';
       return;
     }
 
+    // Prepare user object
     const user = {
       name: this.userForm.value.name,
       email: this.userForm.value.email,
@@ -63,6 +62,7 @@ export class AddcaregiverComponent {
       role: 'SERVICE_PROVIDER'
     };
 
+    // Prepare caregiver object with categories as string array
     const caregiver = {
       name: this.userForm.value.name,
       email: this.userForm.value.email,
@@ -72,8 +72,11 @@ export class AddcaregiverComponent {
       dateOfBirth: this.caregiverForm.value.dateOfBirth,
       skill: this.caregiverForm.value.skill,
       experience: this.caregiverForm.value.experience,
-      category: this.caregiverForm.value.category // ✅ include category
+      categories: this.caregiverForm.value.categories  // Array of strings (e.g. ['Baby', 'Cat'])
     };
+
+    // Debug log to see the exact payload sent to backend
+    console.log('Sending caregiver:', JSON.stringify(caregiver));
 
     this.caregiverService.registerCaregiver(user, caregiver, this.photoFile).subscribe({
       next: res => {
@@ -87,6 +90,5 @@ export class AddcaregiverComponent {
       }
     });
   }
-
   
 }

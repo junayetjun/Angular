@@ -31,20 +31,20 @@
                 <input type="password" class="form-control form-control-lg" formControlName="password" placeholder="Create password" />
               </div>
               <!-- Photo Upload Section -->
-    <div class="card mt-4 border-0 bg-light rounded-3">
-      <div class="card-body">
-        <h4 class="card-title text-primary mb-3 pb-2 border-bottom border-primary border-2">
-          <i class="bi bi-upload me-2"></i>Profile Photo
-        </h4>
-        <div class="mb-3">
-          <label class="form-label fw-semibold">Upload Photo</label>
-          <div class="position-relative">
-            <input type="file" (change)="onPhotoSelected($event)" class="form-control form-control-lg" />
-            <div class="form-text text-muted">JPG, PNG or GIF (MAX. 5MB)</div>
-          </div>
-        </div>
-      </div>
-    </div>
+              <div class="card mt-4 border-0 bg-light rounded-3">
+                <div class="card-body">
+                  <h4 class="card-title text-primary mb-3 pb-2 border-bottom border-primary border-2">
+                    <i class="bi bi-upload me-2"></i>Profile Photo
+                  </h4>
+                  <div class="mb-3">
+                    <label class="form-label fw-semibold">Upload Photo</label>
+                    <div class="position-relative">
+                      <input type="file" (change)="onPhotoSelected($event)" class="form-control form-control-lg" />
+                      <div class="form-text text-muted">JPG, PNG or GIF (MAX. 5MB)</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </form>
           </div>
         </div>
@@ -83,25 +83,21 @@
                 <label class="form-label fw-semibold">Address</label>
                 <input type="text" class="form-control form-control-lg" formControlName="address" placeholder="Enter full address" />
               </div>
-              <!-- ✅ Category Dropdown -->
+              <!-- Category Multi-Select Dropdown -->
               <div class="mb-3">
                 <label class="form-label fw-semibold">Category</label>
-                <select class="form-select form-select-lg" formControlName="category">
-                  <option value="">Select Category</option>
+                <select class="form-select form-select-lg" formControlName="categories" multiple>
                   <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
                 </select>
-                <div *ngIf="caregiverForm.controls['category'].touched && caregiverForm.controls['category'].invalid" class="text-danger mt-1">
+                <div *ngIf="caregiverForm.controls['categories'].touched && caregiverForm.controls['categories'].invalid" class="text-danger mt-1">
                   Category is required.
                 </div>
               </div>
-              <!-- ✅ End Category Dropdown -->
             </form>
           </div>
         </div>
       </div>
     </div>
-
-    
 
     <!-- Submit Button -->
     <div class="d-grid mt-4">
@@ -114,18 +110,16 @@
     <div class="mt-4" *ngIf="message">
       <div class="alert d-flex align-items-center" 
            [ngClass]="{
-             'alert-success': message.includes('success'),
-             'alert-danger': message.includes('fail') || message.includes('Failed')
+             'alert-success': message.toLowerCase().includes('success'),
+             'alert-danger': message.toLowerCase().includes('fail') || message.toLowerCase().includes('failed')
            }">
         <i class="bi me-2" 
            [ngClass]="{
-             'bi-check-circle-fill': message.includes('success'),
-             'bi-exclamation-triangle-fill': message.includes('fail') || message.includes('Failed')
+             'bi-check-circle-fill': message.toLowerCase().includes('success'),
+             'bi-exclamation-triangle-fill': message.toLowerCase().includes('fail') || message.toLowerCase().includes('failed')
            }"></i>
         <div>{{ message }}</div>
       </div>
     </div>
   </div>
 </div>
-
-
