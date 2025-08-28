@@ -4,7 +4,7 @@
       <h2 class="text-primary fw-bold">Caregiver Registration</h2>
       <p class="text-muted">Please fill all fields to complete registration</p>
     </div>
-    
+
     <div class="row g-4">
       <!-- User Form Section -->
       <div class="col-md-6">
@@ -20,7 +20,8 @@
               </div>
               <div class="mb-3">
                 <label class="form-label fw-semibold">Email Address</label>
-                <input type="email" class="form-control form-control-lg" formControlName="email" placeholder="Enter email" />
+                <input type="email" class="form-control form-control-lg" formControlName="email"
+                  placeholder="Enter email" />
               </div>
               <div class="mb-3">
                 <label class="form-label fw-semibold">Phone Number</label>
@@ -28,7 +29,8 @@
               </div>
               <div class="mb-3">
                 <label class="form-label fw-semibold">Password</label>
-                <input type="password" class="form-control form-control-lg" formControlName="password" placeholder="Create password" />
+                <input type="password" class="form-control form-control-lg" formControlName="password"
+                  placeholder="Create password" />
               </div>
               <!-- Photo Upload Section -->
               <div class="card mt-4 border-0 bg-light rounded-3">
@@ -73,26 +75,25 @@
               </div>
               <div class="mb-3">
                 <label class="form-label fw-semibold">Skills</label>
-                <input class="form-control form-control-lg" formControlName="skill" placeholder="e.g., Nursing, Physiotherapy" />
+                <input class="form-control form-control-lg" formControlName="skill"
+                  placeholder="e.g., Nursing, Physiotherapy" />
               </div>
               <div class="mb-3">
                 <label class="form-label fw-semibold">Experience</label>
-                <textarea class="form-control form-control-lg" formControlName="experience" rows="3" placeholder="Describe your experience"></textarea>
+                <textarea class="form-control form-control-lg" formControlName="experience" rows="3"
+                  placeholder="Describe your experience"></textarea>
               </div>
               <div class="mb-3">
                 <label class="form-label fw-semibold">Address</label>
-                <input type="text" class="form-control form-control-lg" formControlName="address" placeholder="Enter full address" />
+                <input type="text" class="form-control form-control-lg" formControlName="address"
+                  placeholder="Enter full address" />
               </div>
               <!-- Category Multi-Select Dropdown -->
-              <div class="mb-3">
-                <label class="form-label fw-semibold">Category</label>
-                <select class="form-select form-select-lg" formControlName="categories" multiple>
-                  <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
-                </select>
-                <div *ngIf="caregiverForm.controls['categories'].touched && caregiverForm.controls['categories'].invalid" class="text-danger mt-1">
-                  Category is required.
-                </div>
-              </div>
+              <label for="categories">Select Categories:</label>
+              <select formControlName="categories" multiple>
+                <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+              </select>
+
             </form>
           </div>
         </div>
@@ -108,13 +109,11 @@
 
     <!-- Success/Error Message -->
     <div class="mt-4" *ngIf="message">
-      <div class="alert d-flex align-items-center" 
-           [ngClass]="{
+      <div class="alert d-flex align-items-center" [ngClass]="{
              'alert-success': message.toLowerCase().includes('success'),
              'alert-danger': message.toLowerCase().includes('fail') || message.toLowerCase().includes('failed')
            }">
-        <i class="bi me-2" 
-           [ngClass]="{
+        <i class="bi me-2" [ngClass]="{
              'bi-check-circle-fill': message.toLowerCase().includes('success'),
              'bi-exclamation-triangle-fill': message.toLowerCase().includes('fail') || message.toLowerCase().includes('failed')
            }"></i>

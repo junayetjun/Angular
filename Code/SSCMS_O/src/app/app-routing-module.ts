@@ -6,8 +6,9 @@ import { ParentRegistration } from './parent/parent-registration/parent-registra
 import { Caregiverprofile } from './caregiver/caregiverprofile/caregiverprofile';
 
 const routes: Routes = [
-  {path:'', component: Caregiverprofile},
+  {path:'caregiverprofile', component: Caregiverprofile},
   {path:'addcare', component: AddcaregiverComponent},
+  {path:'', component: AddcaregiverComponent},
   {path:'addcategory', component: CategoryComponent},
   {path:'addparent', component: ParentRegistration},
 ];

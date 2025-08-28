@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CaregiverService } from '../../service/caregiver.service';
+import { Caregiver, CaregiverCategory } from '../../model/caregiver.model';
 
 @Component({
   selector: 'app-addcaregiver.component',
@@ -9,13 +10,13 @@ import { CaregiverService } from '../../service/caregiver.service';
   styleUrl: './addcaregiver.component.css'
 })
 export class AddcaregiverComponent {
-userForm: FormGroup;
+ userForm: FormGroup;
   caregiverForm: FormGroup;
   photoFile!: File;
   message: string = '';
 
-  // Multi-select category options
-  categories: string[] = ['Cat', 'Baby', 'Adult'];
+  // Use type-safe categories
+  categories: CaregiverCategory[] = ['Cat', 'Baby', 'Adult'];
 
   constructor(private fb: FormBuilder, private caregiverService: CaregiverService) {
     this.userForm = this.fb.group({
@@ -31,7 +32,7 @@ userForm: FormGroup;
       dateOfBirth: ['', Validators.required],
       skill: ['', Validators.required],
       experience: ['', Validators.required],
-      categories: [[], Validators.required]  // Now an array of strings for multi-select
+      categories: [[], Validators.required] // Multi-select
     });
   }
 
@@ -53,7 +54,7 @@ userForm: FormGroup;
       return;
     }
 
-    // Prepare user object
+    // Create user object
     const user = {
       name: this.userForm.value.name,
       email: this.userForm.value.email,
@@ -62,20 +63,20 @@ userForm: FormGroup;
       role: 'SERVICE_PROVIDER'
     };
 
-    // Prepare caregiver object with categories as string array
-    const caregiver = {
-      name: this.userForm.value.name,
-      email: this.userForm.value.email,
-      phone: this.userForm.value.phone,
-      gender: this.caregiverForm.value.gender,
-      address: this.caregiverForm.value.address,
-      dateOfBirth: this.caregiverForm.value.dateOfBirth,
-      skill: this.caregiverForm.value.skill,
-      experience: this.caregiverForm.value.experience,
-      categories: this.caregiverForm.value.categories  // Array of strings (e.g. ['Baby', 'Cat'])
-    };
+    // Create caregiver object (partial)
+    const caregiver: Partial<Caregiver> = {
+  name: this.userForm.value.name,
+  email: this.userForm.value.email,
+  phone: this.userForm.value.phone,
+  gender: this.caregiverForm.value.gender,
+  address: this.caregiverForm.value.address,
+  dateOfBirth: this.caregiverForm.value.dateOfBirth,
+  skill: this.caregiverForm.value.skill,
+  experience: this.caregiverForm.value.experience,
+  categories: this.caregiverForm.value.categories // ✅ Plural
+};
 
-    // Debug log to see the exact payload sent to backend
+
     console.log('Sending caregiver:', JSON.stringify(caregiver));
 
     this.caregiverService.registerCaregiver(user, caregiver, this.photoFile).subscribe({

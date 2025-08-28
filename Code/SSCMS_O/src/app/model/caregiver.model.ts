@@ -1,3 +1,5 @@
+export type CaregiverCategory = 'Cat' | 'Baby' | 'Adult';
+
 export interface Caregiver {
   id: number;
   name: string;
@@ -5,9 +7,9 @@ export interface Caregiver {
   phone: string;
   gender: string;
   address: string;
-  dateOfBirth: string; // or Date, depending on your API format
+  dateOfBirth: string;
   photo: string;
   skill: string;
   experience: string;
-  category: string; // 'Cat', 'Baby', 'Adult'
+  categories: CaregiverCategory[];  // ✅ Correct key and value type
 }
