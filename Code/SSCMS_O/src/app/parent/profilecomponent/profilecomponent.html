@@ -1,0 +1,23 @@
+<div *ngIf="loading" class="text-center">
+  <h3>Loading...</h3>
+</div>
+
+<div *ngIf="!loading && profile">
+  <h2 class="text-center mb-4">Profile Information</h2>
+
+  <div class="profile-info text-center">
+    <!-- Display Profile Photo if exists -->
+    <img *ngIf="profile.photoUrl" [src]="'data:image/jpeg;base64,' + profile.photoUrl" class="img-fluid rounded-circle mb-4" style="width: 150px; height: 150px;" alt="Profile Photo" />
+
+    <h4>{{ profile.name }}</h4>
+    <p>{{ profile.email }}</p>
+    <p>{{ profile.phone }}</p>
+    <p>{{ profile.childName }}</p>
+  </div>
+
+  <div *ngIf="message" class="alert mt-3" [ngClass]="{'alert-danger': message.includes('fail'), 'alert-success': message.includes('success')}">
+    {{ message }}
+  </div>
+
+  <button class="btn btn-danger mt-3" (click)="logout()">Logout</button>
+</div>

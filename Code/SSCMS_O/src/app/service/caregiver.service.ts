@@ -52,5 +52,18 @@ export class CaregiverService {
   getAllCaregivers(): Observable<Caregiver[]> {
     return this.http.get<Caregiver[]>(`${this.baseUrl}all`);
   }
+  // Update caregiver profile
+  updateProfile(caregiver: Caregiver): Observable<Caregiver> {
+    let headers = new HttpHeaders();
+
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        headers = headers.set('Authorization', 'Bearer ' + token);
+      }
+    }
+
+    return this.http.put<Caregiver>(`${this.baseUrl}profile`, caregiver, { headers });
+  }
   
 }

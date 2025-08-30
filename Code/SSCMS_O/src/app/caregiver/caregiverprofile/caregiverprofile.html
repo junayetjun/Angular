@@ -1,5 +1,125 @@
+
+<div class="container mt-5">
+  <div class="card p-4 shadow-lg rounded-3 border-0">
+    <div class="text-center mb-4">
+      <h2 class="text-primary fw-bold">Caregiver Profile</h2>
+      <p class="text-muted">Manage your profile information</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Profile Information Section -->
+      <div class="col-md-6">
+        <div class="card h-100 border-0 bg-light rounded-3">
+          <div class="card-body">
+            <h4 class="card-title text-primary mb-3 pb-2 border-bottom border-primary border-2">
+              <i class="bi bi-person-circle me-2"></i>User Information
+            </h4>
+
+            <!-- Displaying Caregiver Profile Information -->
+            <div *ngIf="!isEditMode">
+              <p><strong>Name:</strong> {{ caregiver?.name }}</p>
+              <p><strong>Email:</strong> {{ caregiver?.email }}</p>
+              <p><strong>Phone:</strong> {{ caregiver?.phone }}</p>
+              <p><strong>Gender:</strong> {{ caregiver?.gender }}</p>
+              <p><strong>Address:</strong> {{ caregiver?.address }}</p>
+              <p><strong>Date of Birth:</strong> {{ caregiver?.dateOfBirth | date }}</p>
+              <p><strong>Experience:</strong> {{ caregiver?.experience }}</p>
+              <p><strong>Skills:</strong> {{ caregiver?.skill }}</p>
+              <!-- <p><strong>Categories:</strong> {{ caregiver?.categories.join(', ') }}</p> -->
+              <div *ngIf="caregiver?.photo">
+                <h5>Profile Photo</h5>
+                <img [src]="caregiver?.photo" alt="Caregiver Photo" class="img-fluid rounded-circle" width="150" />
+              </div>
+            </div>
+
+            <!-- Edit Profile Form -->
+            <!-- <div *ngIf="isEditMode">
+              <form #profileForm="ngForm">
+                <div class="mb-3">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" class="form-control" [(ngModel)]="caregiver.name" name="name" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" class="form-control" [(ngModel)]="caregiver.email" name="email" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Phone Number</label>
+                  <input type="text" class="form-control" [(ngModel)]="caregiver.phone" name="phone" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Gender</label>
+                  <select class="form-select" [(ngModel)]="caregiver.gender" name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Address</label>
+                  <input type="text" class="form-control" [(ngModel)]="caregiver.address" name="address" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Date of Birth</label>
+                  <input type="date" class="form-control" [(ngModel)]="caregiver.dateOfBirth" name="dateOfBirth" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Skills</label>
+                  <input type="text" class="form-control" [(ngModel)]="caregiver.skill" name="skill" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Experience</label>
+                  <textarea class="form-control" [(ngModel)]="caregiver.experience" name="experience" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Select Categories</label>
+                  <select class="form-select" multiple [(ngModel)]="caregiver.categories" name="categories" required>
+                    <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Profile Photo</label>
+                  <input type="file" class="form-control" (change)="onPhotoSelected($event)" />
+                  <div *ngIf="photoFile" class="mt-2">
+                    <p>Selected Photo: {{ photoFile.name }}</p>
+                  </div>
+                </div>
+              </form>
+            </div> -->
+
+            <!-- Buttons for Editing and Saving -->
+            <div class="d-flex justify-content-between mt-4">
+              <button *ngIf="!isEditMode" class="btn btn-warning" (click)="toggleEditMode()">Edit Profile</button>
+              <button *ngIf="isEditMode" class="btn btn-success" (click)="updateProfile()">Save Changes</button>
+              <button *ngIf="!isEditMode" class="btn btn-danger" (click)="logout()">Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success/Error Message -->
+    <div *ngIf="message" class="mt-4">
+      <div class="alert" [ngClass]="{
+        'alert-success': message.toLowerCase().includes('success'),
+        'alert-danger': message.toLowerCase().includes('fail') || message.toLowerCase().includes('failed')
+      }">
+        <i class="bi" [ngClass]="{
+          'bi-check-circle-fill': message.toLowerCase().includes('success'),
+          'bi-exclamation-triangle-fill': message.toLowerCase().includes('fail') || message.toLowerCase().includes('failed')
+        }"></i>
+        <div>{{ message }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <!-- Start the Practice -->
- <div *ngIf="caregiver; else loading">
+ <!-- <div *ngIf="caregiver; else loading">
   <h2>Caregiver Profile</h2>
 
   <img *ngIf="caregiver.photo" [src]="'/uploads/' + caregiver.photo" alt="Caregiver Photo" width="200" />
@@ -12,7 +132,7 @@
   <p><strong>Date of Birth:</strong> {{ caregiver.dateOfBirth | date }}</p>
   <p><strong>Skill:</strong> {{ caregiver.skill }}</p>
   <p><strong>Experience:</strong> {{ caregiver.experience }}</p>
-  <p><strong>Categories:</strong> {{ caregiver.categories.join(', ') }}</p>
+  <p><strong>Categories:</strong> {{ caregiver.categories.join(', ') }}</p> -->
 
   <!-- <div *ngIf="caregiver.educations?.length">
     <h3>Educations</h3>
@@ -22,13 +142,13 @@
       </li>
     </ul>
   </div> -->
-</div>
+<!-- </div> -->
 
-<ng-template #loading>
+<!-- <ng-template #loading>
   <p>Loading caregiver profile...</p>
 </ng-template>
 
-<p *ngIf="message" class="error">{{ message }}</p>
+<p *ngIf="message" class="error">{{ message }}</p> -->
 
 <!-- End the Practice -->
 

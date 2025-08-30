@@ -2,7 +2,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { environment } from '../../environments/envirronment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth-service';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
@@ -30,22 +30,29 @@ export class ParentService {
     return this.http.post(this.baseUrl, formData);
   }
 
-  // 2️⃣ Get All Employers
+  // 2️⃣ Get All Parents
   getAllParents(): Observable<any[]> {
     return this.http.get<any[]>(this.baseUrl + 'all');
   }
 
-  getProfile(): Observable<any> {
-    let headers = new HttpHeaders();
+ getProfile(): Observable<any> {
+  let headers = new HttpHeaders();
 
-    if (isPlatformBrowser(this.platformId)) {
-      const token = localStorage.getItem('authToken');
-      if (token) {
-        headers = headers.set('Authorization', 'Bearer ' + token);
-        console.log(headers);
-      }
+  if (isPlatformBrowser(this.platformId)) {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      headers = headers.set('Authorization', 'Bearer ' + token);
     }
-    return this.http.get<any>(this.baseUrl + 'profile', { headers });
   }
+
+  return this.http.get<any>(this.baseUrl + 'profile', { headers }).pipe(
+    catchError((error) => {
+      console.error('Error fetching profile:', error);  // Log the error for debugging
+      throw error;
+    })
+  );
+}
+
+
 
 }

@@ -14,6 +14,8 @@ import { LanguageService } from '../../service/language.service';
 import { HobbyService } from '../../service/hobby.service';
 import jsPDF from 'jspdf';
 import { Caregiver } from '../../model/caregiver.model';
+import { AuthService } from '../../service/auth-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-caregiverprofile',
@@ -25,21 +27,71 @@ export class Caregiverprofile {
 
   //start the practice
 
-  caregiver!: Caregiver;
+  caregiver: Caregiver | null = null;
+  loading: boolean = true;
   message: string = '';
+  isEditMode: boolean = false;
 
-  constructor(private caregiverService: CaregiverService) { }
+  constructor(
+    private caregiverService: CaregiverService,
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.loadCaregiverProfile();
+  }
+
+  // Load caregiver profile when the component is initialized
+  loadCaregiverProfile(): void {
+    const token = this.authService.getToken();
+
+    if (!token || this.authService.isTokenExpired(token)) {
+      this.authService.logout();
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    // Fetch the profile data using the CaregiverService
     this.caregiverService.getProfile().subscribe({
       next: (data) => {
         this.caregiver = data;
+        this.loading = false;
       },
       error: (err) => {
-        this.message = 'Failed to load caregiver profile';
+        this.message = 'Failed to load profile. Please try again later.';
+        this.loading = false;
         console.error(err);
       }
     });
+  }
+
+  // Enable editing of the profile
+  toggleEditMode(): void {
+    this.isEditMode = !this.isEditMode;
+  }
+
+  // Update caregiver profile
+  updateProfile(): void {
+    if (!this.caregiver) return;
+
+    this.caregiverService.updateProfile(this.caregiver).subscribe({
+      next: (data) => {
+        this.caregiver = data;
+        this.isEditMode = false;
+        this.message = 'Profile updated successfully!';
+      },
+      error: (err) => {
+        this.message = 'Failed to update profile. Please try again later.';
+        console.error(err);
+      }
+    });
+  }
+
+  // Logout the caregiver
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
   //End the practice
 

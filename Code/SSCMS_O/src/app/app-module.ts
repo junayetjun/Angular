@@ -13,6 +13,10 @@ import { Header } from './layout/header/header';
 import { CategoryComponent } from './category/category.component/category.component';
 import { ParentRegistration } from './parent/parent-registration/parent-registration';
 import { Caregiverprofile } from './caregiver/caregiverprofile/caregiverprofile';
+import { ParentList } from './parent/parent-list/parent-list';
+import { Profilecomponent } from './parent/profilecomponent/profilecomponent';
+import { Login } from './auth/login/login';
+import { CaregiverListComponent } from './caregiver/caregiver-list.component/caregiver-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { Caregiverprofile } from './caregiver/caregiverprofile/caregiverprofile'
     Header,
     CategoryComponent,
     ParentRegistration,
-    Caregiverprofile
+    Caregiverprofile,
+    ParentList,
+    Profilecomponent,
+    Login,
+    CaregiverListComponent
   ],
   imports: [
     BrowserModule,
