@@ -15,6 +15,7 @@ export class Login {
   loginForm: FormGroup;
   message: string = '';
   isLoading = false;
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -41,7 +42,7 @@ export class Login {
     this.authService.login(email, password).subscribe({
       next: (response) => {
         this.isLoading = false;  // Reset loading state
-        this.router.navigate(['/parentprofile']);  // Navigate to profile page upon successful login
+        this.router.navigate(['/caregiverprofile']);  // Navigate to profile page upon successful login
       },
       error: (error) => {
         this.isLoading = false;  // Reset loading state
@@ -50,5 +51,46 @@ export class Login {
       }
     });
   }
+
+  //  onSubmit(): void {
+  //   if (this.loginForm.invalid) {
+  //     this.errorMessage = 'Please fill in all required fields correctly.';
+  //     return;
+  //   }
+
+  //   const userDetails = this.loginForm.value;
+
+  //   this.authService.login(userDetails).subscribe({
+  //     next: (res) => {
+  //       console.log('User logged in Successfully:', res);
+
+  //       this.authService.storeToken(res.token);
+
+  //       const role = this.authService.getUserRole();
+  //       console.log('User role:', role);
+
+  //       if (role === 'admin') {
+  //         this.router.navigate(['/adminprofile']);
+  //       }
+  //       else if (role === 'user') {
+  //         this.router.navigate(['/userprofile']);
+  //       }
+  //       else if (role === 'viewer') {
+  //         this.router.navigate(['/userprofile']);
+  //       }
+  //       else {
+  //         this.errorMessage = 'Unknown user role.';
+  //       }
+  //       this.loginForm.reset();
+  //     },
+  //     error: (err) => {
+  //       console.error('Error leogging in: ', err);
+  //       this.errorMessage = 'Invalid emair or password';
+  //     }
+  //   });
+
+
+
+  // }
 
 }

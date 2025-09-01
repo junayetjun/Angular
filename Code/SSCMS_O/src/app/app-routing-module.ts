@@ -8,6 +8,7 @@ import { ParentList } from './parent/parent-list/parent-list';
 import { Profilecomponent } from './parent/profilecomponent/profilecomponent';
 import { Login } from './auth/login/login';
 import { CaregiverListComponent } from './caregiver/caregiver-list.component/caregiver-list.component';
+import { Home } from './home/home';
 
 const routes: Routes = [
   {path:'caregiverprofile', component: Caregiverprofile},
@@ -18,7 +19,9 @@ const routes: Routes = [
   {path:'parentprofile', component: Profilecomponent},
   {path:'login', component: Login},
   {path:'caregiverlist', component: CaregiverListComponent},
-  {path:'', component: Caregiverprofile},
+  // {path:'', component: Caregiverprofile},
+  {path:'', component: Home},
+  {path:'home', component: Home},
 ];
 
 @NgModule({

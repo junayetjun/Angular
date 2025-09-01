@@ -99,7 +99,7 @@ export class AuthService {
 
   // Check if the user is a job seeker
   isJobSeeker(): boolean {
-    return this.getUserRole() === 'JOBSEEKER';
+    return this.getUserRole() === 'SERVICE_PROVIDER';
   }
 
 

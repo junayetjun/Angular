@@ -17,6 +17,7 @@ import { ParentList } from './parent/parent-list/parent-list';
 import { Profilecomponent } from './parent/profilecomponent/profilecomponent';
 import { Login } from './auth/login/login';
 import { CaregiverListComponent } from './caregiver/caregiver-list.component/caregiver-list.component';
+import { Home } from './home/home';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CaregiverListComponent } from './caregiver/caregiver-list.component/car
     ParentList,
     Profilecomponent,
     Login,
-    CaregiverListComponent
+    CaregiverListComponent,
+    Home
   ],
   imports: [
     BrowserModule,
