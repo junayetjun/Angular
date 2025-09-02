@@ -1,160 +1,6 @@
-
-<div class="container mt-5">
-  <div class="card p-4 shadow-lg rounded-3 border-0">
-    <div class="text-center mb-4">
-      <h2 class="text-primary fw-bold">Caregiver Profile</h2>
-      <p class="text-muted">Manage your profile information</p>
-    </div>
-
-    <div class="row g-4">
-      <!-- Profile Information Section -->
-      <div class="col-md-6">
-        <div class="card h-100 border-0 bg-light rounded-3">
-          <div class="card-body">
-            <h4 class="card-title text-primary mb-3 pb-2 border-bottom border-primary border-2">
-              <i class="bi bi-person-circle me-2"></i>User Information
-            </h4>
-
-            <!-- Displaying Caregiver Profile Information -->
-            <div *ngIf="!isEditMode">
-              <p><strong>Name:</strong> {{ caregiver?.name }}</p>
-              <p><strong>Email:</strong> {{ caregiver?.email }}</p>
-              <p><strong>Phone:</strong> {{ caregiver?.phone }}</p>
-              <p><strong>Gender:</strong> {{ caregiver?.gender }}</p>
-              <p><strong>Address:</strong> {{ caregiver?.address }}</p>
-              <p><strong>Date of Birth:</strong> {{ caregiver?.dateOfBirth | date }}</p>
-              <p><strong>Experience:</strong> {{ caregiver?.experience }}</p>
-              <p><strong>Skills:</strong> {{ caregiver?.skill }}</p>
-              <!-- <p><strong>Categories:</strong> {{ caregiver?.categories.join(', ') }}</p> -->
-              <div *ngIf="caregiver?.photo">
-                <h5>Profile Photo</h5>
-                <img [src]="caregiver?.photo" alt="Caregiver Photo" class="img-fluid rounded-circle" width="150" />
-              </div>
-            </div>
-
-            <!-- Edit Profile Form -->
-            <!-- <div *ngIf="isEditMode">
-              <form #profileForm="ngForm">
-                <div class="mb-3">
-                  <label class="form-label">Full Name</label>
-                  <input type="text" class="form-control" [(ngModel)]="caregiver.name" name="name" required />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Email Address</label>
-                  <input type="email" class="form-control" [(ngModel)]="caregiver.email" name="email" required />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Phone Number</label>
-                  <input type="text" class="form-control" [(ngModel)]="caregiver.phone" name="phone" required />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Gender</label>
-                  <select class="form-select" [(ngModel)]="caregiver.gender" name="gender" required>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Address</label>
-                  <input type="text" class="form-control" [(ngModel)]="caregiver.address" name="address" required />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Date of Birth</label>
-                  <input type="date" class="form-control" [(ngModel)]="caregiver.dateOfBirth" name="dateOfBirth" required />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Skills</label>
-                  <input type="text" class="form-control" [(ngModel)]="caregiver.skill" name="skill" required />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Experience</label>
-                  <textarea class="form-control" [(ngModel)]="caregiver.experience" name="experience" rows="3" required></textarea>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Select Categories</label>
-                  <select class="form-select" multiple [(ngModel)]="caregiver.categories" name="categories" required>
-                    <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-                  </select>
-                </div>
-
-                <div class="mb-3">
-                  <label class="form-label">Profile Photo</label>
-                  <input type="file" class="form-control" (change)="onPhotoSelected($event)" />
-                  <div *ngIf="photoFile" class="mt-2">
-                    <p>Selected Photo: {{ photoFile.name }}</p>
-                  </div>
-                </div>
-              </form>
-            </div> -->
-
-            <!-- Buttons for Editing and Saving -->
-            <div class="d-flex justify-content-between mt-4">
-              <button *ngIf="!isEditMode" class="btn btn-warning" (click)="toggleEditMode()">Edit Profile</button>
-              <button *ngIf="isEditMode" class="btn btn-success" (click)="updateProfile()">Save Changes</button>
-              <button *ngIf="!isEditMode" class="btn btn-danger" (click)="logout()">Logout</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Success/Error Message -->
-    <div *ngIf="message" class="mt-4">
-      <div class="alert" [ngClass]="{
-        'alert-success': message.toLowerCase().includes('success'),
-        'alert-danger': message.toLowerCase().includes('fail') || message.toLowerCase().includes('failed')
-      }">
-        <i class="bi" [ngClass]="{
-          'bi-check-circle-fill': message.toLowerCase().includes('success'),
-          'bi-exclamation-triangle-fill': message.toLowerCase().includes('fail') || message.toLowerCase().includes('failed')
-        }"></i>
-        <div>{{ message }}</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-<!-- Start the Practice -->
- <!-- <div *ngIf="caregiver; else loading">
-  <h2>Caregiver Profile</h2>
-
-  <img *ngIf="caregiver.photo" [src]="'/uploads/' + caregiver.photo" alt="Caregiver Photo" width="200" />
-
-  <p><strong>Name:</strong> {{ caregiver.name }}</p>
-  <p><strong>Email:</strong> {{ caregiver.email }}</p>
-  <p><strong>Phone:</strong> {{ caregiver.phone }}</p>
-  <p><strong>Gender:</strong> {{ caregiver.gender }}</p>
-  <p><strong>Address:</strong> {{ caregiver.address }}</p>
-  <p><strong>Date of Birth:</strong> {{ caregiver.dateOfBirth | date }}</p>
-  <p><strong>Skill:</strong> {{ caregiver.skill }}</p>
-  <p><strong>Experience:</strong> {{ caregiver.experience }}</p>
-  <p><strong>Categories:</strong> {{ caregiver.categories.join(', ') }}</p> -->
-
-  <!-- <div *ngIf="caregiver.educations?.length">
-    <h3>Educations</h3>
-    <ul>
-      <li *ngFor="let edu of caregiver.educations">
-        {{ edu.degree }} - {{ edu.institution }} ({{ edu.year }})
-      </li>
-    </ul>
-  </div> -->
-<!-- </div> -->
-
-<!-- <ng-template #loading>
-  <p>Loading caregiver profile...</p>
-</ng-template>
-
-<p *ngIf="message" class="error">{{ message }}</p> -->
-
-<!-- End the Practice -->
-
-
-<!-- <div *ngIf="caregiver" class="container py-5">
-  <div class="card p-4">
+<div *ngIf="caregiver" class="container py-5 ">
+  <div class="card p-4 card card-soft-mint "
+    style="background: #f4f9fd; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
     <div class="row align-items-center">
       <div class="col-md-3 text-center">
         <img [src]="'http://localhost:8085/images/jobSeeker/'+caregiver.photo" alt="Profile Image" height="150"
@@ -167,545 +13,412 @@
           <div class="col-md-6"><strong>Email:</strong> {{ caregiver.email }}</div>
           <div class="col-md-6"><strong>Phone:</strong> {{ caregiver.phone }}</div>
           <div class="col-md-6"><strong>Address:</strong> {{ caregiver.address }}</div>
-          <div class="col-md-6"><strong>Date of Birth:</strong> </div>
+          <div class="col-md-6"><strong>Date of Birth:</strong>{{ caregiver.dateOfBirth }}</div>
         </div>
       </div>
     </div>
 
-    <button class="btn btn-danger mt-3" (click)="generateCV()">Download CV as PDF</button> -->
+    <button type="button" class="btn btn-sm btn-outline-primary position-absolute top-0 end-0 m-2">
+      Applied Jobs
+    </button>
+
 
     <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Add Education
-    </button> -->
+    </button>
+
     <!-- Add Experience Button -->
-    <!-- <button type="button" class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#experienceModal">
+    <button type="button" class="btn btn-dark mt-3" data-bs-toggle="modal" data-bs-target="#experienceModal">
       Add Experience
     </button>
 
-    <button type="button" class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#extracurricularModal">
-      Add Extracurricular
-    </button>
-    <button type="button" class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#skillModal">
+    <button type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#skillModal">
       Add Skill
     </button>
-    <button type="button" class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#trainingModal">
-      Add Training
-    </button>
+
     <button type="button" class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#referenceModal">
       Add Reference
     </button>
 
-    <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#languageModal">
+    <button class="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#languageModal">
       Add Language
     </button>
 
-    <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#hobbyModal">
+    <button class="btn btn-outline-dark mt-3" data-bs-toggle="modal" data-bs-target="#hobbyModal">
       Add Hobby
     </button>
-
-
-
-
-
   </div>
 
 
-</div> -->
 
 
+  <!--education Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Education</h1>
 
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Education</h1>
-
-
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card p-4 mt-4">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
 
           <form (ngSubmit)="addEducation()">
-            <div class="row mb-2">
-              <div class="col-md-6">
-                <label>Level</label>
-                <input type="text" [(ngModel)]="newEducation.level" name="level" class="form-control" required>
-              </div>
-              <div class="col-md-6">
-                <label>Institute</label>
-                <input type="text" [(ngModel)]="newEducation.institute" name="institute" class="form-control" required>
-              </div>
-              <div class="col-md-6">
-                <label>Result</label>
-                <input type="text" [(ngModel)]="newEducation.result" name="result" class="form-control" required>
-              </div>
-              <div class="col-md-6">
-                <label>Year</label>
-                <input type="text" [(ngModel)]="newEducation.year" name="year" class="form-control" required>
-              </div>
+            <div class="mb-3">
+              <label>Level</label>
+              <input type="text" [(ngModel)]="newEducation.level" name="level" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label>Institute</label>
+              <input type="text" [(ngModel)]="newEducation.institute" name="institute" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label>Result</label>
+              <input type="text" [(ngModel)]="newEducation.result" name="result" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label>Year</label>
+              <input type="text" [(ngModel)]="newEducation.year" name="year" class="form-control" required>
             </div>
             <button type="submit" class="btn btn-primary">Add Education</button>
           </form>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="addEducation()">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-<!-- Add Experience Modal -->
-<!-- <div class="modal fade" id="experienceModal" tabindex="-1" aria-labelledby="experienceModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="experienceModalLabel">Add New Experience</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form (ngSubmit)="addExperience()">
-          <div class="mb-3">
-            <label>Company</label>
-            <input type="text" [(ngModel)]="newExperience.company" name="company" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label>Position</label>
-            <input type="text" [(ngModel)]="newExperience.position" name="position" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label>From Date</label>
-            <input type="date" [(ngModel)]="newExperience.fromDate" name="fromDate" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label>To Date</label>
-            <input type="date" [(ngModel)]="newExperience.toDate" name="toDate" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label>Description</label>
-            <textarea [(ngModel)]="newExperience.description" name="description" class="form-control"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Save Experience</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-<!-- Add Extracurricular Modal -->
-<!-- <div class="modal fade" id="extracurricularModal" tabindex="-1" aria-labelledby="extracurricularModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="extracurricularModalLabel">Add New Extracurricular</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body"> -->
-        <!-- <form (ngSubmit)="addExtracurricular()">
-          <div class="mb-3">
-            <label>Title</label>
-            <input type="text" [(ngModel)]="newExtracurricular.title" name="title" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label>Role</label>
-            <input type="text" [(ngModel)]="newExtracurricular.role" name="role" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label>Description</label>
-            <textarea [(ngModel)]="newExtracurricular.description" name="description" class="form-control"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Save Extracurricular</button>
-        </form> -->
-      <!-- </div>
-    </div>
-  </div>
-</div> -->
-
-
-<!-- Add Skill Modal -->
-<!-- <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="skillModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="skillModalLabel">Add New Skill</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form (ngSubmit)="addSkill()">
-          <div class="mb-3">
-            <label for="skillName" class="form-label">Skill Name</label>
-            <input type="text" id="skillName" [(ngModel)]="newSkill.name" name="name" class="form-control" required />
-          </div>
-          <div class="mb-3">
-            <label for="skillLevel" class="form-label">Level</label>
-            <select id="skillLevel" [(ngModel)]="newSkill.level" name="level" class="form-select" required>
-              <option value="" disabled selected>Select level</option>
-              <option>Beginner</option>
-              <option>Intermediate</option>
-              <option>Expert</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary">Save Skill</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-<!-- Add Training Modal -->
-<!-- <div class="modal fade" id="trainingModal" tabindex="-1" aria-labelledby="trainingModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="trainingModalLabel">Add New Training</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body"> -->
-        <!-- <form (ngSubmit)="addTraining()">
-          <div class="mb-3">
-            <label for="trainingTitle" class="form-label">Title</label>
-            <input type="text" id="trainingTitle" [(ngModel)]="newTraining.title" name="title" class="form-control"
-              required />
-          </div>
-          <div class="mb-3">
-            <label for="trainingInstitute" class="form-label">Institute</label>
-            <input type="text" id="trainingInstitute" [(ngModel)]="newTraining.institute" name="institute"
-              class="form-control" required />
-          </div>
-          <div class="mb-3">
-            <label for="trainingDuration" class="form-label">Duration</label>
-            <input type="text" id="trainingDuration" [(ngModel)]="newTraining.duration" name="duration"
-              class="form-control" required />
-          </div>
-          <div class="mb-3">
-            <label for="trainingDescription" class="form-label">Description</label>
-            <textarea id="trainingDescription" [(ngModel)]="newTraining.description" name="description"
-              class="form-control"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Save Training</button>
-        </form> -->
-      <!-- </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- Add Reference Modal -->
-<!-- <div class="modal fade" id="referenceModal" tabindex="-1" aria-labelledby="referenceModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="referenceModalLabel">Add New Reference</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form (ngSubmit)="addReference()">
-          <div class="mb-3">
-            <label for="referenceName" class="form-label">Name</label>
-            <input type="text" id="referenceName" [(ngModel)]="newReference.name" name="name" class="form-control"
-              required />
-          </div>
-          <div class="mb-3">
-            <label for="referenceContact" class="form-label">Contact</label>
-            <input type="text" id="referenceContact" [(ngModel)]="newReference.contact" name="contact"
-              class="form-control" required />
-          </div>
-          <div class="mb-3">
-            <label for="referenceRelation" class="form-label">Relation</label>
-            <input type="text" id="referenceRelation" [(ngModel)]="newReference.relation" name="relation"
-              class="form-control" required />
-          </div>
-          <button type="submit" class="btn btn-primary">Save Reference</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-<!-- Add Language Modal -->
-<!-- <div class="modal fade" id="languageModal" tabindex="-1" aria-labelledby="languageModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="languageModalLabel">Add New Language</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form (ngSubmit)="addLanguage()">
-          <div class="mb-3">
-            <label for="languageName" class="form-label">Language Name</label>
-            <input type="text" id="languageName" [(ngModel)]="newLanguage.name" name="name" class="form-control"
-              required />
-          </div>
-          <div class="mb-3">
-            <label for="languageProficiency" class="form-label">Proficiency</label>
-            <select id="languageProficiency" [(ngModel)]="newLanguage.proficiency" name="proficiency"
-              class="form-select" required>
-              <option value="" disabled selected>Select proficiency</option>
-              <option>Basic</option>
-              <option>Fluent</option>
-              <option>Native</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary">Save Language</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- Add Hobby Modal -->
-<!-- <div class="modal fade" id="hobbyModal" tabindex="-1" aria-labelledby="hobbyModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="hobbyModalLabel">Add New Hobby</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form (ngSubmit)="addHobby()">
-          <div class="mb-3">
-            <label for="hobbyName" class="form-label">Hobby Name</label>
-            <input type="text" id="hobbyName" [(ngModel)]="newHobby.name" name="name" class="form-control" required />
-          </div>
-          <button type="submit" class="btn btn-primary">Save Hobby</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-
-
-
-
-
-
-<!-- Accordion -->
-<!-- <div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-        aria-expanded="true" aria-controls="collapseOne">
-        Experience
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-
-        <div *ngIf="experiences.length > 0" class="card p-4 mt-4">
-          <h5>Experiences</h5>
-          <div *ngFor="let exp of experiences" class="border-bottom py-2">
-            <div><strong>Company:</strong> {{ exp.company }}</div>
-            <div><strong>Position:</strong> {{ exp.position }}</div>
-            <div><strong>From:</strong> {{ exp.fromDate }}</div>
-            <div><strong>To:</strong> {{ exp.toDate }}</div>
-            <div><strong>Description:</strong> {{ exp.description }}</div>
-            <button class="btn btn-sm btn-danger" (click)="deleteExperience(exp.id)">Delete</button>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-        aria-expanded="false" aria-controls="collapseTwo">
-        Education
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <div *ngIf="educations.length > 0" class="card p-4 mt-4">
-          <h5>Educations</h5>
-          <div *ngFor="let edu of educations" class="border-bottom py-2">
-            <div><strong>Level:</strong> {{ edu.level }}</div>
-            <div><strong>Institute:</strong> {{ edu.institute }}</div>
-            <div><strong>Board:</strong> {{ edu.board }}</div>
-            <div><strong>Result:</strong> {{ edu.result }}</div>
-            <div><strong>Year:</strong> {{ edu.year }}</div>
-            <div> <button class="btn btn-sm btn-danger" (click)="deleteEducation(edu.id)">
-                Delete
-              </button>
-              <a href="" class="btn btn-warning m-2">Edit</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-        aria-expanded="false" aria-controls="collapseThree">
-        Extracurricular
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <ul class="list-group"> -->
-          <!-- <li *ngFor="let ex of extracurriculars"
-            class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">{{ ex.title }}</div>
-              <small class="text-muted">{{ ex.role }}</small>
-              <p class="mb-0 mt-1">{{ ex.description }}</p>
-            </div>
-            <button class="btn btn-sm btn-danger" (click)="deleteExtracurricular(ex.id)">Delete</button>
-          </li> -->
-        <!-- </ul>
-
-      </div>
-    </div>
-  </div> -->
-
-  <!-- <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
-        aria-expanded="false" aria-controls="collapseFour">
-        Skill
-      </button>
-    </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <div *ngIf="skills.length > 0" class="card p-4 mt-4">
-          <h5>Skills</h5>
-          <div *ngFor="let skill of skills" class="border-bottom py-2">
-            <div><strong>Name:</strong> {{ skill.name }}</div>
-            <div><strong>Level:</strong> {{ skill.level }}</div>
-            <button class="btn btn-sm btn-danger" (click)="deleteSkill(skill.id)">Delete</button>
-          </div>
-        </div>
-
-      </div>
     </div>
   </div>
 
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
-        aria-expanded="false" aria-controls="collapseFour">
-        Trining
-      </button>
-    </h2>
-    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingThree"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <div *ngIf="skills.length > 0" class="card p-4 mt-4">
-          <h5>Training</h5>
-          <ul class="list-group"> -->
-            <!-- <li *ngFor="let training of trainings"
-              class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">{{ training.title }}</div>
-                <small class="text-muted">{{ training.institute }}</small>
-                <p class="mb-0 mt-1">
-                  <strong>Duration:</strong> {{ training.duration }}<br />
-                  {{ training.description }}
-                </p>
+  <!-- modal close -->
+
+  <!-- education show -->
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+          aria-expanded="true" aria-controls="collapseTwo">
+          Education
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <div *ngIf="educations.length > 0" class="card p-4 mt-4">
+            <h5>Educations</h5>
+            <div *ngFor="let edu of educations" class="border-bottom py-2">
+              <div><strong>Level:</strong> {{ edu.level }}</div>
+              <div><strong>Institute:</strong> {{ edu.institute }}</div>
+              <div><strong>Board:</strong> {{ edu.board }}</div>
+              <div><strong>Result:</strong> {{ edu.result }}</div>
+              <div><strong>Year:</strong> {{ edu.year }}</div>
+              <div> <button class="btn btn-sm btn-danger" (click)="deleteEducation(edu.id)">
+                  Delete
+                </button>
               </div>
-              <button class="btn btn-sm btn-danger" (click)="deleteTraining(training.id)">Delete</button>
-            </li> -->
-          <!-- </ul>
+            </div>
+          </div>
         </div>
-
       </div>
     </div>
-  </div> -->
-  <!-- <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSix">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix"
-        aria-expanded="false" aria-controls="collapseFour">
-        Regerence
-      </button>
-    </h2>
-    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingThree"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <ul class="list-group">
-          <li *ngFor="let reference of references"
-            class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">{{ reference.name }}</div>
-              <small class="text-muted">{{ reference.contact }}</small>
-              <p class="mb-0 mt-1">{{ reference.relation }}</p>
+    <!-- education show close -->
+
+
+    <!-- Add Experience Modal -->
+    <div class="modal fade" id="experienceModal" tabindex="-1" aria-labelledby="experienceModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="experienceModalLabel">Add New Experience</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="addExperience()">
+              <div class="mb-3">
+                <label>Company</label>
+                <input type="text" [(ngModel)]="newExperience.institution" name="company" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label>Position</label>
+                <input type="text" [(ngModel)]="newExperience.position" name="position" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label>From Date</label>
+                <input type="date" [(ngModel)]="newExperience.fromDate" name="fromDate" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label>To Date</label>
+                <input type="date" [(ngModel)]="newExperience.toDate" name="toDate" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label>Description</label>
+                <textarea [(ngModel)]="newExperience.description" name="description" class="form-control"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Save Experience</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal close -->
+
+    <!-- experience show -->
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            Experience
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+
+            <div *ngIf="experiences.length > 0" class="card p-4 mt-4">
+              <h5>Experiences</h5>
+              <div *ngFor="let exp of experiences" class="border-bottom py-2">
+                <div><strong>Company:</strong> {{ exp.institution }}</div>
+                <div><strong>Position:</strong> {{ exp.position }}</div>
+                <div><strong>From:</strong> {{ exp.fromDate }}</div>
+                <div><strong>To:</strong> {{ exp.toDate }}</div>
+                <div><strong>Description:</strong> {{ exp.description }}</div>
+                <button class="btn btn-sm btn-danger" (click)="deleteExperience(exp.id)">Delete</button>
+              </div>
             </div>
-            <button class="btn btn-sm btn-danger" (click)="deleteReference(reference.id)">Delete</button>
-          </li>
-        </ul>
 
 
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+      <!-- experience show close-->
 
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSeven">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven"
-        aria-expanded="false" aria-controls="collapseFour">
-        Language
-      </button>
-    </h2>
-    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingThree"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <ul class="list-group">
-          <li *ngFor="let language of languages"
-            class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">{{ language.name }}</div>
-              <small class="text-muted">{{ language.proficiency }}</small>
+      <!-- skill modal -->
+      <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="skillModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="skillModalLabel">Add New Skill</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <button class="btn btn-sm btn-danger" (click)="deleteLanguage(language.id)">Delete</button>
-          </li>
-        </ul>
-
-
-
-      </div>
-    </div>
-  </div>
-
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingSeven">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHobby"
-        aria-expanded="false" aria-controls="collapseFour">
-        Hobby
-      </button>
-    </h2>
-    <div id="collapseHobby" class="accordion-collapse collapse" aria-labelledby="headingThree"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <ul class="list-group">
-          <li *ngFor="let hobby of hobbies" class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-              <div class="fw-bold">{{ hobby.name }}</div>
+            <div class="modal-body">
+              <form (ngSubmit)="addSkill()">
+                <div class="mb-3">
+                  <label for="skillName" class="form-label">Skill Name</label>
+                  <input type="text" id="skillName" [(ngModel)]="newSkill.name" name="name" class="form-control"
+                    required />
+                </div>
+                <div class="mb-3">
+                  <label for="skillLevel" class="form-label">Level</label>
+                  <select id="skillLevel" [(ngModel)]="newSkill.level" name="level" class="form-select" required>
+                    <option value="" disabled selected>Select level</option>
+                    <option>Beginner</option>
+                    <option>Intermediate</option>
+                    <option>Expert</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Skill</button>
+              </form>
             </div>
-            <button class="btn btn-sm btn-danger" (click)="deleteHobby(hobby.id)">Delete</button>
-          </li>
-        </ul>
-
-
-
-
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-</div> -->
+      <!-- skill modal close-->
+
+      <!-- skill show -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Skill
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div *ngIf="skills.length > 0" class="card p-4 mt-4">
+              <h5>Skills</h5>
+              <div *ngFor="let skill of skills" class="border-bottom py-2">
+                <div><strong>Name:</strong> {{ skill.name }}</div>
+                <div><strong>Level:</strong> {{ skill.level }}</div>
+                <button class="btn btn-sm btn-danger" (click)="deleteSkill(skill.id)">Delete</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- skill show close -->
+
+      <!-- refference modal -->
+      <div class="modal fade" id="referenceModal" tabindex="-1" aria-labelledby="referenceModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="referenceModalLabel">Add New Refference</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form (ngSubmit)="addReference()">
+                <div class="mb-3">
+                  <label for="referenceName" class="form-label">Name</label>
+                  <input type="text" id="referenceName" [(ngModel)]="newReference.name" name="name" class="form-control"
+                    required />
+                </div>
+                <div class="mb-3">
+                  <label for="referenceContact" class="form-label">Contact</label>
+                  <input type="text" id="referenceContact" [(ngModel)]="newReference.contact" name="contact"
+                    class="form-control" required />
+                </div>
+                <div class="mb-3">
+                  <label for="referenceRelation" class="form-label">Relation</label>
+                  <input type="text" id="referenceRelation" [(ngModel)]="newReference.relation" name="relation"
+                    class="form-control" required />
+                </div>
+                <button type="submit" class="btn btn-primary">Save Reference</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- refference modal close -->
+
+      <!-- refference show -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSix">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseFour">
+            Refference
+          </button>
+        </h2>
+        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <ul class="list-group">
+              <li *ngFor="let reference of references"
+                class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">{{ reference.name }}</div>
+                  <small class="text-muted">{{ reference.contact }}</small>
+                  <p class="mb-0 mt-1">{{ reference.relation }}</p>
+                </div>
+                <button class="btn btn-sm btn-danger" (click)="deleteReference(reference.id)">Delete</button>
+              </li>
+            </ul>
+
+
+          </div>
+        </div>
+      </div>
+      <!-- refference show close -->
+
+      <!-- language modal -->
+      <div class="modal fade" id="languageModal" tabindex="-1" aria-labelledby="languageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="languageModalLabel">Add New Language</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form (ngSubmit)="addLanguage()">
+                <div class="mb-3">
+                  <label for="languageName" class="form-label">Language Name</label>
+                  <input type="text" id="languageName" [(ngModel)]="newLanguage.name" name="name" class="form-control"
+                    required />
+                </div>
+                <div class="mb-3">
+                  <label for="languageProficiency" class="form-label">Proficiency</label>
+                  <select id="languageProficiency" [(ngModel)]="newLanguage.proficiency" name="proficiency"
+                    class="form-select" required>
+                    <option value="" disabled selected>Select proficiency</option>
+                    <option>Basic</option>
+                    <option>Fluent</option>
+                    <option>Native</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Language</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- language modal close -->
+
+      <!-- language show -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSeven">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseFour">
+            Language
+          </button>
+        </h2>
+        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <ul class="list-group">
+              <li *ngFor="let language of languages"
+                class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">{{ language.name }}</div>
+                  <small class="text-muted">{{ language.proficiency }}</small>
+                </div>
+                <button class="btn btn-sm btn-danger" (click)="deleteLanguage(language.id)">Delete</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- language show close -->
+
+      <!-- hobby modal -->
+      <div class="modal fade" id="hobbyModal" tabindex="-1" aria-labelledby="hobbyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="hobbyModalLabel">Add New Hobby</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form (ngSubmit)="addHobby()">
+                <div class="mb-3">
+                  <label for="hobbyName" class="form-label">Hobby Name</label>
+                  <input type="text" id="hobbyName" [(ngModel)]="newHobby.name" name="name" class="form-control"
+                    required />
+                </div>
+                <button type="submit" class="btn btn-primary">Save Hobby</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- hobby modal close -->
+
+      <!-- hobby show -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingSeven">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseHobby" aria-expanded="false" aria-controls="collapseFour">
+            Hobby
+          </button>
+        </h2>
+        <div id="collapseHobby" class="accordion-collapse collapse" aria-labelledby="headingThree"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <ul class="list-group">
+              <li *ngFor="let hobby of hobbies"
+                class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">{{ hobby.name }}</div>
+                </div>
+                <button class="btn btn-sm btn-danger" (click)="deleteHobby(hobby.id)">Delete</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- hobby show close -->
+
+    </div>

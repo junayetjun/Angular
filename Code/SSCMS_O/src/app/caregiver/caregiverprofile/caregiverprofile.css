@@ -1,0 +1,25 @@
+/* Soft Mint Green */
+.card-soft-mint {
+    background-color: #d8f9e3;
+}
+
+/* Button Styling */
+.btn {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Gradient for other sections (if needed) */
+.card.bg-gradient {
+    background: linear-gradient(135deg, #17a2b8, #6610f2);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}

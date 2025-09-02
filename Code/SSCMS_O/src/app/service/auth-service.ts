@@ -25,53 +25,67 @@ export class AuthService {
 
   // Login method that sends credentials and stores the token
   login(email: string, password: string): Observable<AuthResponse> {
+
     return this.http.post<AuthResponse>(this.baseUrl + 'login', { email, password }, { headers: this.headers }).pipe(
-      map((response: AuthResponse) => {
-        if (this.isBrowser() && response.token) {
-          localStorage.setItem('authToken', response.token);
-          const decodeToken = this.decodeToken(response.token);
-          localStorage.setItem('userRole', decodeToken.role);
-          this.userRoleSubject.next(decodeToken.role);
+
+      map(
+        (response: AuthResponse) => {
+          if (this.isBrowser() && response.token) {
+            localStorage.setItem('authToken', response.token);
+            const decodeToken = this.decodeToken(response.token);
+            localStorage.setItem('userRole', decodeToken.role);
+
+            
+            this.userRoleSubject.next(decodeToken.role);
+          }
+          return response;
+
         }
-        return response;
-      })
+
+      )
     );
   }
+
 
   private isBrowser(): boolean {
     return isPlatformBrowser(this.platformId);
   }
 
-  // Decode JWT token to extract useful info like role and expiry time
-  decodeToken(token: string): any {
+
+  decodeToken(token: string) {
+
     const payload = token.split('.')[1];
-    return JSON.parse(atob(payload)); // Decode the base64 payload
+    return JSON.parse(atob(payload));
+
   }
 
-  // Get token from localStorage
   getToken(): string | null {
+
     if (this.isBrowser()) {
       return localStorage.getItem('authToken');
     }
     return null;
+
   }
 
-  // Get user role from localStorage
+
   getUserRole(): string | null {
+
     if (this.isBrowser()) {
+      console.log("User Role IS "+ localStorage.getItem('userRole') );
       return localStorage.getItem('userRole');
     }
     return null;
+
   }
 
-  // Check if the token is expired
   isTokenExpired(token: string): boolean {
-    const decodedToken = this.decodeToken(token);
-    const expiry = decodedToken.exp * 1000;
+    const docodeToken = this.decodeToken(token);
+
+    const expiry = docodeToken.exp * 1000;
     return Date.now() > expiry;
   }
 
-  // Check if the user is logged in
   isLoggIn(): boolean {
     const token = this.getToken();
     if (token && !this.isTokenExpired(token)) {
@@ -79,9 +93,10 @@ export class AuthService {
     }
     this.logout();
     return false;
+
   }
 
-  // Logout the user by removing the token and user role
+
   logout(): void {
     if (this.isBrowser()) {
       localStorage.removeItem('userRole');
@@ -91,14 +106,15 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  // Check if the user has a specific role
+
   hasRole(roles: string[]): boolean {
+
     const userRole = this.getUserRole();
     return userRole ? roles.includes(userRole) : false;
+
   }
 
-  // Check if the user is a job seeker
-  isJobSeeker(): boolean {
+   isCaregiver(): boolean {
     return this.getUserRole() === 'SERVICE_PROVIDER';
   }
 

@@ -1,0 +1,53 @@
+/* Body background */
+body {
+  background: linear-gradient(135deg, #a18cd1, #fbc2eb); /* violet → lavender gradient */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Login Card */
+.login-card {
+  background: linear-gradient(145deg, #8e44ad, #9b59b6); /* deep violet gradient */
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0px 0px 25px rgba(155, 89, 182, 0.7); /* colorful glow outside card */
+}
+
+/* Heading */
+.login-card h2 {
+  font-weight: bold;
+  color: #ffebee; /* soft pinkish heading */
+  letter-spacing: 1px;
+}
+
+/* Input fields */
+.form-input {
+  border-radius: 12px;
+  border: none;
+  padding: 10px;
+  background: #f3e5f5;       /* light lavender background */
+  color: #4a148c;            /* deep violet text */
+  font-weight: 500;
+}
+
+.form-input:focus {
+  border: 2px solid #ff80ab; /* pink border on focus */
+  box-shadow: 0 0 8px #ff80ab;
+  outline: none;
+}
+
+/* Button */
+.btn-login {
+  background: linear-gradient(90deg, #ff80ab, #ff4081); /* pink gradient button */
+  color: #fff;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 12px;
+  transition: 0.3s;
+  border: none;
+}
+
+.btn-login:hover {
+  background: linear-gradient(90deg, #ff4081, #f50057); /* darker hover */
+  color: #fff;
+}

@@ -11,12 +11,12 @@ import { CaregiverListComponent } from './caregiver/caregiver-list.component/car
 import { Home } from './home/home';
 
 const routes: Routes = [
-  {path:'caregiverprofile', component: Caregiverprofile},
+  {path:'caregiverpro', component: Caregiverprofile},
   {path:'addcare', component: AddcaregiverComponent},
   {path:'parentlist', component: ParentList},
   {path:'addcategory', component: CategoryComponent},
   {path:'addparent', component: ParentRegistration},
-  {path:'parentprofile', component: Profilecomponent},
+  {path:'parentrofile', component: Profilecomponent},
   {path:'login', component: Login},
   {path:'caregiverlist', component: CaregiverListComponent},
   // {path:'', component: Caregiverprofile},

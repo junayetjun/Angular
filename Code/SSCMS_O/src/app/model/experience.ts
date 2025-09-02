@@ -1,6 +1,6 @@
 export interface Experience {
   id?: number;
-  company: string;
+  institution: string;
   position: string;
   fromDate: string; // yyyy-MM-dd
   toDate?: string;  // yyyy-MM-dd
