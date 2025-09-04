@@ -13,13 +13,14 @@ export class CaregiverService {
 
   private baseUrl = environment.apiBaseUrl + '/caregiver/';
 
-  constructor(
-    private http: HttpClient,
+  constructor(private http: HttpClient,
     private authService: AuthService,
     @Inject(PLATFORM_ID) private platformId: Object
+
   ) { }
 
-  // Register caregiver with user, caregiver JSON, and photo file
+
+
   registerCaregiver(user: any, caregiver: any, photo: File): Observable<any> {
     const formData = new FormData();
     formData.append('user', JSON.stringify(user));
@@ -29,12 +30,12 @@ export class CaregiverService {
     return this.http.post(this.baseUrl, formData);
   }
 
-  // Get logged-in caregiver profile with auth token header
   getProfile(): Observable<Caregiver> {
-    let headers = new HttpHeaders();
 
+    let headers = new HttpHeaders();
     if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('authToken');
+
       if (token) {
         headers = headers.set('Authorization', 'Bearer ' + token);
       }
@@ -43,27 +44,4 @@ export class CaregiverService {
     return this.http.get<Caregiver>(`${this.baseUrl}profile`, { headers });
   }
 
-  // Get caregivers filtered by category
-  getCaregiversByCategory(category: string): Observable<Caregiver[]> {
-    return this.http.get<Caregiver[]>(`${this.baseUrl}category/${category}`);
-  }
-
-  // Get all caregivers
-  getAllCaregivers(): Observable<Caregiver[]> {
-    return this.http.get<Caregiver[]>(`${this.baseUrl}all`);
-  }
-  // Update caregiver profile
-  updateProfile(caregiver: Caregiver): Observable<Caregiver> {
-    let headers = new HttpHeaders();
-
-    if (isPlatformBrowser(this.platformId)) {
-      const token = localStorage.getItem('authToken');
-      if (token) {
-        headers = headers.set('Authorization', 'Bearer ' + token);
-      }
-    }
-
-    return this.http.put<Caregiver>(`${this.baseUrl}profile`, caregiver, { headers });
-  }
-  
 }
