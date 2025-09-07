@@ -34,7 +34,7 @@ export class CategoryComponent {
 
 
   loadCategories(): void {
-    this.categoryService.getAll().subscribe(data => {
+    this.categoryService.getAllCategories().subscribe(data => {
       this.categories = data;
       this.cdr.markForCheck();
     });
@@ -46,13 +46,13 @@ export class CategoryComponent {
     const categoryData: Category = this.categoryForm.value;
 
     if (this.editMode && this.editId !== undefined) {
-      this.categoryService.update(this.editId, categoryData).subscribe(() => {
+      this.categoryService.updateCategory(this.editId, categoryData).subscribe(() => {
         this.loadCategories();
         this.resetForm();
         this.cdr.markForCheck();
       });
     } else {
-      this.categoryService.create(categoryData).subscribe(() => {
+      this.categoryService.createCategory(categoryData).subscribe(() => {
         this.loadCategories();
         this.resetForm();
         this.cdr.markForCheck();
@@ -71,7 +71,7 @@ export class CategoryComponent {
 
   onDelete(id?: number): void {
     if (id && confirm('Are you sure you want to delete this Categories?')) {
-      this.categoryService.delete(id).subscribe(() => {
+      this.categoryService.deleteCategory(id).subscribe(() => {
         this.loadCategories();
         this.cdr.markForCheck();
       });

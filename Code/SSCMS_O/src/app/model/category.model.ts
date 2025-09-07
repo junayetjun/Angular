@@ -1,5 +1,6 @@
 export interface Category {
-    id?: number;         // optional for new countries before saving
+    id: number;
     name: string;
+
 
 }

@@ -1,0 +1,82 @@
+<div class="container mt-4">
+  <div class="p-4 rounded-4 shadow-lg" 
+       style="background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4); color: #333;">
+    <div class="bg-white rounded-4 p-4 shadow-sm">
+      <h2 class="fw-bold text-center mb-4" style="color: #ff6f61;">🎨 Add New Job</h2>
+
+      <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="title" class="form-label">Job Title</label>
+          <input id="title" class="form-control border-primary-subtle" formControlName="title" />
+          <div *ngIf="isSubmitted && jobForm.controls['title'].errors" class="text-danger">
+            Title is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea id="description" class="form-control border-primary-subtle" formControlName="description"></textarea>
+          <div *ngIf="isSubmitted && jobForm.controls['description'].errors" class="text-danger">
+            Description is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <select id="location" class="form-select border-primary-subtle" formControlName="location">
+            <option value="" disabled selected>Select a location</option>
+            <option *ngFor="let loc of locations" [value]="loc.id">{{ loc.name }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="category" class="form-label">Job Field</label>
+          <select id="category" class="form-select border-primary-subtle" formControlName="category">
+            <option value="" disabled selected>Select a Type</option>
+            <option *ngFor="let c of catagories" [value]="c.id">{{ c.name }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="salary" class="form-label">Salary</label>
+          <input type="number" id="salary" class="form-control border-primary-subtle" formControlName="salary" />
+          <div *ngIf="isSubmitted && jobForm.controls['salary'].errors" class="text-danger">
+            Salary must be a positive number.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="jobType" class="form-label">Job Type</label>
+          <select id="jobType" class="form-select border-primary-subtle" formControlName="jobType">
+            <option value="">Select Type</option>
+            <option value="Full-Time">Full-Time</option>
+            <option value="Part-Time">Part-Time</option>
+            <option value="Internship">Internship</option>
+          </select>
+          <div *ngIf="isSubmitted && jobForm.controls['jobType'].errors" class="text-danger">
+            Job type is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="postedDate" class="form-label">Post Date</label>
+          <input type="date" id="postedDate" class="form-control border-primary-subtle" formControlName="postedDate" />
+          <div *ngIf="isSubmitted && jobForm.controls['postedDate'].errors" class="text-danger">
+            postedDate is required.
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-warning px-4 fw-semibold">🚀 Submit</button>
+        </div>
+
+        <div *ngIf="successMessage" class="alert alert-success mt-3">
+          {{ successMessage }}
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

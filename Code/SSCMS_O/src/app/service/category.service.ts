@@ -10,28 +10,34 @@ import { Observable } from 'rxjs';
 export class CategoryService {
 
 
-  private baseUrl = environment.apiBaseUrl + '/category/';
-
+  private apiUrl = environment.apiBaseUrl + '/categories/';
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.baseUrl);
+  getAllCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(this.apiUrl);
   }
 
-  getById(id: number): Observable<Category> {
-    return this.http.get<Category>(`${this.baseUrl}${id}`);
+
+  getLocationsByCategories(categoriId: number): Observable<Location[]> {
+    return this.http.get<Location[]>(`${this.apiUrl}by-category ${categoriId}`);
   }
 
-  create(country: Category): Observable<Category> {
-    return this.http.post<Category>(this.baseUrl, country);
+
+
+  getCategoryById(id: number): Observable<Category> {
+    return this.http.get<Category>(`${this.apiUrl}/${id}`);
   }
 
-  update(id: number, country: Category): Observable<Category> {
-    return this.http.put<Category>(`${this.baseUrl}${id}`, country);
+  createCategory(category: Category): Observable<Category> {
+    return this.http.post<Category>(this.apiUrl, category);
   }
 
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}${id}`);
+  updateCategory(id: number, category: Category): Observable<Category> {
+    return this.http.put<Category>(`${this.apiUrl}/${id}`, category);
+  }
+
+  deleteCategory(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

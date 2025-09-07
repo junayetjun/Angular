@@ -18,6 +18,8 @@ import { Profilecomponent } from './parent/profilecomponent/profilecomponent';
 import { Login } from './auth/login/login';
 import { CaregiverListComponent } from './caregiver/caregiver-list.component/caregiver-list.component';
 import { Home } from './home/home';
+import { Addcategory } from './category/addcategory/addcategory';
+import { Addjob } from './jobs/addjob/addjob';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { Home } from './home/home';
     Profilecomponent,
     Login,
     CaregiverListComponent,
-    Home
+    Home,
+    Addcategory,
+    Addjob
   ],
   imports: [
     BrowserModule,

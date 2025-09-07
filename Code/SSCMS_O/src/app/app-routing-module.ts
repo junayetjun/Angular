@@ -9,6 +9,7 @@ import { Profilecomponent } from './parent/profilecomponent/profilecomponent';
 import { Login } from './auth/login/login';
 import { CaregiverListComponent } from './caregiver/caregiver-list.component/caregiver-list.component';
 import { Home } from './home/home';
+import { Addcategory } from './category/addcategory/addcategory';
 
 const routes: Routes = [
   {path:'caregiverpro', component: Caregiverprofile},
@@ -22,6 +23,7 @@ const routes: Routes = [
   // {path:'', component: Caregiverprofile},
   {path:'', component: Home},
   {path:'home', component: Home},
+  {path:'addcat', component: Addcategory},
 ];
 
 @NgModule({
