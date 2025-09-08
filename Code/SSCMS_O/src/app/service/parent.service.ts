@@ -4,55 +4,54 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth-service';
 import { catchError, Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
+import { Parent } from '../model/parent';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ParentService {
 
-  private baseUrl = environment.apiBaseUrl + '/parent/';
-
+ private baseUrl = environment.apiBaseUrl + '/parent/';
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private authService: AuthService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
+  // Optional helper if you want to avoid circular structure errors
+  private safeStringify(obj: any): string {
+    const seen = new WeakSet();
+    return JSON.stringify(obj, (key, value) => {
+      if (typeof value === 'object' && value !== null) {
+        if (seen.has(value)) return undefined;
+        seen.add(value);
+      }
+      return value;
+    });
+  }
 
-  // 1️⃣ Register Employer with User + Employer JSON + Photo
   registerParent(user: any, parent: any, photo: File): Observable<any> {
-    const formData: FormData = new FormData();
-    formData.append('user', JSON.stringify(user));
-    formData.append('parent', JSON.stringify(parent));
+    const formData = new FormData();
+
+    // Only stringify pure data objects (NO FormGroup, window, etc.)
+    formData.append('user', this.safeStringify(user));
+    formData.append('parent', this.safeStringify(parent));
     formData.append('photo', photo);
 
     return this.http.post(this.baseUrl, formData);
   }
 
-  // 2️⃣ Get All Parents
-  getAllParents(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl + 'all');
-  }
-
- getProfile(): Observable<any> {
-  let headers = new HttpHeaders();
-
-  if (isPlatformBrowser(this.platformId)) {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      headers = headers.set('Authorization', 'Bearer ' + token);
+  getProfile(): Observable<Parent> {
+    let headers = new HttpHeaders();
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        headers = headers.set('Authorization', 'Bearer ' + token);
+      }
     }
+    return this.http.get<Parent>(`${this.baseUrl}profile`, { headers });
   }
-
-  return this.http.get<any>(this.baseUrl + 'profile', { headers }).pipe(
-    catchError((error) => {
-      console.error('Error fetching profile:', error);  // Log the error for debugging
-      throw error;
-    })
-  );
-}
-
 
 
 }

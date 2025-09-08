@@ -1,23 +1,92 @@
-<div *ngIf="loading" class="text-center">
-  <h3>Loading...</h3>
-</div>
+<div class="container py-5">
+  <div class="row">
 
-<div *ngIf="!loading && profile">
-  <h2 class="text-center mb-4">Profile Information</h2>
+    <!-- Sidebar -->
+    <div class="col-md-3 mb-4">
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body">
+          <h5 class="fw-bold mb-3">Menu</h5>
+          <div class="d-grid gap-2">
+            <button class="btn btn-outline-primary" [routerLink]="['/myjob']">
+              My Jobs
+            </button>
+            <button class="btn btn-outline-primary" [routerLink]="['/addjob']">
+              Post New Job
+            </button>
+            <button class="btn btn-outline-primary" [routerLink]="['/profile/edit']">
+              Edit Profile
+            </button>
+            <button class="btn btn-outline-danger" (click)="onLogout()">
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div class="profile-info text-center">
-    <!-- Display Profile Photo if exists -->
-    <img *ngIf="profile.photoUrl" [src]="'data:image/jpeg;base64,' + profile.photoUrl" class="img-fluid rounded-circle mb-4" style="width: 150px; height: 150px;" alt="Profile Photo" />
+    <!-- Employer Profile Card -->
+    <div class="col-md-9">
+      <div *ngIf="parent" class="card shadow-lg border-0 rounded-4">
 
-    <h4>{{ profile.name }}</h4>
-    <p>{{ profile.email }}</p>
-    <p>{{ profile.phone }}</p>
-    <p>{{ profile.childName }}</p>
+        <!-- Card Header -->
+        <div class="card-header bg-dark text-white rounded-top-4">
+          <h4 class="mb-0 text-center">
+            <i class="bi bi-building me-2"></i>
+            Parent Profile
+          </h4>
+        </div>
+
+        <div class="card-body">
+          <div class="row align-items-center">
+
+            <!-- Company Logo -->
+            <div class="col-md-3 text-center mb-4 mb-md-0">
+              <img [src]="parent.photo" alt="Parent Photo" height="150" width="150"
+                class="img-thumbnail shadow-sm rounded-circle border border-3 border-primary mb-3" />
+              <h5 class="fw-bold text-primary">{{ parent.parentName || 'Parent Name' }}</h5>
+              <!-- <span class="badge bg-info text-dark">{{ parent.industry || 'Industry' }}</span> -->
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-md-9">
+              <div class="row gy-3">
+                <div class="col-md-6">
+                  <i class="bi bi-person-fill me-2 text-secondary"></i>
+                  <strong>Contact Person:</strong>
+                  <span class="ms-1 text-dark">{{ parent.contactPerson }}</span>
+                </div>
+                <div class="col-md-6">
+                  <i class="bi bi-envelope-fill me-2 text-secondary"></i>
+                  <strong>Email:</strong>
+                  <span class="ms-1 text-dark">{{ parent.email }}</span>
+                </div>
+                <div class="col-md-6">
+                  <i class="bi bi-telephone-fill me-2 text-secondary"></i>
+                  <strong>Phone:</strong>
+                  <span class="ms-1 text-dark">{{ parent.phone }}</span>
+                </div>
+                <div class="col-md-6">
+                  <i class="bi bi-globe me-2 text-secondary"></i>
+                  <strong>Child Name:</strong>
+                  <a [href]="parent.website" target="_blank" class="ms-1 link-primary text-decoration-none">
+                    {{ parent.childName }}
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div *ngIf="!parent" class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-3 text-muted">Loading parent profile...</p>
+      </div>
+    </div>
+
   </div>
-
-  <div *ngIf="message" class="alert mt-3" [ngClass]="{'alert-danger': message.includes('fail'), 'alert-success': message.includes('success')}">
-    {{ message }}
-  </div>
-
-  <button class="btn btn-danger mt-3" (click)="logout()">Logout</button>
 </div>

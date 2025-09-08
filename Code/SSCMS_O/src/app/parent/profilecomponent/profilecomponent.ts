@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { ParentService } from '../../service/parent.service';
 import { AuthService } from '../../service/auth-service';
 import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-profilecomponent',
@@ -10,51 +11,43 @@ import { Router } from '@angular/router';
   styleUrl: './profilecomponent.css'
 })
 export class Profilecomponent {
-  profile: any;
-  loading: boolean = true;
-  message: string = '';
+
+
+  parent: any;
+
 
   constructor(
     private parentService: ParentService,
-    private authService: AuthService,
-    private router: Router
-  ) { }
+    private cdr: ChangeDetectorRef,
+    private fb: FormBuilder,
+    private authService: AuthService
+
+  ) {
+  }
 
   ngOnInit(): void {
-    this.loadProfile();
+    this.getProfile();
+
   }
 
-  loadProfile(): void {
-  const token = this.authService.getToken();
-  console.log('Token:', token);
+  getProfile() {
 
-  if (!token || this.authService.isTokenExpired(token)) {
-    this.authService.logout();
-    this.router.navigate(['/login']);
-    return;
-  }
+    this.parentService.getProfile().subscribe({
+      next: (data) => {
+        this.parent = data;
+        console.log(data);
+        this.cdr.markForCheck();
 
-  this.parentService.getProfile().subscribe({
-    next: (data) => {
-      if (!data) {
-        this.message = 'No profile data found.';
-      } else {
-        this.profile = data;
+      },
+      error: (err) => {
+        console.error('Failed to load profile', err);
       }
-      this.loading = false;
-    },
-    error: (err) => {
-      this.message = 'Failed to load profile. Please try again later.';
-      this.loading = false;
-      console.error(err);
-    }
-  });
-}
-
-
-
-  logout(): void {
-    this.authService.logout(); // Clears the token and logs the user out
-    this.router.navigate(['/login']);
+    });
   }
+
+
+  onLogout(): void {
+    this.authService.logout();
+  }
+
 }

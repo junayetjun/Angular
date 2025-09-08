@@ -4,7 +4,7 @@ import { ParentService } from '../../service/parent.service';
 
 @Component({
   selector: 'app-parent-registration',
-   standalone: false,
+  standalone: false,
   templateUrl: './parent-registration.html',
   styleUrl: './parent-registration.css'
 })
@@ -14,11 +14,9 @@ export class ParentRegistration {
   photoFile!: File;
   message: string = '';
 
-  constructor(
-    private fb: FormBuilder,
+  constructor(private fb: FormBuilder,
     private parentService: ParentService
   ) {
-    // User fields
     this.userForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -26,20 +24,22 @@ export class ParentRegistration {
       password: ['', Validators.required]
     });
 
-    // Parent-specific fields
     this.parentForm = this.fb.group({
-      childName: ['', Validators.required]
+      parentName: ['', Validators.required],
+      address: ['', Validators.required],
+      childName: ['', Validators.required],
+      type: ['', Validators.required]
     });
   }
 
-  onFileSelected(event: any): void {
+  onPhotoSelected(event: any): void {
     if (event.target.files.length > 0) {
       this.photoFile = event.target.files[0];
       console.log('Selected file:', this.photoFile);
     }
   }
 
-  registerParent(): void {
+  onSubmit(): void {
     if (!this.photoFile) {
       this.message = 'Please upload a photo.';
       return;
@@ -59,23 +59,24 @@ export class ParentRegistration {
     };
 
     const parent = {
-      name: this.userForm.value.name,
+      contactPerson: this.userForm.value.name,
       email: this.userForm.value.email,
       phone: this.userForm.value.phone,
-      childName: this.parentForm.value.childName
+      parentName: this.parentForm.value.parentName,
+      address: this.parentForm.value.address,
+      childName: this.parentForm.value.childName,
+      type: this.parentForm.value.type
     };
 
     this.parentService.registerParent(user, parent, this.photoFile).subscribe({
-      next: (res) => {
-        this.message = res.Message || 'Parent registered successfully ✅';
-        console.log(res);
+      next: res => {
+        this.message = res.Message || 'Registration successful!';
         this.userForm.reset();
         this.parentForm.reset();
         this.photoFile = undefined!;
       },
-      error: (err) => {
-        this.message = 'Registration failed ❌ ' + (err.error?.Message || err.message);
-        console.error(err);
+      error: err => {
+        this.message = 'Registration failed: ' + (err.error?.Message || err.message);
       }
     });
   }

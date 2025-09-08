@@ -1,72 +1,67 @@
-<!-- parent-registration.html -->
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Parent Registration</h2>
 
-<form [formGroup]="userForm" (ngSubmit)="registerParent()" class="container mt-5 p-4 border rounded shadow-sm bg-white" style="max-width: 600px;">
+  <div *ngIf="message" class="alert alert-info">{{ message }}</div>
 
-  <h2 class="mb-4 text-center text-primary">Parent Registration</h2>
+  <!-- User Info Section -->
+  <form [formGroup]="userForm">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white">User Information</div>
+      <div class="card-body row g-3 bg-danger " style="--bs-bg-opacity: .25;">
+        <div class="col-md-6">
+          <label class="form-label">Contact Person</label>
+          <input type="text" class="form-control" formControlName="name">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" formControlName="email">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Phone Number</label>
+          <input type="text" class="form-control" formControlName="phone">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" formControlName="password">
+        </div>
+      </div>
+    </div>
+  </form>
 
-  <!-- User Details -->
-  <fieldset class="mb-4">
-    <!-- <legend class="h5 mb-3">User Details</legend> -->
-
-    <div class="mb-3">
-      <label for="name" class="form-label">Parent Name</label>
-      <input id="name" type="text" class="form-control" formControlName="name" placeholder="Enter full name" />
-      <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched" class="text-danger small">
-        Name is required.
+  <!-- Employer Info Section -->
+  <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <div class="card mb-4">
+      <div class="card-header bg-dark text-white">Parent Information</div>
+      <div class="card-body row g-3 bg-danger " style="--bs-bg-opacity: .25;">
+        <div class="col-md-6">
+          <label class="form-label">Parent Name</label>
+          <input type="text" class="form-control" formControlName="parentName">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Address</label>
+          <input type="text" class="form-control" formControlName="address">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Child Name</label>
+          <input type="text" class="form-control" formControlName="childName">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Type</label>
+          <input type="text" class="form-control" formControlName="type">
+        </div>
       </div>
     </div>
 
+    <!-- Photo Upload -->
     <div class="mb-3">
-      <label for="email" class="form-label">Email address</label>
-      <input id="email" type="email" class="form-control" formControlName="email" placeholder="example@mail.com" />
-      <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="text-danger small">
-        Valid email is required.
-      </div>
+      <label class="form-label">Photo</label>
+      <input type="file" class="form-control" (change)="onPhotoSelected($event)">
     </div>
 
-    <div class="mb-3">
-      <label for="phone" class="form-label">Phone</label>
-      <input id="phone" type="tel" class="form-control" formControlName="phone" placeholder="+1 234 567 8900" />
-      <div *ngIf="userForm.get('phone')?.invalid && userForm.get('phone')?.touched" class="text-danger small">
-        Phone is required.
-      </div>
+    <!-- Submit Button -->
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="btn btn-primary me-2">Register</button>
+      <button type="button" class="btn btn-secondary" (click)="userForm.reset(); parentForm.reset()">Reset</button>
     </div>
-
-    <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input id="password" type="password" class="form-control" formControlName="password" placeholder="Enter password" />
-      <div *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched" class="text-danger small">
-        Password is required.
-      </div>
-    </div>
-  </fieldset>
-
-  <!-- Child Details -->
-  <fieldset [formGroup]="parentForm" class="mb-4">
-    <legend class="h5 mb-3">Child Details</legend>
-
-    <div class="mb-3">
-      <label for="childName" class="form-label">Child Name</label>
-      <input id="childName" type="text" class="form-control" formControlName="childName" placeholder="Enter child's name" />
-      <div *ngIf="parentForm.get('childName')?.invalid && parentForm.get('childName')?.touched" class="text-danger small">
-        Child name is required.
-      </div>
-    </div>
-  </fieldset>
-
-  <!-- Photo Upload -->
-  <div class="mb-4">
-    <label for="photo" class="form-label">Upload Photo</label>
-    <input id="photo" type="file" class="form-control" (change)="onFileSelected($event)" />
-  </div>
-
-  <!-- Submit Button -->
-  <button type="submit" class="btn btn-primary w-100" [disabled]="userForm.invalid || parentForm.invalid || !photoFile">
-    Register
-  </button>
-
-  <!-- Message -->
-  <div *ngIf="message" class="alert mt-3" [ngClass]="{'alert-success': message.includes('success'), 'alert-danger': message.includes('fail') }" role="alert">
-    {{ message }}
-  </div>
-</form>
+  </form>
+</div>

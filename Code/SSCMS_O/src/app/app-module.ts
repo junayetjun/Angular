@@ -20,6 +20,7 @@ import { CaregiverListComponent } from './caregiver/caregiver-list.component/car
 import { Home } from './home/home';
 import { Addcategory } from './category/addcategory/addcategory';
 import { Addjob } from './jobs/addjob/addjob';
+import { Addlocation } from './locations/addlocation/addlocation';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { Addjob } from './jobs/addjob/addjob';
     CaregiverListComponent,
     Home,
     Addcategory,
-    Addjob
+    Addjob,
+    Addlocation
   ],
   imports: [
     BrowserModule,

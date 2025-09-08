@@ -16,21 +16,21 @@ export class ParentList implements OnInit {
   constructor(private parentService: ParentService) { }
 
   ngOnInit(): void {
-    this.loadParents();
+    // this.loadParents();
   }
 
- loadParents(): void {
-    this.parentService.getAllParents().subscribe({
-      next: (data) => {
-        this.parents = data;
-        this.loading = false;
-      },
-      error: (err) => {
-        this.message = 'Failed to load parents. Please try again later.';
-        this.loading = false;
-        console.error(err);
-      }
-    });
-  }
+//  loadParents(): void {
+//     this.parentService.getAllParents().subscribe({
+//       next: (data) => {
+//         this.parents = data;
+//         this.loading = false;
+//       },
+//       error: (err) => {
+//         this.message = 'Failed to load parents. Please try again later.';
+//         this.loading = false;
+//         console.error(err);
+//       }
+//     });
+//   }
 
 }

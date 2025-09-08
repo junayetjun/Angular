@@ -2,7 +2,7 @@
   <div class="p-4 rounded-4 shadow-lg" 
        style="background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4); color: #333;">
     <div class="bg-white rounded-4 p-4 shadow-sm">
-      <h2 class="fw-bold text-center mb-4" style="color: #ff6f61;">🎨 Add New Job</h2>
+      <h2 class="fw-bold text-center mb-4" style="color: #ff6f61;">🎨 Add New Appoinment</h2>
 
       <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
@@ -49,9 +49,9 @@
           <label for="jobType" class="form-label">Job Type</label>
           <select id="jobType" class="form-select border-primary-subtle" formControlName="jobType">
             <option value="">Select Type</option>
-            <option value="Full-Time">Full-Time</option>
-            <option value="Part-Time">Part-Time</option>
-            <option value="Internship">Internship</option>
+            <option value="Full-Day">Full-Day</option>
+            <option value="Half-Day">Half-Day</option>
+            <option value="Others">Others</option>
           </select>
           <div *ngIf="isSubmitted && jobForm.controls['jobType'].errors" class="text-danger">
             Job type is required.
