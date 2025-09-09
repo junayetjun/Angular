@@ -43,7 +43,7 @@ export class Login {
 
     const role = this.authService.getUserRole();
 
-    if (role === 'SERVICE_PROVIDER') {
+    if (role === 'CAREGIVER') {
       this.router.navigate(['/caregiverpro']);
     }
      else if (role === 'PARENT') {

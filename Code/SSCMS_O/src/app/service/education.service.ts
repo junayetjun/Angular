@@ -15,6 +15,7 @@ export class EducationService {
   constructor(
     private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object
+
   ) { }
 
   addEducation(education: any): Observable<any> {
