@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
+import { Education } from '../../model/education';
+import { Skill } from '../../model/skill';
+import { Reference } from '../../model/reference';
 import { Language } from '../../model/language';
 import { Hobby } from '../../model/hobby';
-import { Education } from '../../model/education';
-import { Experience } from '../../model/experience';
-import { Skill } from '../../model/skill';
 import { CaregiverService } from '../../service/caregiver.service';
 import { EducationService } from '../../service/education.service';
 import { ExperienceService } from '../../service/experience.service';
@@ -12,7 +12,7 @@ import { ReferenceService } from '../../service/reference.service';
 import { LanguageService } from '../../service/language.service';
 import { HobbyService } from '../../service/hobby.service';
 import { AuthService } from '../../service/auth-service';
-import { Reference } from '../../model/reference';
+import { Experience } from '../../model/experience';
 
 @Component({
   selector: 'app-caregiverprofile',
@@ -29,7 +29,6 @@ export class Caregiverprofile {
   newEducation = {
     level: '',
     institute: '',
-    board: '',
     result: '',
     year: ''
   };
@@ -41,7 +40,6 @@ export class Caregiverprofile {
     position: '',
     fromDate: ''
   };
-
 
   skills: Skill[] = [];
 
@@ -78,24 +76,21 @@ export class Caregiverprofile {
     private educationService: EducationService,
     private expService: ExperienceService,
     private skillService: SkillService,
-    private referenceService: ReferenceService,
+    private refferenceService: ReferenceService,
     private languageService: LanguageService,
     private hobbyService: HobbyService,
     private authService: AuthService,
   ) { }
 
 
-
   ngOnInit(): void {
-    // this.getProfile();
-    // this.loadEducations();
-    // this.loadExperiences();
-    // this.loadExtracurriculars();
-    // this.loadSkills();
-    // this.loadTrainings();
-    // this.loadReferences();
-    // this.loadLanguages();
-    // this.loadHobbies();
+    this.getProfile();
+    this.loadEducations();
+    this.loadExperiences();
+    this.loadSkills();
+    this.loadReferences();
+    this.loadLanguages();
+    this.loadHobbies();
 
   }
 
@@ -133,6 +128,7 @@ export class Caregiverprofile {
     });
   }
 
+
   loadLanguages(): void {
     this.languageService.getAllLanguages().subscribe({
       next: (data) => {
@@ -168,7 +164,7 @@ export class Caregiverprofile {
   }
 
   loadReferences(): void {
-    this.referenceService.getAllReferences().subscribe({
+    this.refferenceService.getAllReferences().subscribe({
       next: (data) => {
         this.references = data;
         this.cdr.markForCheck();
@@ -178,7 +174,7 @@ export class Caregiverprofile {
   }
 
   addReference(): void {
-    this.referenceService.addReference(this.newReference).subscribe({
+    this.refferenceService.addReference(this.newReference).subscribe({
       next: () => {
         this.newReference = { name: '', contact: '', relation: '' };
         this.loadReferences();
@@ -192,7 +188,7 @@ export class Caregiverprofile {
     if (!id) return;
     if (!confirm('Are you sure you want to delete this reference?')) return;
 
-    this.referenceService.deleteReference(id).subscribe({
+    this.refferenceService.deleteReference(id).subscribe({
       next: () => {
         this.loadReferences();
         this.cdr.markForCheck();
@@ -200,6 +196,7 @@ export class Caregiverprofile {
       error: (err) => console.error('Failed to delete reference:', err)
     });
   }
+
 
   loadSkills(): void {
     this.skillService.getAllSkills().subscribe({
@@ -267,6 +264,7 @@ export class Caregiverprofile {
   }
 
 
+
   addEducation(): void {
     this.educationService.addEducation(this.newEducation).subscribe({
       next: async (addedEdu: any) => {
@@ -274,7 +272,7 @@ export class Caregiverprofile {
           this.caregiver.educations = [];
         }
         this.caregiver.educations.push(addedEdu);
-        this.newEducation = { level: '', institute: '', board: '', result: '', year: '' };
+        this.newEducation = { level: '', institute: '', result: '', year: '' };
 
 
       },
@@ -330,5 +328,4 @@ export class Caregiverprofile {
   onLogout(): void {
     this.authService.logout();
   }
-
 }

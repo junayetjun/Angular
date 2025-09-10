@@ -26,7 +26,7 @@ export class LanguageService {
       }
     }
 
-    return this.http.post<Language>(`${this.baseUrl}add`, data, { headers });
+    return this.http.post<Language>(`${this.baseUrl}/add`, data, { headers });
   }
 
   getAllLanguages(): Observable<Language[]> {
@@ -39,7 +39,7 @@ export class LanguageService {
       }
     }
 
-    return this.http.get<Language[]>(`${this.baseUrl}all`, { headers });
+    return this.http.get<Language[]>(`${this.baseUrl}/all`, { headers });
   }
 
   deleteLanguage(id: number): Observable<void> {

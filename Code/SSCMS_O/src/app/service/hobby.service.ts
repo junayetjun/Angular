@@ -40,7 +40,7 @@ export class HobbyService {
       }
     }
 
-    return this.http.get<Hobby[]>(`${this.baseUrl}all`, { headers });
+    return this.http.get<Hobby[]>(`${this.baseUrl}/all`, { headers });
   }
 
   deleteHobby(id: number): Observable<void> {
