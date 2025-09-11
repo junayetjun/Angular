@@ -21,6 +21,10 @@ import { Home } from './home/home';
 import { Addcategory } from './category/addcategory/addcategory';
 import { Addjob } from './jobs/addjob/addjob';
 import { Addlocation } from './locations/addlocation/addlocation';
+import { Logout } from './auth/logout/logout';
+import { Parentjobapplication } from './parent/parentjobapplication/parentjobapplication';
+import { JobDetailsComponent } from './jobs/job-details.component/job-details.component';
+import { Alljobs } from './jobs/alljobs/alljobs';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,11 @@ import { Addlocation } from './locations/addlocation/addlocation';
     Home,
     Addcategory,
     Addjob,
-    Addlocation
+    Addlocation,
+    Logout,
+    Parentjobapplication,
+    JobDetailsComponent,
+    Alljobs
   ],
   imports: [
     BrowserModule,

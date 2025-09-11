@@ -30,7 +30,7 @@ export class ExperienceService {
       }
     }
 
-    return this.http.post<Experience>(`${this.apiUrl}/add`, exp, { headers });
+    return this.http.post<Experience>(`${this.apiUrl}add`, exp, { headers });
   }
 
   // Get all experiences for current JobSeeker
@@ -44,7 +44,7 @@ export class ExperienceService {
       }
     }
 
-    return this.http.get<Experience[]>(`${this.apiUrl}/all`, { headers });
+    return this.http.get<Experience[]>(`${this.apiUrl}all`, { headers });
   }
 
   // Delete by ID

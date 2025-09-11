@@ -12,6 +12,10 @@ import { Home } from './home/home';
 import { Addcategory } from './category/addcategory/addcategory';
 import { Addjob } from './jobs/addjob/addjob';
 import { Addlocation } from './locations/addlocation/addlocation';
+import { Logout } from './auth/logout/logout';
+import { Parentjobapplication } from './parent/parentjobapplication/parentjobapplication';
+import { JobDetailsComponent } from './jobs/job-details.component/job-details.component';
+import { Alljobs } from './jobs/alljobs/alljobs';
 
 const routes: Routes = [
   {path:'caregiverpro', component: Caregiverprofile},
@@ -28,6 +32,11 @@ const routes: Routes = [
   {path:'addcat', component: Addcategory},
   {path:'addjob', component: Addjob},
   {path:'addloc', component: Addlocation},
+  {path: 'logout', component: Logout},
+  {path: 'parentjob', component: Parentjobapplication},
+  {path: 'jobdetails', component: JobDetailsComponent},
+  {path: 'alljobs', component: Alljobs},
+
 ];
 
 @NgModule({

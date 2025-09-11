@@ -41,7 +41,7 @@
 
             <!-- Company Logo -->
             <div class="col-md-3 text-center mb-4 mb-md-0">
-              <img [src]="parent.photo" alt="Parent Photo" height="150" width="150"
+              <img [src]="'http://localhost:8085/images/parent/' + parent.photo" alt="Parent Photo" height="150" width="150"
                 class="img-thumbnail shadow-sm rounded-circle border border-3 border-primary mb-3" />
               <h5 class="fw-bold text-primary">{{ parent.parentName || 'Parent Name' }}</h5>
               <!-- <span class="badge bg-info text-dark">{{ parent.industry || 'Industry' }}</span> -->

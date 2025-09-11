@@ -42,7 +42,7 @@ export class JobService {
   // Get all jobs by employer ID
   getJobsByEmployerId(employerId: number): Observable<Job[]> {
     const headers = this.getAuthHeaders();
-    return this.http.get<Job[]>(`${this.baseUrl}/parent/${employerId}`, { headers });
+    return this.http.get<Job[]>(`${this.baseUrl}parent/${employerId}`, { headers });
   }
 
   //  Delete a job

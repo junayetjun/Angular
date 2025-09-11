@@ -1,0 +1,29 @@
+<div *ngIf="loading" class="text-center my-3">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+</div>
+
+<div class="row">
+    <div *ngFor="let app of applications" class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ app.caregiverName }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Applied for: {{ app.jobTitle }}</h6>
+                <p class="card-text">
+                    Employer: {{ app.parentName }} <br>
+                    Job ID: {{ app.jobId }} <br>
+                    Application ID: {{ app.id }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!loading && applications.length === 0" class="alert alert-info">
+    No applications yet for this job.
+</div>
