@@ -25,6 +25,7 @@ import { Logout } from './auth/logout/logout';
 import { Parentjobapplication } from './parent/parentjobapplication/parentjobapplication';
 import { JobDetailsComponent } from './jobs/job-details.component/job-details.component';
 import { Alljobs } from './jobs/alljobs/alljobs';
+import { Mypost } from './mypost/mypost/mypost';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { Alljobs } from './jobs/alljobs/alljobs';
     Logout,
     Parentjobapplication,
     JobDetailsComponent,
-    Alljobs
+    Alljobs,
+    Mypost
   ],
   imports: [
     BrowserModule,

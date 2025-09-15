@@ -16,26 +16,29 @@ import { Logout } from './auth/logout/logout';
 import { Parentjobapplication } from './parent/parentjobapplication/parentjobapplication';
 import { JobDetailsComponent } from './jobs/job-details.component/job-details.component';
 import { Alljobs } from './jobs/alljobs/alljobs';
+import { Mypost } from './mypost/mypost/mypost';
 
 const routes: Routes = [
-  {path:'caregiverpro', component: Caregiverprofile},
-  {path:'addcare', component: AddcaregiverComponent},
-  {path:'parentlist', component: ParentList},
-  {path:'addcategory', component: CategoryComponent},
-  {path:'addparent', component: ParentRegistration},
-  {path:'parentrofile', component: Profilecomponent},
-  {path:'login', component: Login},
-  {path:'caregiverlist', component: CaregiverListComponent},
+  { path: 'caregiverpro', component: Caregiverprofile },
+  { path: 'addcare', component: AddcaregiverComponent },
+  { path: 'parentlist', component: ParentList },
+  { path: 'addcategory', component: CategoryComponent },
+  { path: 'addparent', component: ParentRegistration },
+  { path: 'parentrofile', component: Profilecomponent },
+  { path: 'login', component: Login },
+  { path: 'caregiverlist', component: CaregiverListComponent },
   // {path:'', component: Caregiverprofile},
-  {path:'', component: Home},
-  {path:'home', component: Home},
-  {path:'addcat', component: Addcategory},
-  {path:'addjob', component: Addjob},
-  {path:'addloc', component: Addlocation},
-  {path: 'logout', component: Logout},
-  {path: 'parentjob', component: Parentjobapplication},
-  {path: 'jobdetails', component: JobDetailsComponent},
-  {path: 'alljobs', component: Alljobs},
+  { path: '', component: Home },
+  { path: 'home', component: Home },
+  { path: 'addcat', component: Addcategory },
+  { path: 'addjob', component: Addjob },
+  { path: 'addloc', component: Addlocation },
+  { path: 'logout', component: Logout },
+  { path: 'parentjob', component: Parentjobapplication },
+  { path: 'jobs/:id', component: JobDetailsComponent },
+  { path: 'jobdetails', component: JobDetailsComponent },
+  { path: 'alljobs', component: Alljobs },
+  { path: 'myjob', component: Mypost },
 
 ];
 

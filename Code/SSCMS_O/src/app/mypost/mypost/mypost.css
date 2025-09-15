@@ -1,0 +1,112 @@
+/* 🌟 Container Background with gradient + blur */
+.container.bg-info.bg-opacity-25 {
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.05);
+}
+
+/* ✨ Card Styling with glassmorphism */
+.card {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* 🎨 Alternate colorful gradients for each card */
+.card:nth-child(3n + 1) {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+}
+
+.card:nth-child(3n + 2) {
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+}
+
+.card:nth-child(3n + 3) {
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+}
+
+/* 🖱️ Card Hover Effect */
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* 📝 Card Text Styling */
+.card-title {
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #222;
+}
+
+.card-subtitle {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* 📅 Date */
+small.text-muted {
+    font-style: italic;
+    font-size: 0.85rem;
+}
+
+/* 🔘 Buttons */
+.btn-outline-primary,
+.btn-outline-danger {
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 6px 18px;
+    font-size: 0.85rem;
+    transition: all 0.25s ease-in-out;
+    border-width: 2px;
+}
+
+/* 🔵 Hover Primary */
+.btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+}
+
+/* 🔴 Hover Danger */
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+    border-color: #dc3545;
+}
+
+/* 🔄 Spinner */
+.spinner-border {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-top: 1rem;
+}
+
+/* 🚫 Error Alert */
+.alert-danger {
+    border-radius: 12px;
+    font-weight: 600;
+    background-color: #ffe5e5;
+    color: #a10000;
+    border-left: 6px solid #dc3545;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.1);
+}
+
+/* 📭 No jobs message */
+.text-center.text-muted {
+    font-size: 1.15rem;
+    font-weight: 500;
+    padding: 2rem 0;
+    color: #666;
+}
